@@ -123,7 +123,7 @@ bot.on("ready", function () {
 	bot.user.setPresence({
 		game: {
 			name: "sick beats | still in development",
-			type: 'LISTENING',
+			type: 'PLAYING',
 		},
 		status: 'dnd'
 	}); 
