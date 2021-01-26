@@ -129,16 +129,17 @@ commands = {	// all commands list below
 			var name = args.shift();
 			var house = args.toString();
 			console.log(house);
+			console.log("ravenclaw");
 			if(!name) {
 				msg.channel.send(Config.commandPrefix + "alias " + this.usage + "\n" + this.description);
-			} else if (house = "ravenclaw") {
-				msg.channel.send(houses.ravenclaw.points);
-			} else if (house = "hufflepuff") {
-				msg.channel.send(houses.hufflepuff.points);
-			} else if (house = "gryffindor") {
-				msg.channel.send(houses.gryffindor.points);
-			} else if (house = "slytherin") {
-				msg.channel.send(houses.slytherin.points);
+			} else if (house == "ravenclaw") {
+				msg.channel.send("0");
+			} else if (house == "hufflepuff") {
+				msg.channel.send("0");
+			} else if (house == "gryffindor") {
+				msg.channel.send("0");
+			} else if (house == "slytherin") {
+				msg.channel.send("0");
 			} else {
 				msg.channel.send("House does not exist!");
 			}
