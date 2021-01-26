@@ -84,7 +84,7 @@ commands = {	// all commands list below
     "ping": {
         description: "Responds pong; useful for checking if bot is alive.",
         process: function(bot, msg, suffix) {
-            msg.channel.send( msg.author+" pong!");
+            msg.channel.send("the bot does work");
             if(suffix){
                 msg.channel.send( "Note that !ping takes no arguments!");
             }
@@ -139,6 +139,7 @@ bot.on("ready", function () {
 		},
 		status: 'online'
 	}); 
+	client.user.setActivity("sick beats | still in development", { type: "LISTENING"}
 });
 
 bot.on("disconnected", function () {
