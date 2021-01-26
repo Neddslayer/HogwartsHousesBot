@@ -108,6 +108,11 @@ commands = {	// all commands list below
         usage: "<message>",
         description: "Bot sends message",
         process: function(bot,msg,suffix){ msg.channel.send(suffix);}
+    },
+    "stop": {
+	usage: "<command>",
+	description: "force stops the bot",
+	process: function(bot,msg,suffix){ process.exit(0);}
     }
 };
 
@@ -120,13 +125,7 @@ var discordGuildsLength = bot.guilds.array().length
 bot.on("ready", function () {
 	console.log("Logged in! Currently serving " + discordGuildsLength + " servers.");
 	console.log("Type "+Config.commandPrefix+"help on Discord for a command list.");
-	bot.user.setPresence({
-		game: {
-			name: "sick beats | still in development",
-			type: 'PLAYING',
-		},
-		status: 'dnd'
-	}); 
+	bot.user.setPresence({game: { name: "sick beats | still in development", type: 'PLAYING'}}); 
 });
 
 bot.on("disconnected", function () {
