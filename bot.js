@@ -2,11 +2,11 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 var commandPrefix = "!p";
 
-client.on('ready', () => {
+client.on('ready', function () {
     client.user.setPresence({
 		game: {
-			name: "Minecraft | still in development",
-			type: 'PLAYING',
+			name: "sick beats | still in development",
+			type: 'LISTENING',
 		},
 		status: 'online'
 	}); 
@@ -34,7 +34,7 @@ function checkMessageForCommand(msg, isEdit) {
         if(msg.isMentioned(client.user)){
 			try {
 				cmdTxt = msg.content.split(" ")[1];
-				suffix = msg.content.substring(client.user.mention().length+cmdTxt.length+commandPrefix.length+1);
+				suffix = msg.content.substring(client.user.mention().length+cmdTxt.length+Config.commandPrefix.length+1);
 			} catch(e){ //no command
 				//msg.channel.send("Yes?");
 				return false;
@@ -52,7 +52,7 @@ function checkMessageForCommand(msg, isEdit) {
                 //msg.channel.send("yes?"); //using a mention here can lead to looping
         } else {
 
-				}
+		}
 		return false;
     }
 }
@@ -87,6 +87,10 @@ client.on("presence", function(user,status,gameId) {
 	}
 	}catch(e){}
 });
+
+var hooks = {
+	onMessage: []
+}
 
 // THIS  MUST  BE  THIS  WAY
 client.login(process.env.BOT_TOKEN);
