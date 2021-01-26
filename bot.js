@@ -156,6 +156,7 @@ commands = {	// all commands list below
 	     process: function(bot, msg, suffix) {
 		     var amount = suffix.split(" ");
 		     var house = amount.shift();
+		     amount = Number(amount);
 		     	if (!house) {
 			     	msg.channel.send(Config.commandPrefix + "add " + this.usage + "\n" + this.description);
 		     	} else if (house == "ravenclaw") {
