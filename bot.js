@@ -37,6 +37,7 @@ Permissions.checkPermission = function (userid,permission){
 	} catch(e){}
 	return false;
 }
+
 fs.writeFile("./permissions.json",JSON.stringify(Permissions,null,2), (err) => {
 	if(err) console.error(err);
 });
