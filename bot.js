@@ -31,7 +31,7 @@ function checkMessageForCommand(msg, isEdit) {
     if(msg.author.id != client.user.id && (msg.content.startsWith(commandPrefix))){
         var cmdTxt = msg.content.split(" ")[0].substring(commandPrefix.length);
         var suffix = msg.content.substring(cmdTxt.length+commandPrefix.length+1);//add one for the ! and one for the space
-        if(msg.isMentioned(bot.user)){
+        if(msg.isMentioned(client.user)){
 			try {
 				cmdTxt = msg.content.split(" ")[1];
 				suffix = msg.content.substring(client.user.mention().length+cmdTxt.length+commandPrefix.length+1);
@@ -44,11 +44,11 @@ function checkMessageForCommand(msg, isEdit) {
 	} else {
 		//message is not a command or is from us
         //drop our own messages to prevent feedback loops
-        if(msg.author == bot.user){
+        if(msg.author == client.user){
             return true; //returning true to prevent feedback from commands
         }
 
-        if (msg.author != bot.user && msg.isMentioned(bot.user)) {
+        if (msg.author != client.user && msg.isMentioned(client.user)) {
                 //msg.channel.send("yes?"); //using a mention here can lead to looping
         } else {
 
@@ -79,10 +79,10 @@ client.on("presence", function(user,status,gameId) {
 		if(messagebox.hasOwnProperty(user.id)){
 			console.log("Found message for " + user.id);
 			var message = messagebox[user.id];
-			var channel = bot.channels.get("id",message.channel);
+			var channel = client.channels.get("id",message.channel);
 			delete messagebox[user.id];
 			updateMessagebox();
-			bot.send(channel,message.content);
+			client.send(channel,message.content);
 		}
 	}
 	}catch(e){}
