@@ -129,21 +129,17 @@ var hooks = {
 	onMessage: []
 }
 var discordGuildsLength = bot.guilds.array().length
-bot.on("ready", function () {
+bot.on("ready", () => {
 	console.log("Logged in! Currently serving " + discordGuildsLength + " servers.");
 	console.log("Type "+Config.commandPrefix+"help on Discord for a command list.");
 	bot.user.setPresence({
-		game: {
-			name: Config.commandPrefix+"help | " + discordGuildsLength +" Servers",
-			type: 'WATCHING',
-		},
-		status: 'online'
-	});
+        game: { 
+            name: 'sick beats',
+            type: 'LISTENING'
+        },
+        status: 'online'
+    })
 });
-
-bot.on("ready", () => {
-    bot.user.setActivity("sick beats | still in development", { type: "LISTENING"})
-})
 
 bot.on("disconnected", function () {
 
