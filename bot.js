@@ -173,6 +173,7 @@ commands = {	// all commands list below
 			} else {
 				msg.channel.send("House does not exist!");
 			}
+		        msg.channel.send("Managed to add " + amount + " to " + house);
 	     }
      }
 };
