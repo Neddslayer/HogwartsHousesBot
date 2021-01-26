@@ -158,7 +158,7 @@ commands = {	// all commands list below
 		     var house = amount.shift();
 		     msg.channel.send(amount);
 		     msg.channel.send(house)
-		     	if (!name) {
+		     	if (!house) {
 			     	msg.channel.send(Config.commandPrefix + "add " + this.usage + "\n" + this.description);
 		     	} else if (house == "ravenclaw") {
 			    	ravenPoints += amount;
