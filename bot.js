@@ -91,7 +91,7 @@ commands = {	// all commands list below
         process: function(bot, msg, suffix) {
             msg.channel.send("the bot does work");
             if(suffix){
-                msg.channel.send( "Note that !ping takes no arguments!");
+                msg.channel.send( "Note that p!ping takes no arguments!");
             }
         }
     },
@@ -159,18 +159,21 @@ commands = {	// all commands list below
 			     	msg.channel.send(Config.commandPrefix + "add " + this.usage + "\n" + this.description);
 		     	} else if (house == "ravenclaw") {
 			    	ravenPoints += amount;
+				msg.channel.send("Managed to add " + amount + " to " + house);
 		     	} else if (house == "hufflepuff") {
 				hufflePoints += amount;
+				msg.channel.send("Managed to add " + amount + " to " + house);
 			} else if (house == "gryffindor") {
 				gryffinPoints += amount;
+				msg.channel.send("Managed to add " + amount + " to " + house);
 			} else if (house == "slytherin") {
 				slytherPoints += amount;
+				msg.channel.send("Managed to add " + amount + " to " + house);
 			} else if (amount < 0) {
 				msg.channel.send("Amount can't be less than 0.");
 			} else {
 				msg.channel.send("House does not exist!");
 			}
-		        msg.channel.send("Managed to add " + amount + " to " + house);
 	     }
      },
      "remove": {
@@ -179,22 +182,26 @@ commands = {	// all commands list below
 	     process: function(bot, msg, suffix) {
 		     var amount = suffix.split(" ");
 		     var house = amount.shift();
+		     amount = Number(amount);
 		     	if (!house) {
 			     	msg.channel.send(Config.commandPrefix + "add " + this.usage + "\n" + this.description);
 		     	} else if (house == "ravenclaw") {
 			    	ravenPoints -= amount;
+				msg.channel.send("Managed to remove " + amount + " from " + house);
 		     	} else if (house == "hufflepuff") {
 				hufflePoints -= amount;
+				msg.channel.send("Managed to remove " + amount + " from " + house);
 			} else if (house == "gryffindor") {
 				gryffinPoints -= amount;
+				msg.channel.send("Managed to remove " + amount + " from " + house);
 			} else if (house == "slytherin") {
 				slytherPoints -= amount;
+				msg.channel.send("Managed to remove " + amount + " from " + house);
 			} else if (amount < 0) {
 				msg.channel.send("Amount can't be less than 0.");
 			} else {
 				msg.channel.send("House does not exist!");
 			}
-		        msg.channel.send("Managed to remove " + amount + " from " + house);
 	     }
      }
 };
@@ -204,7 +211,9 @@ var bot = new Discord.Client();
 var hooks = {
 	onMessage: []
 }
+
 var discordGuildsLength = bot.guilds.array().length
+
 bot.on("ready", () => {
 	console.log("Logged in! Currently serving " + discordGuildsLength + " servers.");
 	console.log("Type "+Config.commandPrefix+"help on Discord for a command list.");
