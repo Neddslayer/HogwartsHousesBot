@@ -50,6 +50,7 @@ fs.writeFile("./permissions.json",JSON.stringify(Permissions,null,2), (err) => {
 	if(err) console.error(err);
 });
 
+var houses = {ravenclaw, hufflepuff, slytherin, gryffindor};
 //load config data
 var Config = {};
 try{
@@ -120,7 +121,20 @@ commands = {	// all commands list below
 	usage: "<command>",
 	description: "Force restarts the bot. Useful for reloading the bot.",
 	process: function(bot,msg,suffix){ process.exit(0);}
-    }
+    },
+    "view": {
+	usage: "<house>",
+	description: "Checks the points of the specified house",
+	process: function(bot,msg,suffix) {
+		var args = suffix.split(" ");
+		var name = args.shift();
+		if(!name) {
+			msg.channel.send(Config.commandPrefix + "alias " + this.usage + "\n" + this.description);
+		} else {
+			
+		}
+	}	
+	    
 };
 
 var bot = new Discord.Client();
