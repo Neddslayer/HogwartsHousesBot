@@ -1,5 +1,5 @@
-const {Discord, embed} = require('discord.js');
-const client = new Client();
+const {Discord, MessageEmbed} = require('discord.js');
+const client = new Discord.Client();
 var commandPrefix = "!p";
 
 client.on('ready', () => {
