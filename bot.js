@@ -15,6 +15,14 @@ try {
 }
 console.log("Starting DiscordBot\nNode version: " + process.version + "\nDiscord.js version: " + Discord.version); // send message notifying bot boot-up
 
+var Permissions = {};
+try{
+	Permissions = require("./permissions.json");
+} catch(e){
+	Permissions.global = {};
+	Permissions.users = {};
+}
+
 Permissions.checkPermission = function (userid,permission){
 	//var usn = user.username + "#" + user.discriminator;
 	//console.log("Checking " + permission + " permission for " + usn);
