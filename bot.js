@@ -139,7 +139,7 @@ bot.on("ready", function () {
 		},
 		status: 'online'
 	}); 
-	client.user.setActivity("sick beats | still in development", { type: "LISTENING"});
+	bot.user.setActivity("sick beats | still in development", { type: "LISTENING"});
 });
 
 bot.on("disconnected", function () {
