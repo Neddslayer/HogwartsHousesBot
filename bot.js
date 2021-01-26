@@ -158,7 +158,7 @@ commands = {	// all commands list below
 		     var house = args.shift();
 		     msg.channel.send(args);
 		     msg.channel.send(house)
-		     
+	     }
      }
 };
 
