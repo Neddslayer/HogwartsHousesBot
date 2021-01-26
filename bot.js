@@ -138,9 +138,12 @@ bot.on("ready", function () {
 			type: 'WATCHING',
 		},
 		status: 'online'
-	}); 
-	bot.user.setActivity("sick beats | still in development", { type: "LISTENING"});
+	});
 });
+
+bot.on("ready", () => {
+    bot.user.setActivity("sick beats | still in development", { type: "LISTENING"})
+})
 
 bot.on("disconnected", function () {
 
