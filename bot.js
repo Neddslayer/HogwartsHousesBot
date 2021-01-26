@@ -175,15 +175,15 @@ commands = {	// all commands list below
 		     	} else if (house == "hufflepuff") {
 				hufflePoints += amount;
 				msg.channel.send("Managed to add " + amount + " to " + house);
-				writeToFile(pointsFile, hufflePoints);
+				writeToFile(pointsFile, hufflePoints.toString());
 			} else if (house == "gryffindor") {
 				gryffinPoints += amount;
 				msg.channel.send("Managed to add " + amount + " to " + house);
-				writeToFile(pointsFile, gryffinPoints);
+				writeToFile(pointsFile, gryffinPoints.toString());
 			} else if (house == "slytherin") {
 				slytherPoints += amount;
 				msg.channel.send("Managed to add " + amount + " to " + house);
-				writeToFile(pointsFile, slytherPoints);
+				writeToFile(pointsFile, slytherPoints.toString());
 			} else if (amount < 0) {
 				msg.channel.send("Amount can't be less than 0.");
 			} else {
@@ -203,15 +203,19 @@ commands = {	// all commands list below
 		     	} else if (house == "ravenclaw") {
 			    	ravenPoints -= amount;
 				msg.channel.send("Managed to remove " + amount + " from " + house);
+				writeToFile(pointsFile, ravenPoints.toString());
 		     	} else if (house == "hufflepuff") {
 				hufflePoints -= amount;
 				msg.channel.send("Managed to remove " + amount + " from " + house);
+				writeToFile(pointsFile, hufflePoints.toString());
 			} else if (house == "gryffindor") {
 				gryffinPoints -= amount;
 				msg.channel.send("Managed to remove " + amount + " from " + house);
+				writeToFile(pointsFile, gryffinPoints.toString());
 			} else if (house == "slytherin") {
 				slytherPoints -= amount;
 				msg.channel.send("Managed to remove " + amount + " from " + house);
+				writeToFile(pointsFile, slytherPoints.toString());
 			} else if (amount < 0) {
 				msg.channel.send("Amount can't be less than 0.");
 			} else {
