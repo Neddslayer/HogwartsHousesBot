@@ -136,7 +136,7 @@ commands = {	// all commands list below
 			console.log("var args = " + args);
 			console.log("var name = " + name)
 			if(!name) {
-				msg.channel.send(Config.commandPrefix + "alias " + this.usage + "\n" + this.description);
+				msg.channel.send(Config.commandPrefix + "view " + this.usage + "\n" + this.description);
 			} else if (name == "ravenclaw") {
 				msg.channel.send(ravenPoints);
 			} else if (name == "hufflepuff") {
@@ -151,7 +151,14 @@ commands = {	// all commands list below
 		}
 	},
      "add": {
-	     //does nothing yet
+	     usage: "<house> <amount>",
+	     description: "Adds points to the specified house",
+	     process: function(bot, msg, suffix) {
+		     var args = suffix.split(" ");
+		     var house = args.shift();
+		     msg.channel.send(args);
+		     msg.channel.send(house)
+		     
      }
 };
 
