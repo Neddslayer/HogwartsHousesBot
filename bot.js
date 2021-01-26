@@ -184,7 +184,7 @@ commands = {	// all commands list below
 		     var house = amount.shift();
 		     amount = Number(amount);
 		     	if (!house) {
-			     	msg.channel.send(Config.commandPrefix + "add " + this.usage + "\n" + this.description);
+			     	msg.channel.send(Config.commandPrefix + "remove " + this.usage + "\n" + this.description);
 		     	} else if (house == "ravenclaw") {
 			    	ravenPoints -= amount;
 				msg.channel.send("Managed to remove " + amount + " from " + house);
