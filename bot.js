@@ -1,9 +1,9 @@
 const fs = require('fs');
 const pointsFile = require('./points.json');
-var ravenPoints = pointsFile.ravenPoints;
-var hufflePoints = pointsFile.hufflePoints;
-var slytherPoints = pointsFile.slytherPoints;
-var gryffinPoints = pointsFile.gryffinPoints;
+var ravenPoints = parseInt(pointsFile.ravenPoints);
+var hufflePoints = parseInt(pointsFile.hufflePoints);
+var slytherPoints = parseInt(pointsFile.slytherPoints);
+var gryffinPoints = parseInt(pointsFile.gryffinPoints);
 
 process.on('unhandledRejection', (reason) => {
   console.error(reason);
@@ -159,13 +159,13 @@ commands = {	// all commands list below
 		     	if (!house) {
 			     	msg.channel.send(Config.commandPrefix + "add " + this.usage + "\n" + this.description);
 		     	} else if (house == "ravenclaw") {
-			    	parseInt(ravenPoints) += parseInt(amount);
+			    	ravenPoints += amount;
 		     	} else if (house == "hufflepuff") {
-				parseInt(hufflePoints) += parseInt(amount);
+				hufflePoints += amount;
 			} else if (house == "gryffindor") {
-				parseInt(gryffinPoints) += parseInt(amount);
+				gryffinPoints += amount;
 			} else if (house == "slytherin") {
-				parseInt(slytherPoints) += parseInt(amount);
+				slytherPoints += amount;
 			} else if (amount < 0) {
 				msg.channel.send("Amount can't be less than 0.");
 			} else {
@@ -183,13 +183,13 @@ commands = {	// all commands list below
 		     	if (!house) {
 			     	msg.channel.send(Config.commandPrefix + "add " + this.usage + "\n" + this.description);
 		     	} else if (house == "ravenclaw") {
-			    	parseInt(ravenPoints) -= parseInt(amount);
+			    	ravenPoints -= amount;
 		     	} else if (house == "hufflepuff") {
-				parseInt(hufflePoints) -= parseInt(amount);
+				hufflePoints -= amount;
 			} else if (house == "gryffindor") {
-				parseInt(gryffinPoints) -= parseInt(amount);
+				gryffinPoints -= amount;
 			} else if (house == "slytherin") {
-				parseInt(slytherPoints) -= parseInt(amount);
+				slytherPoints -= amount;
 			} else if (amount < 0) {
 				msg.channel.send("Amount can't be less than 0.");
 			} else {
