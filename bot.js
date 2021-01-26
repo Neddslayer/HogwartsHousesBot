@@ -127,17 +127,18 @@ commands = {	// all commands list below
 		process: function(bot,msg,suffix) {
 			var args = suffix.split(" ");
 			var name = args.shift();
+			var house = args.toString();
 			console.log(name);
 			console.log(args);
 			if(!name) {
 				msg.channel.send(Config.commandPrefix + "alias " + this.usage + "\n" + this.description);
-			} else if (name = "ravenclaw") {
+			} else if (house = "ravenclaw") {
 				msg.channel.send(houses.ravenclaw.points);
-			} else if (name = "hufflepuff") {
+			} else if (house = "hufflepuff") {
 				msg.channel.send(houses.hufflepuff.points);
-			} else if (name = "gryffindor") {
+			} else if (house = "gryffindor") {
 				msg.channel.send(houses.gryffindor.points);
-			} else if (name = "slytherin") {
+			} else if (house = "slytherin") {
 				msg.channel.send(houses.slytherin.points);
 			} else {
 				msg.channel.send("House does not exist!");
