@@ -159,13 +159,13 @@ commands = {	// all commands list below
 		     	if (!house) {
 			     	msg.channel.send(Config.commandPrefix + "add " + this.usage + "\n" + this.description);
 		     	} else if (house == "ravenclaw") {
-			    	ravenPoints += amount;
+			    	parseInt(ravenPoints) += parseInt(amount);
 		     	} else if (house == "hufflepuff") {
-				hufflePoints += amount;
+				parseInt(hufflePoints) += parseInt(amount);
 			} else if (house == "gryffindor") {
-				gryffinPoints += amount;
+				parseInt(gryffinPoints) += parseInt(amount);
 			} else if (house == "slytherin") {
-				slytherPoints += amount;
+				parseInt(slytherPoints) += parseInt(amount);
 			} else if (amount < 0) {
 				msg.channel.send("Amount can't be less than 0.");
 			} else {
@@ -183,19 +183,19 @@ commands = {	// all commands list below
 		     	if (!house) {
 			     	msg.channel.send(Config.commandPrefix + "add " + this.usage + "\n" + this.description);
 		     	} else if (house == "ravenclaw") {
-			    	ravenPoints -= amount;
+			    	parseInt(ravenPoints) -= parseInt(amount);
 		     	} else if (house == "hufflepuff") {
-				hufflePoints -= amount;
+				parseInt(hufflePoints) -= parseInt(amount);
 			} else if (house == "gryffindor") {
-				gryffinPoints -= amount;
+				parseInt(gryffinPoints) -= parseInt(amount);
 			} else if (house == "slytherin") {
-				slytherPoints -= amount;
+				parseInt(slytherPoints) -= parseInt(amount);
 			} else if (amount < 0) {
 				msg.channel.send("Amount can't be less than 0.");
 			} else {
 				msg.channel.send("House does not exist!");
 			}
-		        msg.channel.send("Managed to remove " + amount + " to " + house);
+		        msg.channel.send("Managed to remove " + amount + " from " + house);
 	     }
      }
 };
