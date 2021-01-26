@@ -5,10 +5,10 @@ var commandPrefix = "!p";
 client.on('ready', () => {
     client.user.setPresence({
 		game: {
-			name: "sick beats | still in development",
-			type: 'LISTENING',
+			name: "Minecraft | still in development",
+			type: 'PLAYING',
 		},
-		status: 'idle'
+		status: 'online'
 	}); 
     console.log('I am ready!');
 });
