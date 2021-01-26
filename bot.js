@@ -1,5 +1,6 @@
 const fs = require('fs');
-const pointsFile = require('./points.json');
+const fileName = './points.json';
+const pointsFile = require(fileName);
 var ravenPoints = Number(pointsFile.ravenPoints);
 var hufflePoints = Number(pointsFile.hufflePoints);
 var slytherPoints = Number(pointsFile.slytherPoints);
@@ -85,6 +86,13 @@ try{
 	aliases = {};
 }
 
+function writeToFile(file, fileName) {
+	fs.writeFile(fileName, JSON.stringify(file), function writeJSON(err) {
+	  if (err) return console.log(err);
+	  console.log(JSON.stringify(file));
+	});
+}
+
 commands = {	// all commands list below
     "ping": {
         description: "Responds pong; useful for checking if bot is alive.",
@@ -163,15 +171,19 @@ commands = {	// all commands list below
 		     	} else if (house == "ravenclaw") {
 			    	ravenPoints += amount;
 				msg.channel.send("Managed to add " + amount + " to " + house);
+				writeToFile(pointsFile, ravenPoints);
 		     	} else if (house == "hufflepuff") {
 				hufflePoints += amount;
 				msg.channel.send("Managed to add " + amount + " to " + house);
+				writeToFile(pointsFile, hufflePoints);
 			} else if (house == "gryffindor") {
 				gryffinPoints += amount;
 				msg.channel.send("Managed to add " + amount + " to " + house);
+				writeToFile(pointsFile, gryffinPoints);
 			} else if (house == "slytherin") {
 				slytherPoints += amount;
 				msg.channel.send("Managed to add " + amount + " to " + house);
+				writeToFile(pointsFile, slytherPoints);
 			} else if (amount < 0) {
 				msg.channel.send("Amount can't be less than 0.");
 			} else {
