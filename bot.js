@@ -143,7 +143,7 @@ commands = {	// all commands list below
 				msg.channel.send(gryffinPoints);
 			} else if (name == "slytherin") {
 				msg.channel.send(slytherPoints);
-			} else if (name == "all) {
+			} else if (name == "all") {
 				msg.channel.send("Ravenclaw: " + ravenPoints + "\nHufflepuff: " + hufflePoints + "\nGryffindor: " + gryffinPoints + "\nSlytherin: " + 
 				   slytherPoints);
 			} else {
