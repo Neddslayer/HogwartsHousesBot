@@ -171,7 +171,7 @@ commands = {	// all commands list below
 		     	} else if (house == "ravenclaw") {
 			    	ravenPoints += amount;
 				msg.channel.send("Managed to add " + amount + " to " + house);
-				writeToFile(pointsFile, ravenPoints);
+				writeToFile(pointsFile, ravenPoints.toString());
 		     	} else if (house == "hufflepuff") {
 				hufflePoints += amount;
 				msg.channel.send("Managed to add " + amount + " to " + house);
