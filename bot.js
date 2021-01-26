@@ -125,29 +125,30 @@ commands = {	// all commands list below
     "view": {
 	usage: "<house>",
 	description: "Checks the points of the specified house",
-	process: function(bot,msg,suffix) {
-		var args = suffix.split(" ");
-		var name = args.shift();
-		console.log(name);
-		console.log(args);
-		if(!name) {
-			msg.channel.send(Config.commandPrefix + "alias " + this.usage + "\n" + this.description);
-		} else if (name = "ravenclaw") {
-			msg.channel.send(houses.ravenclaw.points);
-		} else if (name = "hufflepuff") {
-			msg.channel.send(houses.hufflepuff.points);
-		} else if (name = "gryffindor") {
-			msg.channel.send(houses.gryffindor.points);
-		} else if (name = "slytherin") {
-			msg.channel.send(houses.slytherin.points);
-		} else {
-			msg.channel.send("House does not exist!");
+		process: function(bot,msg,suffix) {
+			var args = suffix.split(" ");
+			var name = args.shift();
+			console.log(name);
+			console.log(args);
+			if(!name) {
+				msg.channel.send(Config.commandPrefix + "alias " + this.usage + "\n" + this.description);
+			} else if (name = "ravenclaw") {
+				msg.channel.send(houses.ravenclaw.points);
+			} else if (name = "hufflepuff") {
+				msg.channel.send(houses.hufflepuff.points);
+			} else if (name = "gryffindor") {
+				msg.channel.send(houses.gryffindor.points);
+			} else if (name = "slytherin") {
+				msg.channel.send(houses.slytherin.points);
+			} else {
+				msg.channel.send("House does not exist!");
+			}
 		}
-     },
+	},
      "add": {
 	     //does nothing yet
      }
-}
+};
 
 var bot = new Discord.Client();
 
