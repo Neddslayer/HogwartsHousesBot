@@ -128,8 +128,7 @@ commands = {	// all commands list below
 			var args = suffix.split(" ");
 			var name = args.shift();
 			var house = args.toString();
-			console.log(name);
-			console.log(args);
+			console.log(house);
 			if(!name) {
 				msg.channel.send(Config.commandPrefix + "alias " + this.usage + "\n" + this.description);
 			} else if (house = "ravenclaw") {
