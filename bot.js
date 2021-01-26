@@ -156,20 +156,20 @@ commands = {	// all commands list below
 	     process: function(bot, msg, suffix) {
 		     var amount = suffix.split(" ");
 		     var house = amount.shift();
-		     //msg.channel.send(amount);
-		     //msg.channel.send(house)
-		     if (!name) {
-			     msg.channel.send(Config.commandPrefix + "add " + this.usage + "\n" + this.description);
-		     } else if (house == "ravenclaw") {
-			    ravenPoints += amount;
-		     } else if (house == "hufflepuff") {
+		     msg.channel.send(amount);
+		     msg.channel.send(house)
+		     	if (!name) {
+			     	msg.channel.send(Config.commandPrefix + "add " + this.usage + "\n" + this.description);
+		     	} else if (house == "ravenclaw") {
+			    	ravenPoints += amount;
+		     	} else if (house == "hufflepuff") {
 				hufflePoints += amount;
 			} else if (house == "gryffindor") {
 				gryffinPoints += amount;
 			} else if (house == "slytherin") {
 				slytherPoints += amount;
 			} else if (amount < 0) {
-				msg.channel.send("Amount can't be less than 0");
+				msg.channel.send("Amount can't be less than 0.");
 			} else {
 				msg.channel.send("House does not exist!");
 			}
