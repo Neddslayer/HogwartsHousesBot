@@ -104,6 +104,13 @@ commands = {	// all commands list below
 	    bot.user.setStatus("online").then(console.log).catch(console.error);
 	}
     },
+    "dnd": {
+		usage: "[status]",
+        description: "Sets bot status to do not disturb.",
+        process: function(bot,msg,suffix){ 
+	    bot.user.setStatus("dnd").then(console.log).catch(console.error);
+	}
+    },
     "say": {
         usage: "<message>",
         description: "Bot sends message",
