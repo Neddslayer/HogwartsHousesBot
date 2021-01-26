@@ -147,7 +147,7 @@ commands = {	// all commands list below
      "add": {
 	     //does nothing yet
      }
-};
+}
 
 var bot = new Discord.Client();
 
