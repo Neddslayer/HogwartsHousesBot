@@ -128,17 +128,17 @@ commands = {	// all commands list below
 			var args = suffix.split(" ");
 			var name = args.shift();
 			var house = args.toString();
-			console.log(house);
+			console.log(args);
 			console.log("ravenclaw");
 			if(!name) {
 				msg.channel.send(Config.commandPrefix + "alias " + this.usage + "\n" + this.description);
-			} else if (args == "ravenclaw") {
+			} else if (args[0] == "ravenclaw") {
 				msg.channel.send("0");
-			} else if (args == "hufflepuff") {
+			} else if (args[0] == "hufflepuff") {
 				msg.channel.send("0");
-			} else if (args == "gryffindor") {
+			} else if (args[0] == "gryffindor") {
 				msg.channel.send("0");
-			} else if (args == "slytherin") {
+			} else if (args[0] == "slytherin") {
 				msg.channel.send("0");
 			} else {
 				msg.channel.send("House does not exist!");
