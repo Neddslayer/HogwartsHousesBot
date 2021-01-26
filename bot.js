@@ -69,7 +69,7 @@ client.on("messageUpdate", (oldMessage, newMessage) => {
 	checkMessageForCommand(newMessage,true);
 });
 
-bot.on("presence", function(user,status,gameId) {
+client.on("presence", function(user,status,gameId) {
 	//if(status === "online"){
 	//console.log("presence update");
 	console.log(user+" went "+status);
