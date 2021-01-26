@@ -68,7 +68,7 @@ try{
 	}
 }
 if(!Config.hasOwnProperty("commandPrefix")){
-	Config.commandPrefix = '#>'; // set bots prefix
+	Config.commandPrefix = 'p!'; // set bots prefix
 }
 
 var messagebox;
@@ -109,9 +109,9 @@ commands = {	// all commands list below
         description: "Bot sends message",
         process: function(bot,msg,suffix){ msg.channel.send(suffix);}
     },
-    "stop": {
+    "restart": {
 	usage: "<command>",
-	description: "force stops the bot",
+	description: "Force restarts the bot. Useful for reloading the bot.",
 	process: function(bot,msg,suffix){ process.exit(0);}
     }
 };
