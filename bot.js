@@ -16,25 +16,6 @@ try {
 console.log("Starting DiscordBot\nNode version: " + process.version + "\nDiscord.js version: " + Discord.version); // send message notifying bot boot-up
 
 
-
-// Get authentication data
-try {
-	var AuthDetails = require("./auth.json");
-} catch (e){
-	console.log("HAH NO AUTH.json GET SOEMTING LIKE AUTH.json.example LOLOLOLOLOLOLOLOLOL.\n"+e.stack); // send message for error - no token 
-	process.exit(); 
-}
-
-// Load custom permissions
-var dangerousCommands = ["eval","pullanddeploy","setUsername","cmdauth"]; // set array if dangerous commands
-var Permissions = {};
-try{
-	Permissions = require("./permissions.json");
-} catch(e){
-	Permissions.global = {};
-	Permissions.users = {};
-}
-
 for( var i=0; i<dangerousCommands.length;i++ ){
 	var cmd = dangerousCommands[i];
 	if(!Permissions.global.hasOwnProperty(cmd)){
@@ -98,36 +79,6 @@ try{
 }
 
 commands = {	// all commands list below
-	"alias": {
-		usage: "<name> <actual command>",
-		description: "Creates command aliases. Useful for making simple commands on the fly.",
-		process: function(bot,msg,suffix) {
-			var args = suffix.split(" ");
-			var name = args.shift();
-			if(!name){
-				msg.channel.send(Config.commandPrefix + "alias " + this.usage + "\n" + this.description);
-			} else if(commands[name] || name === "help"){
-				msg.channel.send("overwriting commands with aliases is not allowed!");
-			} else {
-				var command = args.shift();
-				aliases[name] = [command, args.join(" ")];
-				//now save the new alias
-				require("fs").writeFile("./alias.json",JSON.stringify(aliases,null,2), null);
-				msg.channel.send("created alias " + name);
-			}
-		}
-	},
-	"aliases": {
-		description: "Lists all recorded aliases.",
-		process: function(bot, msg, suffix) {
-			var text = "current aliases:\n";
-			for(var a in aliases){
-				if(typeof a === 'string')
-					text += a + " ";
-			}
-			msg.channel.send(text);
-		}
-	},
     "ping": {
         description: "Responds pong; useful for checking if bot is alive.",
         process: function(bot, msg, suffix) {
@@ -155,129 +106,23 @@ commands = {	// all commands list below
         usage: "<message>",
         description: "Bot sends message",
         process: function(bot,msg,suffix){ msg.channel.send(suffix);}
-    },
-	"announce": {
-        usage: "<message>",
-        description: "Bot sends message in text to speech.",
-        process: function(bot,msg,suffix){ msg.channel.send(suffix,{tts:true});}
-    },
-	"msg": {
-		usage: "<user> <message to send user>",
-		description: "Sends a message to a user the next time they come online.",
-		process: function(bot,msg,suffix) {
-			var args = suffix.split(' ');
-			var user = args.shift();
-			var message = args.join(' ');
-			if(user.startsWith('<@')){
-				user = user.substr(2,user.length-3);
-			}
-			var target = msg.channel.guild.members.find("id",user);
-			if(!target){
-				target = msg.channel.guild.members.find("username",user);
-			}
-			messagebox[target.id] = {
-				channel: msg.channel.id,
-				content: target + ", " + msg.author + " said: " + message
-			};
-			updateMessagebox();
-			msg.channel.send("Message saved.")
-		}
-	},
-	"eval": {
-		usage: "<command>",
-		description: 'Executes arbitrary javascript in the bot process. User must have "eval" permission.',
-		process: function(bot,msg,suffix) {
-			let result = eval(suffix,bot).toString();
-			if(result) {
-				msg.channel.send(result);
-			}
-		}
-	},
-	"cmdauth": {
-		usage: "<userid> <get/toggle> <command>",
-		description: "Gets/toggles command usage permissions for the specified user.",
-		process: function(bot,msg,suffix) {
-			var Permissions = require("./permissions.json");
-			var fs = require('fs');
-
-			var args = suffix.split(' ');
-			var userid = args.shift();
-			var action = args.shift();
-			var cmd = args.shift();
-
-			if(userid.startsWith('<@')){
-				userid = userid.substr(2,userid.length-3);
-			}
-
-			var target = msg.channel.guild.members.find("id",userid);
-			if(!target) {
-				msg.channel.send("Could not find user.");
-			} else {
-				if(commands[cmd] || cmd === "*") {
-					var canUse = Permissions.checkPermission(userid,cmd);
-					var strResult;
-					if(cmd === "*") {
-						strResult = "All commands"
-					} else {
-						strResult = 'Command "' + cmd + '"';
-					}
-					if(action.toUpperCase() === "GET") {
-						msg.channel.send("User permissions for " + strResult + " are " + canUse);
-					} else if(action.toUpperCase() === "TOGGLE") {
-						if(Permissions.users.hasOwnProperty(userid)) {	
-							Permissions.users[userid][cmd] = !canUse;
-						}
-						else {
-							Permissions.users[userid].append({[cmd] : !canUse});
-						}
-						fs.writeFile("./permissions.json",JSON.stringify(Permissions,null,2));
-						
-						msg.channel.send("User permission for " + strResult + " set to " + Permissions.users[userid][cmd]);
-					} else {
-						msg.channel.send('Requires "get" or "toggle" parameter.');
-					}
-				} else {
-					msg.channel.send("Invalid command.")
-				}				
-			}		
-		}
-	}
+    }
 };
-
-if(AuthDetails.hasOwnProperty("client_id")){
-	commands["invite"] = {
-		description: "Generates an invite link you can use to invite the bot to your server.",
-		process: function(bot,msg,suffix){
-			msg.channel.send("Invite link: https://discordapp.com/oauth2/authorize?&client_id=" + AuthDetails.client_id + "&scope=bot&permissions=470019135"); // send link to invite bot into server.
-		}
-	}
-}
-
-
-try{
-	messagebox = require("./messagebox.json");
-} catch(e) {
-	//no stored messages
-	messagebox = {};
-}
-function updateMessagebox(){
-	require("fs").writeFile("./messagebox.json",JSON.stringify(messagebox,null,2), null);
-}
 
 var bot = new Discord.Client();
 
 var hooks = {
 	onMessage: []
 }
-var discordGuildsLength = bot.guilds.array().length+=1523
+var discordGuildsLength = bot.guilds.array().length
 bot.on("ready", function () {
 	console.log("Logged in! Currently serving " + discordGuildsLength + " servers.");
 	require("./plugins.js").init(hooks);
 	console.log("Type "+Config.commandPrefix+"help on Discord for a command list.");
 	bot.user.setPresence({
 		game: {
-			name: Config.commandPrefix+"help | " + discordGuildsLength +" Servers",
-			type: 'WATCHING',
+			name: "sick beats | still in development",
+			type: 'LISTENING',
 		},
 		status: 'dnd'
 	}); 
