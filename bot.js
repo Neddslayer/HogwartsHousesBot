@@ -173,6 +173,30 @@ commands = {	// all commands list below
 			}
 		        msg.channel.send("Managed to add " + amount + " to " + house);
 	     }
+     },
+     "remove": {
+	     usage: "<house> <amount>",
+	     description: "Removes points from the specified house",
+	     process: function(bot, msg, suffix) {
+		     var amount = suffix.split(" ");
+		     var house = amount.shift();
+		     	if (!house) {
+			     	msg.channel.send(Config.commandPrefix + "add " + this.usage + "\n" + this.description);
+		     	} else if (house == "ravenclaw") {
+			    	ravenPoints -= amount;
+		     	} else if (house == "hufflepuff") {
+				hufflePoints -= amount;
+			} else if (house == "gryffindor") {
+				gryffinPoints -= amount;
+			} else if (house == "slytherin") {
+				slytherPoints -= amount;
+			} else if (amount < 0) {
+				msg.channel.send("Amount can't be less than 0.");
+			} else {
+				msg.channel.send("House does not exist!");
+			}
+		        msg.channel.send("Managed to remove " + amount + " to " + house);
+	     }
      }
 };
 
