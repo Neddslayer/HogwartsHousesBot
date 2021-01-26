@@ -125,7 +125,13 @@ var discordGuildsLength = bot.guilds.array().length
 bot.on("ready", function () {
 	console.log("Logged in! Currently serving " + discordGuildsLength + " servers.");
 	console.log("Type "+Config.commandPrefix+"help on Discord for a command list.");
-	bot.user.setPresence({game: { name: "sick beats | still in development", type: 'PLAYING'}}); 
+	bot.user.setPresence({
+		game: {
+			name: Config.commandPrefix+"help | " + discordGuildsLength +" Servers",
+			type: 'WATCHING',
+		},
+		status: 'online'
+	}); 
 });
 
 bot.on("disconnected", function () {
