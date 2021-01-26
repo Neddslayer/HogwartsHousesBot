@@ -29,12 +29,12 @@ commands = {
 
 function checkMessageForCommand(msg, isEdit) {
     if(msg.author.id != client.user.id && (msg.content.startsWith(commandPrefix))){
-        var cmdTxt = msg.content.split(" ")[0].substring(Config.commandPrefix.length);
-        var suffix = msg.content.substring(cmdTxt.length+Config.commandPrefix.length+1);//add one for the ! and one for the space
+        var cmdTxt = msg.content.split(" ")[0].substring(commandPrefix.length);
+        var suffix = msg.content.substring(cmdTxt.length+commandPrefix.length+1);//add one for the ! and one for the space
         if(msg.isMentioned(bot.user)){
 			try {
 				cmdTxt = msg.content.split(" ")[1];
-				suffix = msg.content.substring(client.user.mention().length+cmdTxt.length+Config.commandPrefix.length+1);
+				suffix = msg.content.substring(client.user.mention().length+cmdTxt.length+commandPrefix.length+1);
 			} catch(e){ //no command
 				//msg.channel.send("Yes?");
 				return false;
