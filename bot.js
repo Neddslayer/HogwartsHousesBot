@@ -132,13 +132,13 @@ commands = {	// all commands list below
 			console.log("var name = " + name)
 			if(!name) {
 				msg.channel.send(Config.commandPrefix + "alias " + this.usage + "\n" + this.description);
-			} else if (args[0] == "ravenclaw") {
+			} else if (name == "ravenclaw") {
 				msg.channel.send("0");
-			} else if (args[0] == "hufflepuff") {
+			} else if (name == "hufflepuff") {
 				msg.channel.send("0");
-			} else if (args[0] == "gryffindor") {
+			} else if (name == "gryffindor") {
 				msg.channel.send("0");
-			} else if (args[0] == "slytherin") {
+			} else if (name == "slytherin") {
 				msg.channel.send("0");
 			} else {
 				msg.channel.send("House does not exist!");
