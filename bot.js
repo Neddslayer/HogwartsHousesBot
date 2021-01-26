@@ -138,13 +138,13 @@ commands = {	// all commands list below
 			if(!name) {
 				msg.channel.send(Config.commandPrefix + "alias " + this.usage + "\n" + this.description);
 			} else if (name == "ravenclaw") {
-				msg.channel.send("0");
+				msg.channel.send(ravenPoints);
 			} else if (name == "hufflepuff") {
-				msg.channel.send("0");
+				msg.channel.send(hufflePoints);
 			} else if (name == "gryffindor") {
-				msg.channel.send("0");
+				msg.channel.send(gryffinPoints);
 			} else if (name == "slytherin") {
-				msg.channel.send("0");
+				msg.channel.send(slytherPoints);
 			} else {
 				msg.channel.send("House does not exist!");
 			}
