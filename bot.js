@@ -50,7 +50,7 @@ fs.writeFile("./permissions.json",JSON.stringify(Permissions,null,2), (err) => {
 	if(err) console.error(err);
 });
 
-var houses = {ravenclaw, hufflepuff, slytherin, gryffindor};
+var houses = {"ravenclaw", "hufflepuff", "slytherin", "gryffindor"};
 //load config data
 var Config = {};
 try{
