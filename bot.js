@@ -1,9 +1,9 @@
 const fs = require('fs');
 const pointsFile = require('./points.json');
-var ravenPoints = parseInt(pointsFile.ravenPoints);
-var hufflePoints = parseInt(pointsFile.hufflePoints);
-var slytherPoints = parseInt(pointsFile.slytherPoints);
-var gryffinPoints = parseInt(pointsFile.gryffinPoints);
+var ravenPoints = Number(pointsFile.ravenPoints);
+var hufflePoints = Number(pointsFile.hufflePoints);
+var slytherPoints = Number(pointsFile.slytherPoints);
+var gryffinPoints = Number(pointsFile.gryffinPoints);
 
 process.on('unhandledRejection', (reason) => {
   console.error(reason);
