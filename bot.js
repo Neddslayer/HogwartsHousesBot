@@ -404,7 +404,7 @@ function checkMessageForCommand(msg, isEdit) {
 					if(msgTxt.length > (1024 - 8)){ //Truncate the stack if it's too long for a discord message
 						msgTxt = msgTxt.substr(0,1024-8);
 					}
-					msg.channel.send(msgTxt);
+					//msg.channel.send(msgTxt);
 				}
 			} else {
 				msg.channel.send("You are not allowed to run " + cmdTxt + "!");
