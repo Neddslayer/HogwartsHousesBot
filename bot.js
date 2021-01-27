@@ -5,6 +5,9 @@ var ravenPoints = Number(pointsFile.ravenPoints);
 var hufflePoints = Number(pointsFile.hufflePoints);
 var slytherPoints = Number(pointsFile.slytherPoints);
 var gryffinPoints = Number(pointsFile.gryffinPoints);
+var string = fs.readFile(fileName, function(err, data) {
+			if (err) throw err;
+			});
 
 process.on('unhandledRejection', (reason) => {
   console.error(reason);
@@ -86,11 +89,26 @@ try{
 	aliases = {};
 }
 
-function writeToFile(file, fileName) {
-	fs.writeFile(fileName, JSON.stringify(file, null, 2), function writeJSON(err) {
-	  if (err) return console.log(err);
-	  console.log(JSON.stringify(file));
+function rewriteFile(content1, content2, content3, content4, fileName) {
+	fs.unlink(fileName, (err) => {
+	  if (err) {
+	    console.error(err)
+	    return
+	  }
 	});
+	fs.appendFile(fileName, 'content1', function (err) {
+	  if (err) throw err;
+	});
+	fs.appendFile(fileName, 'content2', function (err) {
+	  if (err) throw err;
+	});
+	fs.appendFile(fileName, 'content3', function (err) {
+	  if (err) throw err;
+	});
+	fs.appendFile(fileName, 'content4', function (err) {
+	  if (err) throw err;
+	});
+	
 }
 
 commands = {	// all commands list below
@@ -157,6 +175,7 @@ commands = {	// all commands list below
 			} else {
 				msg.channel.send("House does not exist!");
 			}
+			msg.channel.send(string);
 		}
 	},
      "add": {
