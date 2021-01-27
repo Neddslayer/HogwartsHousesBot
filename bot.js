@@ -139,16 +139,16 @@ function rewriteFile(content1, content2, content3, content4, fileName) {
 	    return
 	  }
 	});
-	fs.appendFile(fileName, 'content1', function (err) {
+	fs.appendFile(fileName, content1 + "\n", function (err) {
 	  if (err) throw err;
 	});
-	fs.appendFile(fileName, 'content2', function (err) {
+	fs.appendFile(fileName, content2 + "\n", function (err) {
 	  if (err) throw err;
 	});
-	fs.appendFile(fileName, 'content3', function (err) {
+	fs.appendFile(fileName, content3 + "\n", function (err) {
 	  if (err) throw err;
 	});
-	fs.appendFile(fileName, 'content4', function (err) {
+	fs.appendFile(fileName, content4 + "\n", function (err) {
 	  if (err) throw err;
 	});
 	
@@ -232,24 +232,21 @@ commands = {	// all commands list below
 		     	} else if (house == "ravenclaw") {
 			    	ravenPoints += amount;
 				msg.channel.send("Managed to add " + amount + " to " + house);
-				writeToFile(pointsFile, ravenPoints.toString());
 		     	} else if (house == "hufflepuff") {
 				hufflePoints += amount;
 				msg.channel.send("Managed to add " + amount + " to " + house);
-				writeToFile(pointsFile, hufflePoints.toString());
 			} else if (house == "gryffindor") {
 				gryffinPoints += amount;
 				msg.channel.send("Managed to add " + amount + " to " + house);
-				writeToFile(pointsFile, gryffinPoints.toString());
 			} else if (house == "slytherin") {
 				slytherPoints += amount;
 				msg.channel.send("Managed to add " + amount + " to " + house);
-				writeToFile(pointsFile, slytherPoints.toString());
 			} else if (amount < 0) {
 				msg.channel.send("Amount can't be less than 0.");
 			} else {
 				msg.channel.send("House does not exist!");
 			}
+		     rewriteFile(ravenPoints, hufflePoints, slytherPoints, gryffinPoints, fileName);
 	     }
      },
      "remove": {
@@ -282,6 +279,7 @@ commands = {	// all commands list below
 			} else {
 				msg.channel.send("House does not exist!");
 			}
+		     rewriteFile(ravenPoints, hufflePoints, slytherPoints, gryffinPoints, fileName);
 	     }
      }
 };
@@ -403,7 +401,7 @@ function checkMessageForCommand(msg, isEdit) {
 					if(msgTxt.length > (1024 - 8)){ //Truncate the stack if it's too long for a discord message
 						msgTxt = msgTxt.substr(0,1024-8);
 					}
-					//msg.channel.send(msgTxt);
+					msg.channel.send(msgTxt);
 				}
 			} else {
 				msg.channel.send("You are not allowed to run " + cmdTxt + "!");
