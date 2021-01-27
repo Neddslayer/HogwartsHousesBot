@@ -41,7 +41,8 @@ var gryffinPoints = '';
 
 get_line(fileName, 1, function(err, line) {
 	console.log("The line: " + line);
-}
+});
+	 
 process.on('unhandledRejection', (reason) => {
   console.error(reason);
   process.exit(1);
