@@ -1,13 +1,42 @@
 const fs = require('fs');
 const fileName = './points.txt';
 const pointsFile = require(fileName);
-var ravenPoints = Number(pointsFile.ravenPoints);
-var hufflePoints = Number(pointsFile.hufflePoints);
-var slytherPoints = Number(pointsFile.slytherPoints);
-var gryffinPoints = Number(pointsFile.gryffinPoints);
-var string = fs.readFile(fileName, function(err, data) {
-			if (err) throw err;
-			});
+function get_line(filename, line_no, callback) {
+    var stream = fs.createReadStream(filename, {
+      flags: 'r',
+      encoding: 'utf-8',
+      fd: null,
+      mode: 0666,
+      bufferSize: 64 * 1024
+    });
+
+    var fileData = '';
+    stream.on('data', function(data){
+      fileData += data;
+
+      // The next lines should be improved
+      var lines = fileData.split("\n");
+
+      if(lines.length >= +line_no){
+        stream.destroy();
+        callback(null, lines[+line_no]);
+      }
+    });
+
+    stream.on('error', function(){
+      callback('Error', null);
+    });
+
+    stream.on('end', function(){
+      callback('File end reached without finding line', null);
+    });
+
+}
+
+var ravenPoints = Number(get_line(fileName, 1, function(err, line)));
+var hufflePoints = Number(get_line(fileName, 1, function(err, line)));
+var slytherPoints = Number(get_line(fileName, 1, function(err, line)));
+var gryffinPoints = Number(get_line(fileName, 1, function(err, line)));
 
 process.on('unhandledRejection', (reason) => {
   console.error(reason);
