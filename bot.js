@@ -1,6 +1,7 @@
 const fs = require('fs');
 const fileName = './points.txt';
 const pointsFile = require(fileName);
+
 function get_line(filename, line_no, callback) {
     var stream = fs.createReadStream(filename, {
       flags: 'r',
@@ -31,13 +32,16 @@ function get_line(filename, line_no, callback) {
       callback('File end reached without finding line', null);
     });
 
+};
+
+var ravenPoints = '';
+var hufflePoints = '';
+var slytherPoints = '';
+var gryffinPoints = '';
+
+get_line(fileName, 1, function(err, line) {
+	console.log("The line: " + line);
 }
-
-var ravenPoints = get_line(fileName, 1, function(err, line));
-var hufflePoints = get_line(fileName, 2, function(err, line));
-var slytherPoints = get_line(fileName, 3, function(err, line));
-var gryffinPoints = get_line(fileName, 4, function(err, line));
-
 process.on('unhandledRejection', (reason) => {
   console.error(reason);
   process.exit(1);
