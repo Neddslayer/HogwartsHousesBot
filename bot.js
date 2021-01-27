@@ -1,5 +1,5 @@
 const fs = require('fs');
-const fileName = './points.json';
+const fileName = './points.txt';
 const pointsFile = require(fileName);
 var ravenPoints = Number(pointsFile.ravenPoints);
 var hufflePoints = Number(pointsFile.hufflePoints);
