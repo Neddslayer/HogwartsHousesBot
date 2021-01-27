@@ -40,7 +40,16 @@ var slytherPoints = '';
 var gryffinPoints = '';
 
 get_line(fileName, 1, function(err, line) {
-	console.log("The line: " + line);
+	ravenPoints = Number(line);
+});
+get_line(fileName, 2, function(err, line) {
+	hufflePoints = Number(line);
+});
+get_line(fileName, 3, function(err, line) {
+	slytherPoints = Number(line);
+});
+get_line(fileName, 4, function(err, line) {
+	gryffinPoints = Number(line);
 });
 	 
 process.on('unhandledRejection', (reason) => {
