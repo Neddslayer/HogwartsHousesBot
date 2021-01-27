@@ -33,10 +33,10 @@ function get_line(filename, line_no, callback) {
 
 }
 
-var ravenPoints = Number(get_line(fileName, 1, function(err, line)));
-var hufflePoints = Number(get_line(fileName, 1, function(err, line)));
-var slytherPoints = Number(get_line(fileName, 1, function(err, line)));
-var gryffinPoints = Number(get_line(fileName, 1, function(err, line)));
+var ravenPoints = Number(get_line(fileName, 1, function(err, line));
+var hufflePoints = Number(get_line(fileName, 1, function(err, line));
+var slytherPoints = Number(get_line(fileName, 1, function(err, line));
+var gryffinPoints = Number(get_line(fileName, 1, function(err, line));
 
 process.on('unhandledRejection', (reason) => {
   console.error(reason);
