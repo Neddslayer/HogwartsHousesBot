@@ -34,10 +34,10 @@ function get_line(filename, line_no, callback) {
 
 };
 
-var ravenPoints = '';
-var hufflePoints = '';
-var slytherPoints = '';
-var gryffinPoints = '';
+var ravenPoints = {};
+var hufflePoints = {};
+var slytherPoints = {};
+var gryffinPoints = {};
 
 get_line(fileName, 1, function(err, line) {
 	ravenPoints = Number(line);
@@ -140,22 +140,22 @@ function rewriteFile(content1, content2, content3, content4, fileName) {
 	fs.open(fileName, 'w', function (err, file) {
 	  if (err) throw err;
 	  console.log("tried to recreate file");
-	});
-	fs.appendFile(fileName, content1 + "\n", function (err) {
-	  if (err) throw err;
-	  console.log("tried to write content1");
-	});
-	fs.appendFile(fileName, content2 + "\n", function (err) {
-	  if (err) throw err;
-	  console.log("tried to write content2");
-	});
-	fs.appendFile(fileName, content3 + "\n", function (err) {
-	  if (err) throw err;
-	  console.log("tried to write content3");
-	});
-	fs.appendFile(fileName, content4 + "\n", function (err) {
-	  if (err) throw err;
-	  console.log("tried to write content4");
+		fs.appendFile(fileName, content1 + "\n", function (err) {
+		  if (err) throw err;
+		  console.log("tried to write content1");
+		});
+		fs.appendFile(fileName, content2 + "\n", function (err) {
+		  if (err) throw err;
+		  console.log("tried to write content2");
+		});
+		fs.appendFile(fileName, content3 + "\n", function (err) {
+		  if (err) throw err;
+		  console.log("tried to write content3");
+		});
+		fs.appendFile(fileName, content4 + "\n", function (err) {
+		  if (err) throw err;
+		  console.log("tried to write content4");
+		});
 	});
 	
 }
