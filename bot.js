@@ -139,6 +139,9 @@ function rewriteFile(content1, content2, content3, content4, fileName) {
 	    return
 	  }
 	});
+	fs.open(fileName, 'w', function (err, file) {
+	  if (err) throw err;
+	});
 	fs.appendFile(fileName, content1 + "\n", function (err) {
 	  if (err) throw err;
 	});
