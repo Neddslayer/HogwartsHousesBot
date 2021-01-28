@@ -133,26 +133,29 @@ try{
 }
 
 function rewriteFile(content1, content2, content3, content4, fileName) {
-	fs.unlink(fileName, (err) => {
-	  if (err) {
-	    console.error(err)
-	    return
-	  }
+	fs.unlink(fileName, function (err) {
+	  if (err) throw err;
+	  console.log("tried to delete file");
 	});
 	fs.open(fileName, 'w', function (err, file) {
 	  if (err) throw err;
+	  console.log("tried to recreate file");
 	});
 	fs.appendFile(fileName, content1 + "\n", function (err) {
 	  if (err) throw err;
+	  console.log("tried to write content1");
 	});
 	fs.appendFile(fileName, content2 + "\n", function (err) {
 	  if (err) throw err;
+	  console.log("tried to write content2");
 	});
 	fs.appendFile(fileName, content3 + "\n", function (err) {
 	  if (err) throw err;
+	  console.log("tried to write content3");
 	});
 	fs.appendFile(fileName, content4 + "\n", function (err) {
 	  if (err) throw err;
+	  console.log("tried to write content4");
 	});
 	
 }
@@ -235,21 +238,24 @@ commands = {	// all commands list below
 		     	} else if (house == "ravenclaw") {
 			    	ravenPoints += amount;
 				msg.channel.send("Managed to add " + amount + " to " + house);
+				rewriteFile(ravenPoints, hufflePoints, slytherPoints, gryffinPoints, fileName);
 		     	} else if (house == "hufflepuff") {
 				hufflePoints += amount;
 				msg.channel.send("Managed to add " + amount + " to " + house);
+				rewriteFile(ravenPoints, hufflePoints, slytherPoints, gryffinPoints, fileName);
 			} else if (house == "gryffindor") {
 				gryffinPoints += amount;
 				msg.channel.send("Managed to add " + amount + " to " + house);
+				rewriteFile(ravenPoints, hufflePoints, slytherPoints, gryffinPoints, fileName);
 			} else if (house == "slytherin") {
 				slytherPoints += amount;
 				msg.channel.send("Managed to add " + amount + " to " + house);
+				rewriteFile(ravenPoints, hufflePoints, slytherPoints, gryffinPoints, fileName);
 			} else if (amount < 0) {
 				msg.channel.send("Amount can't be less than 0.");
 			} else {
 				msg.channel.send("House does not exist!");
 			}
-		     rewriteFile(ravenPoints, hufflePoints, slytherPoints, gryffinPoints, fileName);
 	     }
      },
      "remove": {
@@ -264,25 +270,24 @@ commands = {	// all commands list below
 		     	} else if (house == "ravenclaw") {
 			    	ravenPoints -= amount;
 				msg.channel.send("Managed to remove " + amount + " from " + house);
-				writeToFile(pointsFile, ravenPoints.toString());
+				rewriteFile(ravenPoints, hufflePoints, slytherPoints, gryffinPoints, fileName);
 		     	} else if (house == "hufflepuff") {
 				hufflePoints -= amount;
 				msg.channel.send("Managed to remove " + amount + " from " + house);
-				writeToFile(pointsFile, hufflePoints.toString());
+				rewriteFile(ravenPoints, hufflePoints, slytherPoints, gryffinPoints, fileName);
 			} else if (house == "gryffindor") {
 				gryffinPoints -= amount;
 				msg.channel.send("Managed to remove " + amount + " from " + house);
-				writeToFile(pointsFile, gryffinPoints.toString());
+				rewriteFile(ravenPoints, hufflePoints, slytherPoints, gryffinPoints, fileName);
 			} else if (house == "slytherin") {
 				slytherPoints -= amount;
 				msg.channel.send("Managed to remove " + amount + " from " + house);
-				writeToFile(pointsFile, slytherPoints.toString());
+				rewriteFile(ravenPoints, hufflePoints, slytherPoints, gryffinPoints, fileName);
 			} else if (amount < 0) {
 				msg.channel.send("Amount can't be less than 0.");
 			} else {
 				msg.channel.send("House does not exist!");
 			}
-		     rewriteFile(ravenPoints, hufflePoints, slytherPoints, gryffinPoints, fileName);
 	     }
      }
 };
