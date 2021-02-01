@@ -1,6 +1,30 @@
 const fs = require('fs');
 const fileName = './points.txt';
-const pointsFile = require(fileName);
+if (fs.access(fileName, fs.F_OK, (err) => { if (err) {console.error(err)}})) {
+	const pointsFile = require(fileName);
+} else {
+	fs.open(fileName, 'w', function (err, file) {
+		  if (err) throw err;
+		  console.log("tried to recreate file");
+			fs.appendFile(fileName, 0 + "\n", function (err) {
+			  if (err) throw err;
+			  console.log("tried to write content1");
+			});
+			fs.appendFile(fileName, 0 + "\n", function (err) {
+			  if (err) throw err;
+			  console.log("tried to write content2");
+			});
+			fs.appendFile(fileName, 0 + "\n", function (err) {
+			  if (err) throw err;
+			  console.log("tried to write content3");
+			});
+			fs.appendFile(fileName, 0 + "\n", function (err) {
+			  if (err) throw err;
+			  console.log("tried to write content4");
+			});
+		});
+	const pointsFile = require(fileName);
+};
 
 function get_line(filename, line_no, callback) {
     var stream = fs.createReadStream(filename, {
@@ -133,7 +157,7 @@ try{
 }
 
 function rewriteFile(content1, content2, content3, content4, fileName) {
-	if (fs.access(path, fs.F_OK, (err) => { if (err) {console.error(err)}})) {
+	if (fs.access(fileName, fs.F_OK, (err) => { if (err) {console.error(err)}})) {
 		fs.unlink(fileName, function (err) {
 		  if (err) throw err;
 		  console.log("tried to delete file");
