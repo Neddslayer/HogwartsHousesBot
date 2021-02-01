@@ -133,30 +133,53 @@ try{
 }
 
 function rewriteFile(content1, content2, content3, content4, fileName) {
-	fs.unlink(fileName, function (err) {
-	  if (err) throw err;
-	  console.log("tried to delete file");
-	});
-	fs.open(fileName, 'w', function (err, file) {
-	  if (err) throw err;
-	  console.log("tried to recreate file");
-		fs.appendFile(fileName, content1 + "\n", function (err) {
+	if (fs.access(path, fs.F_OK, (err) => { if (err) {console.error(err) return})) {
+		fs.unlink(fileName, function (err) {
 		  if (err) throw err;
-		  console.log("tried to write content1");
+		  console.log("tried to delete file");
 		});
-		fs.appendFile(fileName, content2 + "\n", function (err) {
+		fs.open(fileName, 'w', function (err, file) {
 		  if (err) throw err;
-		  console.log("tried to write content2");
+		  console.log("tried to recreate file");
+			fs.appendFile(fileName, content1 + "\n", function (err) {
+			  if (err) throw err;
+			  console.log("tried to write content1");
+			});
+			fs.appendFile(fileName, content2 + "\n", function (err) {
+			  if (err) throw err;
+			  console.log("tried to write content2");
+			});
+			fs.appendFile(fileName, content3 + "\n", function (err) {
+			  if (err) throw err;
+			  console.log("tried to write content3");
+			});
+			fs.appendFile(fileName, content4 + "\n", function (err) {
+			  if (err) throw err;
+			  console.log("tried to write content4");
+			});
 		});
-		fs.appendFile(fileName, content3 + "\n", function (err) {
+	} else {
+	     fs.open(fileName, 'w', function (err, file) {
 		  if (err) throw err;
-		  console.log("tried to write content3");
+		  console.log("tried to recreate file");
+			fs.appendFile(fileName, content1 + "\n", function (err) {
+			  if (err) throw err;
+			  console.log("tried to write content1");
+			});
+			fs.appendFile(fileName, content2 + "\n", function (err) {
+			  if (err) throw err;
+			  console.log("tried to write content2");
+			});
+			fs.appendFile(fileName, content3 + "\n", function (err) {
+			  if (err) throw err;
+			  console.log("tried to write content3");
+			});
+			fs.appendFile(fileName, content4 + "\n", function (err) {
+			  if (err) throw err;
+			  console.log("tried to write content4");
+			});
 		});
-		fs.appendFile(fileName, content4 + "\n", function (err) {
-		  if (err) throw err;
-		  console.log("tried to write content4");
-		});
-	});
+	}
 	
 }
 
