@@ -2,13 +2,10 @@ const fs = require('fs');
 const fileName = './points.txt';
 flag = false;
 fs.access(fileName, fs.F_OK, (err) => {
-  if (err) {
-    console.error(err)
-    return
-  }
+  if (err) throw err;
   flag = true;
   //file exists
-})
+});
 if (flag = true) {
 	const pointsFile = require(fileName);
 } else {
