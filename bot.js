@@ -133,7 +133,7 @@ try{
 }
 
 function rewriteFile(content1, content2, content3, content4, fileName) {
-	if (fs.access(path, fs.F_OK, (err) => { if (err) {console.error(err)}) {
+	if (fs.access(path, fs.F_OK, (err) => { if (err) {console.error(err)}})) {
 		fs.unlink(fileName, function (err) {
 		  if (err) throw err;
 		  console.log("tried to delete file");
