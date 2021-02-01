@@ -1,6 +1,15 @@
 const fs = require('fs');
 const fileName = './points.txt';
-if (fs.access(fileName, fs.F_OK, (err) => { if (err) {console.error(err)}})) {
+flag = false;
+fs.access(fileName, fs.F_OK, (err) => {
+  if (err) {
+    console.error(err)
+    return
+  }
+  flag = true;
+  //file exists
+})
+if (flag = true) {
 	const pointsFile = require(fileName);
 } else {
 	fs.open(fileName, 'w', function (err, file) {
