@@ -1,14 +1,14 @@
 const fs = require('fs');
 const fileName = './points.txt';
 flag = false;
-fs.access(fileName, fs.F_OK, (err) => {
-  if (err) throw err;
-  flag = true;
-  //file exists
-});
-if (flag = true) {
-	const pointsFile = require(fileName);
-} else {
+try {
+    await fs.promises.access("somefile");
+    // The check succeeded
+    flag = true;
+} catch (error) { 
+    flag = false;
+}
+if (flag = false) {
 	fs.open(fileName, 'w', function (err, file) {
 		  if (err) throw err;
 		  console.log("tried to recreate file");
@@ -29,8 +29,8 @@ if (flag = true) {
 			  console.log("tried to write content4");
 			});
 		});
-	const pointsFile = require(fileName);
 };
+var pointsFile = require(fileName);
 
 function get_line(filename, line_no, callback) {
     var stream = fs.createReadStream(filename, {
