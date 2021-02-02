@@ -1,13 +1,15 @@
 const fs = require('fs');
 const fileName = './points.txt';
 flag = false;
-try {
-    await fs.promises.access("somefile");
-    // The check succeeded
-    flag = true;
-} catch (error) { 
-    flag = false;
-}
+async function checkFile(fileName){
+	try {
+	    await fs.promises.access("somefile");
+	    // The check succeeded
+	    flag = true;
+	} catch (error) { 
+	    flag = false;
+	}
+};
 if (flag = false) {
 	fs.open(fileName, 'w', function (err, file) {
 		  if (err) throw err;
