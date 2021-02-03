@@ -10,6 +10,7 @@ async function checkFile(fileName){
 	    flag = false;
 	}
 };
+checkFile(fileName);
 if (flag = false) {
 	fs.open(fileName, 'w', function (err, file) {
 		  if (err) throw err;
