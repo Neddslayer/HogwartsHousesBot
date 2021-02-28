@@ -145,7 +145,8 @@ commands = {	// all commands list below
     "ping": {
         description: "Responds pong; useful for checking if bot is alive.",
         process: function(bot, msg, suffix) {
-            msg.channel.send("Respond time: " + "respondTime");
+	    var responseTime = Date.now() - msg.createdTimestamp;
+            msg.channel.send("Respond time: " + responseTime.toString() + "ms");
             if(suffix){
                 msg.channel.send( "Note that p!ping takes no arguments!");
             }
@@ -219,19 +220,15 @@ commands = {	// all commands list below
 		     	} else if (house == "ravenclaw") {
 			    	ravenPoints += amount;
 				msg.channel.send("Managed to add " + amount + " to " + house);
-				rewriteFile(ravenPoints, hufflePoints, slytherPoints, gryffinPoints, fileName);
 		     	} else if (house == "hufflepuff") {
 				hufflePoints += amount;
 				msg.channel.send("Managed to add " + amount + " to " + house);
-				rewriteFile(ravenPoints, hufflePoints, slytherPoints, gryffinPoints, fileName);
 			} else if (house == "gryffindor") {
 				gryffinPoints += amount;
 				msg.channel.send("Managed to add " + amount + " to " + house);
-				rewriteFile(ravenPoints, hufflePoints, slytherPoints, gryffinPoints, fileName);
 			} else if (house == "slytherin") {
 				slytherPoints += amount;
 				msg.channel.send("Managed to add " + amount + " to " + house);
-				rewriteFile(ravenPoints, hufflePoints, slytherPoints, gryffinPoints, fileName);
 			} else if (amount < 0) {
 				msg.channel.send("Amount can't be less than 0.");
 			} else {
