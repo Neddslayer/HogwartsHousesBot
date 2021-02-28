@@ -7,40 +7,8 @@ client.connect(err => {
   const collection = client.db("test").collection("devices");
   // perform actions on the collection object
   client.close();
-});
-flag = false;
-async function checkFile(fileName){
-	try {
-	    await fs.promises.access("somefile");
-	    // The check succeeded
-	    flag = true;
-	} catch (error) { 
-	    flag = false;
-	}
-};
-checkFile(fileName);
-if (flag = false) {
-	fs.open(fileName, 'w', function (err, file) {
-		  if (err) throw err;
-		  console.log("tried to recreate file");
-			fs.appendFile(fileName, 0 + "\n", function (err) {
-			  if (err) throw err;
-			  console.log("tried to write content1");
-			});
-			fs.appendFile(fileName, 0 + "\n", function (err) {
-			  if (err) throw err;
-			  console.log("tried to write content2");
-			});
-			fs.appendFile(fileName, 0 + "\n", function (err) {
-			  if (err) throw err;
-			  console.log("tried to write content3");
-			});
-			fs.appendFile(fileName, 0 + "\n", function (err) {
-			  if (err) throw err;
-			  console.log("tried to write content4");
-			});
-		});
-};
+)};
+//keeping this for now.
 var pointsFile = require(fileName);
 
 function get_line(filename, line_no, callback) {
@@ -173,62 +141,11 @@ try{
 	aliases = {};
 }
 
-function rewriteFile(content1, content2, content3, content4, fileName) {
-	if (fs.access(fileName, fs.F_OK, (err) => { if (err) {console.error(err)}})) {
-		fs.unlink(fileName, function (err) {
-		  if (err) throw err;
-		  console.log("tried to delete file");
-		});
-		fs.open(fileName, 'w', function (err, file) {
-		  if (err) throw err;
-		  console.log("tried to recreate file");
-			fs.appendFile(fileName, content1 + "\n", function (err) {
-			  if (err) throw err;
-			  console.log("tried to write content1");
-			});
-			fs.appendFile(fileName, content2 + "\n", function (err) {
-			  if (err) throw err;
-			  console.log("tried to write content2");
-			});
-			fs.appendFile(fileName, content3 + "\n", function (err) {
-			  if (err) throw err;
-			  console.log("tried to write content3");
-			});
-			fs.appendFile(fileName, content4 + "\n", function (err) {
-			  if (err) throw err;
-			  console.log("tried to write content4");
-			});
-		});
-	} else {
-	     fs.open(fileName, 'w', function (err, file) {
-		  if (err) throw err;
-		  console.log("tried to recreate file");
-			fs.appendFile(fileName, content1 + "\n", function (err) {
-			  if (err) throw err;
-			  console.log("tried to write content1");
-			});
-			fs.appendFile(fileName, content2 + "\n", function (err) {
-			  if (err) throw err;
-			  console.log("tried to write content2");
-			});
-			fs.appendFile(fileName, content3 + "\n", function (err) {
-			  if (err) throw err;
-			  console.log("tried to write content3");
-			});
-			fs.appendFile(fileName, content4 + "\n", function (err) {
-			  if (err) throw err;
-			  console.log("tried to write content4");
-			});
-		});
-	}
-	
-}
-
 commands = {	// all commands list below
     "ping": {
         description: "Responds pong; useful for checking if bot is alive.",
         process: function(bot, msg, suffix) {
-            msg.channel.send("the bot does work");
+            msg.channel.send("Respond time: " + "respondTime");
             if(suffix){
                 msg.channel.send( "Note that p!ping takes no arguments!");
             }
