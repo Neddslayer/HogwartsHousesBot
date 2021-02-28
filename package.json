@@ -1,13 +1,14 @@
 {
-  "name": "Hogwarts House Points",
-  "description": "Test",
-  "version": "0.0.0",
+  "name": "Hogwarts Points",
+  "description": "Points bot for Hogwarts",
+  "version": "1.1.2",
   "main": "bot.js",
   "scripts": {
     "start": "node bot.js"
   },
   "dependencies": {
-    "discord.js": "11.1.0",
-    "request": "2.81.0"
+    "discord.js": "12.5.1",
+    "request": "2.88.2",
+    "mongodb": "3.6.4"
   }
 }
