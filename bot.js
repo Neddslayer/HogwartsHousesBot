@@ -37,7 +37,8 @@ function get_line(filename, line_no, callback) {
 
 };
 
-var ravenPoints = db.points.find({gt: {$gt: [0] }});
+var ravenPoints = db.points.find({ravenclaw: {$gt: -1 }});
+console.log(ravenPoints);
 var hufflePoints = {};
 var slytherPoints = {};
 var gryffinPoints = {};
