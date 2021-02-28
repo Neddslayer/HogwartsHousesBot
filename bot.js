@@ -3,13 +3,12 @@ const fileName = './points.txt';
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://admin:aFeA70jb5dVTkMDq@hogwarts-points.xq2rj.mongodb.net/hogwarts-points?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+var pointsFile = {};
 client.connect(err => {
   const collection = client.db("test").collection("devices");
   // perform actions on the collection object
   client.close();
 });
-//keeping this for now.
-var pointsFile = require(fileName);
 
 function get_line(filename, line_no, callback) {
     var stream = fs.createReadStream(filename, {
