@@ -1,6 +1,6 @@
 const fs = require('fs');
 const fileName = './points.txt';
-const MongoClient = require('mongodb').MongoClient;
+const db = require('mongodb').MongoClient;
 const uri = "mongodb+srv://admin:aFeA70jb5dVTkMDq@hogwarts-points.xq2rj.mongodb.net/hogwarts-points?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 var pointsFile = {};
@@ -42,23 +42,10 @@ function get_line(filename, line_no, callback) {
 
 };
 
-var ravenPoints = {};
+var ravenPoints = db.points.ravenclaw.toString();
 var hufflePoints = {};
 var slytherPoints = {};
 var gryffinPoints = {};
-
-get_line(fileName, 1, function(err, line) {
-	ravenPoints = Number(line);
-});
-get_line(fileName, 2, function(err, line) {
-	hufflePoints = Number(line);
-});
-get_line(fileName, 3, function(err, line) {
-	slytherPoints = Number(line);
-});
-get_line(fileName, 4, function(err, line) {
-	gryffinPoints = Number(line);
-});
 	 
 process.on('unhandledRejection', (reason) => {
   console.error(reason);
