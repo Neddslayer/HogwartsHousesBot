@@ -2,8 +2,8 @@ const fs = require('fs');
 const fileName = './points.txt';
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://admin:aFeA70jb5dVTkMDq@hogwarts-points.xq2rj.mongodb.net/hogwarts-points?retryWrites=true&w=majority";
-const db = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-var pointsFile = {};
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+const db = client.db;
 
 function get_line(filename, line_no, callback) {
     var stream = fs.createReadStream(filename, {
@@ -37,7 +37,7 @@ function get_line(filename, line_no, callback) {
 
 };
 
-var ravenPoints = db.points.find({ravenclaw: {$gt: -1 }});
+var ravenPoints = db.points.find({ravenclaw: {$gt: -1 }}).ravenclaw;
 console.log(ravenPoints);
 var hufflePoints = {};
 var slytherPoints = {};
