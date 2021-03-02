@@ -3,16 +3,19 @@ const mongo = require('mongodb');
 const client = mongo.MongoClient;
 //no more hacking for you silly boi
 const uri = process.env.DB_URI;
-
+var ravenPoints = {};
+var hufflePoints = {};
+var slytherPoints = {};
+var gryffinPoints = {};
 require('./pointsRetriever.js').then(function(values) {
-    	var ravenPoints = values.ravenclaw;
-	var hufflePoints = values.hufflepuff;
-	var slytherPoints = values.slytherin;
-	var gryffinPoints = values.gryffindor;
-	console.log(ravenPoints + ", " + hufflePoints + ", " + slytherPoints + ", " + gryffinPoints);
+    	ravenPoints = values.ravenclaw;
+	hufflePoints = values.hufflepuff;
+	slytherPoints = values.slytherin;
+	gryffinPoints = values.gryffindor;
 	}, function(err) {
 		console.log(err);
 	});
+console.log(ravenPoints + ", " + hufflePoints + ", " + slytherPoints + ", " + gryffinPoints);
 	 
 process.on('unhandledRejection', (reason) => {
   console.error(reason);
