@@ -7,16 +7,15 @@ MongoClient.connect(uri, function(err, client) {
 		console.log('Unable to connect to the mongoDB server. Things are going to shit now. Error:', err);
 	} else {
 		const db = client.db("Data");
-        const col = db.collection("points");
-        var values = col.find({ravenclaw:{$gt:-1}});
+                const col = db.collection("points");
+                var values = col.find({ravenclaw:{$gt:-1}});
+
+                var ravenPoints = values.ravenclaw;
+                var hufflePoints = values.hufflepuff;
+                var slytherPoints = values.slytherin;
+                var gryffinPoints = values.gryffindor;
 	}
 });
-
-var ravenPoints = values.ravenclaw;
-console.log(ravenPoints);
-var hufflePoints = values.hufflepuff;
-var slytherPoints = values.slytherin;
-var gryffinPoints = values.gryffindor;
 	 
 process.on('unhandledRejection', (reason) => {
   console.error(reason);
