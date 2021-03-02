@@ -33,15 +33,15 @@ var values = new Promise(function(resolve, reject) {
                 }
             });
         }
-	var ravenPoints = values.ravenclaw;
-	var hufflePoints = values.hufflepuff;
-	var slytherPoints = values.slytherin;
-	var gryffinPoints = values.gryffindor;
         // Close connection when done
         client.close();
     });
 })
-
+console.log(values);
+var ravenPoints = values.ravenclaw;
+var hufflePoints = values.hufflepuff;
+var slytherPoints = values.slytherin;
+var gryffinPoints = values.gryffindor;
 console.log(ravenPoints + ", " + hufflePoints + ", " + slytherPoints + ", " + gryffinPoints);
 	 
 process.on('unhandledRejection', (reason) => {
