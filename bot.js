@@ -1,6 +1,8 @@
 const fs = require('fs');
 const mongo = require('mongodb');
 const client = mongo.MongoClient;
+const info = "[Bot/INFO] "
+const warn = "[Bot/WARN] "
 //no more hacking for you silly boi
 const uri = process.env.DB_URI;
 var ravenPoints = {};
@@ -26,11 +28,11 @@ try {
 	var Discord = require("discord.js");
 } catch (e){
 	console.log(e.stack);
-	console.log(process.version);
-	console.log("Please run npm install and ensure it passes with no errors!"); // if there is an error, tell to install dependencies.
+	console.log(warn+process.version);
+	console.log(warn+"Please run npm install and ensure it passes with no errors!"); // if there is an error, tell to install dependencies.
 	process.exit();
 }
-console.log("Starting DiscordBot\nNode version: " + process.version + "\nDiscord.js version: " + Discord.version); // send message notifying bot boot-up
+console.log(info+"Starting DiscordBot\nNode version: " + process.version + "\nDiscord.js version: " + Discord.version); // send message notifying bot boot-up
 
 var Permissions = {};
 try{
@@ -246,7 +248,7 @@ bot.on("ready", () => {
 
 bot.on("disconnected", function () {
 
-	console.log("Disconnected!"); // send message that bot has disconnected.
+	console.log(info+"Disconnected!"); // send message that bot has disconnected.
 	process.exit(1); //exit node.js with an error
 
 });
@@ -254,7 +256,7 @@ bot.on("disconnected", function () {
 function checkMessageForCommand(msg, isEdit) {
 	//check if message is a command
 	if(msg.author.id != bot.user.id && (msg.content.startsWith(Config.commandPrefix))){
-        console.log("treating " + msg.content + " from " + msg.author + " as command");
+        console.log(info +"Treating " + msg.content + " from " + msg.author + " as a command");
 		var cmdTxt = msg.content.split(" ")[0].substring(Config.commandPrefix.length);
         var suffix = msg.content.substring(cmdTxt.length+Config.commandPrefix.length+1);//add one for the ! and one for the space
         if(msg.mentions.has(bot.user)){
@@ -336,7 +338,7 @@ function checkMessageForCommand(msg, isEdit) {
 					var msgTxt = "command " + cmdTxt + " failed :(";
 					if(Config.debug){
 						 msgTxt += "\n" + e.stack;
-						 console.log(msgTxt);
+						 console.log(info+msgTxt);
 					}
 					if(msgTxt.length > (1024 - 8)){ //Truncate the stack if it's too long for a discord message
 						msgTxt = msgTxt.substr(0,1024-8);
@@ -382,12 +384,12 @@ bot.on("messageUpdate", (oldMessage, newMessage) => {
 bot.on("presence", function(user,status,gameId) {
 	//if(status === "online"){
 	//console.log("presence update");
-	console.log(user+" went "+status);
+	console.log(info+user+" went "+status);
 	//}
 	try{
 	if(status != 'offline'){
 		if(messagebox.hasOwnProperty(user.id)){
-			console.log("Found message for " + user.id);
+			console.log(info+"Found message for " + user.id);
 			var message = messagebox[user.id];
 			var channel = bot.channels.get("id",message.channel);
 			delete messagebox[user.id];
