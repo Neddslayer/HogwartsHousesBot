@@ -11,6 +11,7 @@ client.connect(uri, function(err, client) {
                 const col = db.collection("points");
 		var o_id = new mongo.ObjectID("603bdfad75a1e563bf49c584");
                 var values = col.findOne({"_id": o_id});
+		console.log(values);
                 var ravenPoints = values.ravenclaw;
                 var hufflePoints = values.hufflepuff;
                 var slytherPoints = values.slytherin;
