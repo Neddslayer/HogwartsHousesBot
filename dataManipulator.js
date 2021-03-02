@@ -6,7 +6,7 @@ const warn = "[Bot/WARN] "
 const uri = process.env.DB_URI;
 
 function modDB(house, amount) {
-	client.connect(uri, function(err, client) {
+	client.connect(uri, {autoIndex: false}, function(err, client) {
         	if (err) {
         	    console.log('Unable to connect to the mongoDB server. Error:', err);
         	} else {
