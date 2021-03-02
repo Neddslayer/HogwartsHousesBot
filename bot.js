@@ -9,11 +9,11 @@ client.connect(uri, function(err, client) {
 		const db = client.db("Data");
                 const col = db.collection("points");
                 var values = col.find({ravenclaw:{$gt:-1}});
-                console.log(values);
                 var ravenPoints = values.ravenclaw;
                 var hufflePoints = values.hufflepuff;
                 var slytherPoints = values.slytherin;
                 var gryffinPoints = values.gryffindor;
+		console.log(ravenPoints + ", " + hufflePoints + ", " + slytherPoints + ", " + gryffinPoints)
 	}
 });
 	 
