@@ -2,7 +2,8 @@ const fs = require('fs');
 const MongoClient = require('mongodb').MongoClient;
 //no more hacking for you silly boi
 const uri = process.env.DB_URI;
-MongoClient.connect(uri, function(err, client) {
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+client.connect(uri, function(err, client) {
 	if (err) {
 		console.log('Unable to connect to the mongoDB server. Things are going to shit now. Error:', err);
 	} else {
