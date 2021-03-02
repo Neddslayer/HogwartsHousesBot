@@ -1,6 +1,6 @@
 const fs = require('fs');
 const mongo = require('mongodb');
-const client = rmongo.MongoClient;
+const client = mongo.MongoClient;
 //no more hacking for you silly boi
 const uri = process.env.DB_URI;
 client.connect(uri, function(err, client) {
