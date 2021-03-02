@@ -1,9 +1,9 @@
 const fs = require('fs');
 const mongo = require('mongodb');
 const client = mongo.MongoClient;
-const dataManip = require('./dataManipulator');
-const info = "[Bot/INFO] "
-const warn = "[Bot/WARN] "
+var dataManip = require('./dataManipulator');
+var info = "[Bot/INFO] "
+var warn = "[Bot/WARN] "
 //no more hacking for you silly boi
 const uri = process.env.DB_URI;
 var ravenPoints = {};
@@ -261,7 +261,7 @@ bot.on("disconnected", function () {
 function checkMessageForCommand(msg, isEdit) {
 	//check if message is a command
 	if(msg.author.id != bot.user.id && (msg.content.startsWith(Config.commandPrefix))){
-        console.log(info +"Treating " + msg.content + " from " + msg.author + " as a command");
+        console.log(info+"Treating " + msg.content + " from " + msg.author + " as a command");
 		var cmdTxt = msg.content.split(" ")[0].substring(Config.commandPrefix.length);
         var suffix = msg.content.substring(cmdTxt.length+Config.commandPrefix.length+1);//add one for the ! and one for the space
         if(msg.mentions.has(bot.user)){
