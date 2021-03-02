@@ -8,7 +8,7 @@ client.connect(uri, function(err, client) {
 	} else {
 		const db = client.db("Data");
                 const col = db.collection("points");
-		var o_id = new client.ObjectID("603bdfad75a1e563bf49c584");
+		var o_id = new MongoClient.ObjectID("603bdfad75a1e563bf49c584");
                 var values = col.findOne({"_id": o_id});
                 var ravenPoints = values.ravenclaw;
                 var hufflePoints = values.hufflepuff;
