@@ -1,6 +1,7 @@
 const fs = require('fs');
 const mongo = require('mongodb');
 const client = mongo.MongoClient;
+const dataManip = require('./dataManipulator');
 const info = "[Bot/INFO] "
 const warn = "[Bot/WARN] "
 //no more hacking for you silly boi
@@ -178,16 +179,19 @@ commands = {	// all commands list below
 		     	} else if (house == "ravenclaw") {
 			    	ravenPoints += amount;
 				msg.channel.send("Managed to add " + amount + " to " + house);
-				
+				dataManip.modDB(house, amount);
 		     	} else if (house == "hufflepuff") {
 				hufflePoints += amount;
 				msg.channel.send("Managed to add " + amount + " to " + house);
+				dataManip.modDB(house, amount);
 			} else if (house == "gryffindor") {
 				gryffinPoints += amount;
 				msg.channel.send("Managed to add " + amount + " to " + house);
+				dataManip.modDB(house, amount);
 			} else if (house == "slytherin") {
 				slytherPoints += amount;
 				msg.channel.send("Managed to add " + amount + " to " + house);
+				dataManip.modDB(house, amount);
 			} else if (amount < 0) {
 				msg.channel.send("Amount can't be less than 0.");
 			} else {
