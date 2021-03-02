@@ -10,10 +10,10 @@ var hufflePoints = {};
 var slytherPoints = {};
 var gryffinPoints = {};
 require('./pointsRetriever.js').then(function(values) {
-    	ravenPoints = values.ravenclaw;
-	hufflePoints = values.hufflepuff;
-	slytherPoints = values.slytherin;
-	gryffinPoints = values.gryffindor;
+    	ravenPoints = Number(values.ravenclaw);
+	hufflePoints = Number(values.hufflepuff);
+	slytherPoints = Number(values.slytherin);
+	gryffinPoints = Number(values.gryffindor);
 	}, function(err) {
 		console.log(err);
 	});
@@ -178,6 +178,7 @@ commands = {	// all commands list below
 		     	} else if (house == "ravenclaw") {
 			    	ravenPoints += amount;
 				msg.channel.send("Managed to add " + amount + " to " + house);
+				
 		     	} else if (house == "hufflepuff") {
 				hufflePoints += amount;
 				msg.channel.send("Managed to add " + amount + " to " + house);
