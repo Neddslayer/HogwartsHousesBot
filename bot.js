@@ -4,45 +4,15 @@ const client = mongo.MongoClient;
 //no more hacking for you silly boi
 const uri = process.env.DB_URI;
 
-var values = new Promise(function(resolve, reject) {
-    // Use connect method to connect to the server
-    client.connect(uri, function(err, client) {
-        if (err) {
-            console.log('Unable to connect to the mongoDB server. Error:', err);
-        } else {
-            console.log("Connected to mongoDB server");
-
-            // Select database
-            const db = client.db('Data');
-
-            // Get the documents collection
-            var coll = db.collection('points');
-
-            //We have a cursor now with our find criteria
-            var cursor = coll.find({
-                "query": "result"
-            });
-
-            //Lets iterate on the result
-            cursor.each(function(err, doc) {
-                if (err) {
-                    console.log(err);
-                } else {
-                    console.log('Fetched:', doc);
-                    resolve(doc);
-                }
-            });
-        }
-        // Close connection when done
-        client.close();
-    });
-})
-console.log(values);
-var ravenPoints = values.ravenclaw;
-var hufflePoints = values.hufflepuff;
-var slytherPoints = values.slytherin;
-var gryffinPoints = values.gryffindor;
-console.log(ravenPoints + ", " + hufflePoints + ", " + slytherPoints + ", " + gryffinPoints);
+require('./pointsRetriever.js').then(function(values) {
+    var ravenPoints = values.ravenclaw;
+	var hufflePoints = values.hufflepuff;
+	var slytherPoints = values.slytherin;
+	var gryffinPoints = values.gryffindor;
+	console.log(ravenPoints + ", " + hufflePoints + ", " + slytherPoints + ", " + gryffinPoints);
+}, function(err) {
+    console.log(err);
+});
 	 
 process.on('unhandledRejection', (reason) => {
   console.error(reason);
