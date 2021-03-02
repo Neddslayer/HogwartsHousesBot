@@ -18,7 +18,7 @@ function modDB(house, amount) {
          	   // Get the documents collection
          	   var coll = db.collection('points');
 		   
-	  	   coll.updateOne({ "query" : "result" }, { $inc: { "house": Number(amount) } });
+	  	   coll.updateOne({ "query" : "result" }, { $inc: { house: Number(amount) } });
         	}
         // Close connection when done
         client.close();
