@@ -13,7 +13,7 @@ client.connect(uri, function(err, client) {
                 var values = col.find({"_id": o_id}).count()
     			.then(function(values) {
       			console.log(values); // Use this to debug
-      			return callback(values);
+      			return callback(null, values);
 			console.log(values);
     			});
                 var ravenPoints = values.ravenclaw;
