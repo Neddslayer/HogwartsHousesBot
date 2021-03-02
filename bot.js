@@ -10,12 +10,10 @@ client.connect(uri, function(err, client) {
 		const db = client.db("Data");
                 const col = db.collection("points");
 		var o_id = new mongo.ObjectID("603bdfad75a1e563bf49c584");
-                var values = col.find({"_id": o_id}).count()
-    			.then(function(values) {
-      			console.log(values); // Use this to debug
-      			return callback(null, values);
-			console.log(values);
-    			});
+                var values = col.find({"_id": o_id}, function(err, values) {
+			callback(values)
+		});
+		console.log(values);
                 var ravenPoints = values.ravenclaw;
                 var hufflePoints = values.hufflepuff;
                 var slytherPoints = values.slytherin;
