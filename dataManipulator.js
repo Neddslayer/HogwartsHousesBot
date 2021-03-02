@@ -6,7 +6,7 @@ const warn = "[Bot/WARN] "
 const uri = process.env.DB_URI;
 
 function modDB(house, amount) {
-	client.connect(uri, {autoIndex: false}, function(err, client) {
+	client.connect(uri, function(err, client) {
         	if (err) {
         	    console.log('Unable to connect to the mongoDB server. Error:', err);
         	} else {
@@ -17,13 +17,8 @@ function modDB(house, amount) {
 
          	   // Get the documents collection
          	   var coll = db.collection('points');
-
-         	   //We have a cursor now with our find criteria
-         	   var cursor = coll.find({
-         	       "query": "result"
-         	   });
 		   
-	  	   coll.updateOne(cursor, { $inc: { house: Number(amount) } });
+	  	   coll.updateOne({ "query" : "result" }, { $inc: { "house": Number(amount) } });
         	}
         // Close connection when done
         client.close();
