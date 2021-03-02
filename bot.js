@@ -10,7 +10,7 @@ client.connect(uri, function(err, client) {
 		const db = client.db("Data");
                 const col = db.collection("points");
 		var o_id = new mongo.ObjectID("603bdfad75a1e563bf49c584");
-                var values = col.find({"_id": o_id}, function(err, values) {
+                var values = col.find({"_id": o_id}, function(err, values, callback) {
 			callback(values)
 		});
 		console.log(values);
