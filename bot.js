@@ -1,8 +1,7 @@
 const fs = require('fs');
-const MongoClient = require('mongodb').MongoClient;
+const client = require('mongodb').MongoClient;
 //no more hacking for you silly boi
 const uri = process.env.DB_URI;
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 client.connect(uri, function(err, client) {
 	if (err) {
 		console.log('Unable to connect to the mongoDB server. Things are going to shit now. Error:', err);
@@ -10,7 +9,7 @@ client.connect(uri, function(err, client) {
 		const db = client.db("Data");
                 const col = db.collection("points");
                 var values = col.find({ravenclaw:{$gt:-1}});
-
+                console.log(values);
                 var ravenPoints = values.ravenclaw;
                 var hufflePoints = values.hufflepuff;
                 var slytherPoints = values.slytherin;
