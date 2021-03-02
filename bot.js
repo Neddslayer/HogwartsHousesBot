@@ -5,14 +5,14 @@ const client = mongo.MongoClient;
 const uri = process.env.DB_URI;
 
 require('./pointsRetriever.js').then(function(values) {
-    var ravenPoints = values.ravenclaw;
+    	var ravenPoints = values.ravenclaw;
 	var hufflePoints = values.hufflepuff;
 	var slytherPoints = values.slytherin;
 	var gryffinPoints = values.gryffindor;
 	console.log(ravenPoints + ", " + hufflePoints + ", " + slytherPoints + ", " + gryffinPoints);
-}, function(err) {
-    console.log(err);
-});
+	}, function(err) {
+		console.log(err);
+	}});
 	 
 process.on('unhandledRejection', (reason) => {
   console.error(reason);
