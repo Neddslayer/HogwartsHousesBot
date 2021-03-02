@@ -254,7 +254,7 @@ function checkMessageForCommand(msg, isEdit) {
         console.log("treating " + msg.content + " from " + msg.author + " as command");
 		var cmdTxt = msg.content.split(" ")[0].substring(Config.commandPrefix.length);
         var suffix = msg.content.substring(cmdTxt.length+Config.commandPrefix.length+1);//add one for the ! and one for the space
-        if(msg.isMentioned(bot.user)){
+        if(msg.mentions.has(bot.user)){
 			try {
 				cmdTxt = msg.content.split(" ")[1];
 				suffix = msg.content.substring(bot.user.mention().length+cmdTxt.length+Config.commandPrefix.length+1);
