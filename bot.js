@@ -1,5 +1,6 @@
 const fs = require('fs');
-const client = require('mongodb').MongoClient;
+const mongo = require('mongodb');
+const client = rmongo.MongoClient;
 //no more hacking for you silly boi
 const uri = process.env.DB_URI;
 client.connect(uri, function(err, client) {
@@ -8,7 +9,7 @@ client.connect(uri, function(err, client) {
 	} else {
 		const db = client.db("Data");
                 const col = db.collection("points");
-		var o_id = new MongoClient.ObjectID("603bdfad75a1e563bf49c584");
+		var o_id = new mongo.ObjectID("603bdfad75a1e563bf49c584");
                 var values = col.findOne({"_id": o_id});
                 var ravenPoints = values.ravenclaw;
                 var hufflePoints = values.hufflepuff;
