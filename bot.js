@@ -355,7 +355,7 @@ function checkMessageForCommand(msg, isEdit) {
             return true; //returning true to prevent feedback from commands
         }
 
-        if (msg.author != bot.user && msg.isMentioned(bot.user)) {
+        if (msg.author != bot.user && msg.mentions.has(bot.user)) {
                 //msg.channel.send("yes?"); //using a mention here can lead to looping
         } else {
 
