@@ -179,19 +179,19 @@ commands = {	// all commands list below
 		     	} else if (house == "ravenclaw") {
 			    	ravenPoints += amount;
 				msg.channel.send("Managed to add " + amount + " to " + house);
-				dataManip.modDB(house, amount);
+				dataManip.modDBRaven(amount);
 		     	} else if (house == "hufflepuff") {
 				hufflePoints += amount;
 				msg.channel.send("Managed to add " + amount + " to " + house);
-				dataManip.modDB(house, amount);
+				dataManip.modDBHuffle(amount);
 			} else if (house == "gryffindor") {
 				gryffinPoints += amount;
 				msg.channel.send("Managed to add " + amount + " to " + house);
-				dataManip.modDB(house, amount);
+				dataManip.modDBGryffin(amount);
 			} else if (house == "slytherin") {
 				slytherPoints += amount;
 				msg.channel.send("Managed to add " + amount + " to " + house);
-				dataManip.modDB(house, amount);
+				dataManip.modDBSlyther(amount);
 			} else if (amount < 0) {
 				msg.channel.send("Amount can't be less than 0.");
 			} else {
@@ -211,19 +211,19 @@ commands = {	// all commands list below
 		     	} else if (house == "ravenclaw") {
 			    	ravenPoints -= amount;
 				msg.channel.send("Managed to remove " + amount + " from " + house);
-				modDB(house, -Number(amount));
+				modDBRaven(-Number(amount));
 		     	} else if (house == "hufflepuff") {
 				hufflePoints -= amount;
 				msg.channel.send("Managed to remove " + amount + " from " + house);
-				modDB(house, -Number(amount));
+				modDBHuffle(-Number(amount));
 			} else if (house == "gryffindor") {
 				gryffinPoints -= amount;
 				msg.channel.send("Managed to remove " + amount + " from " + house);
-				modDB(house, -Number(amount));
+				modDBGryffin(-Number(amount));
 			} else if (house == "slytherin") {
 				slytherPoints -= amount;
 				msg.channel.send("Managed to remove " + amount + " from " + house);
-				modDB(house, -Number(amount));
+				modDBSlyther(-Number(amount));
 			} else if (amount < 0) {
 				msg.channel.send("Amount can't be less than 0.");
 			} else {
