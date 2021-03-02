@@ -8,7 +8,7 @@ client.connect(uri, function(err, client) {
 	} else {
 		const db = client.db("Data");
                 const col = db.collection("points");
-                var values = col.findOne().toArray();
+                var values = col.findOne({"_id":"$oid":"603bdfad75a1e563bf49c584"});
                 var ravenPoints = values.ravenclaw;
                 var hufflePoints = values.hufflepuff;
                 var slytherPoints = values.slytherin;
