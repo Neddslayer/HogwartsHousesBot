@@ -14,8 +14,8 @@ client.connect(uri, function(err, client) {
     			.then(function(values) {
       			console.log(values); // Use this to debug
       			callback(values);
+			console.log(values);
     			});
-		console.log(values);
                 var ravenPoints = values.ravenclaw;
                 var hufflePoints = values.hufflepuff;
                 var slytherPoints = values.slytherin;
