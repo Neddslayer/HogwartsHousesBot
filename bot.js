@@ -5,12 +5,8 @@ const client = mongo.MongoClient;
 const uri = process.env.DB_URI;
 
 var values = new Promise(function(resolve, reject) {
-
-    // Client
-    const mongoClient = mongodb.MongoClient;
-
     // Use connect method to connect to the server
-    mongoClient.connect(mongoUrl, function(err, client) {
+    client.connect(uri, function(err, client) {
         if (err) {
             console.log('Unable to connect to the mongoDB server. Error:', err);
         } else {
