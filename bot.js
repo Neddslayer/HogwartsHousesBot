@@ -232,10 +232,8 @@ var hooks = {
 	onMessage: []
 }
 
-var discordGuildsLength = bot.guilds.array().length
-
 bot.on("ready", () => {
-	console.log("Logged in! Currently serving " + discordGuildsLength + " servers.");
+	console.log("Logged in!");
 	console.log("Type "+Config.commandPrefix+"help on Discord for a command list.");
 	bot.user.setPresence({
         game: { 
