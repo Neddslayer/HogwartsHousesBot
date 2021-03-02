@@ -23,7 +23,7 @@ function modDB(house, amount) {
          	       "query": "result"
          	   });
 		   
-	  	   coll.update(cursor, { $inc: { house: Number(amount) } });
+	  	   coll.updateOne(cursor, { $inc: { house: Number(amount) } });
         	}
         // Close connection when done
         client.close();
