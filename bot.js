@@ -12,7 +12,7 @@ require('./pointsRetriever.js').then(function(values) {
 	console.log(ravenPoints + ", " + hufflePoints + ", " + slytherPoints + ", " + gryffinPoints);
 	}, function(err) {
 		console.log(err);
-	}});
+	});
 	 
 process.on('unhandledRejection', (reason) => {
   console.error(reason);
