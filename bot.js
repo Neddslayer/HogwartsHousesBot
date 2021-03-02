@@ -3,22 +3,50 @@ const mongo = require('mongodb');
 const client = mongo.MongoClient;
 //no more hacking for you silly boi
 const uri = process.env.DB_URI;
-client.connect(uri, function(err, client) {
-	if (err) {
-		console.log('Unable to connect to the mongoDB server. Things are going to shit now. Error:', err);
-	} else {
-		const db = client.db("Data");
-                const col = db.collection("points");
-		var o_id = new mongo.ObjectID("603bdfad75a1e563bf49c584");
-                var values = col.find({"_id": o_id});
-		console.log(values);
-                var ravenPoints = values.ravenclaw;
-                var hufflePoints = values.hufflepuff;
-                var slytherPoints = values.slytherin;
-                var gryffinPoints = values.gryffindor;
-		console.log(ravenPoints + ", " + hufflePoints + ", " + slytherPoints + ", " + gryffinPoints)
-	}
-});
+
+var values = new Promise(function(resolve, reject) {
+
+    // Client
+    const mongoClient = mongodb.MongoClient;
+
+    // Use connect method to connect to the server
+    mongoClient.connect(mongoUrl, function(err, client) {
+        if (err) {
+            console.log('Unable to connect to the mongoDB server. Error:', err);
+        } else {
+            console.log("Connected to mongoDB server");
+
+            // Select database
+            const db = client.db('Data');
+
+            // Get the documents collection
+            var coll = db.collection('points');
+
+            //We have a cursor now with our find criteria
+            var cursor = coll.find({
+                "query": "result"
+            });
+
+            //Lets iterate on the result
+            cursor.each(function(err, doc) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    console.log('Fetched:', doc);
+                    resolve(doc);
+                }
+            });
+        }
+
+        // Close connection when done
+        client.close();
+    });
+})
+
+var ravenPoints = values.ravenclaw;
+var hufflePoints = values.hufflepuff;
+var slytherPoints = values.slytherin;
+var gryffinPoints = values.gryffindor;
 	 
 process.on('unhandledRejection', (reason) => {
   console.error(reason);
