@@ -1,4 +1,5 @@
 const mongodb = require('mongodb');
+const client = mongodb.MongoClient
 
 var values = new Promise(function(resolve, reject) {
     // Use connect method to connect to the server
