@@ -23,8 +23,8 @@ function modDB(house, amount) {
                 "query": "result"
             });
 	    cursor.update({ $inc: { house: toInt32(amount) } });
-            
         }
+	modDB();
         // Close connection when done
         client.close();
     });
