@@ -2,6 +2,7 @@ const fs = require('fs');
 const mongo = require('mongodb');
 const client = mongo.MongoClient;
 var dataManip = require('./dataManipulator');
+var bot = new Discord.Client();
 var info = "[Bot/INFO] "
 var warn = "[Bot/WARN] "
 //no more hacking for you silly boi
@@ -245,8 +246,6 @@ commands = {	// all commands list below
      }
 };
 
-var bot = new Discord.Client();
-
 var hooks = {
 	onMessage: []
 }
@@ -255,7 +254,7 @@ bot.on("ready", () => {
 	console.log("Logged in!");
 	console.log("Type "+Config.commandPrefix+"help on Discord for a command list.");
 	bot.user.setPresence({
-        game: { 
+        activity: { 
             name: 'sick beats',
             type: 'LISTENING'
         },
