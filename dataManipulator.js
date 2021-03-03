@@ -10,7 +10,7 @@ function modDBRaven(amount) {
         	if (err) {
         	    console.log('Unable to connect to the mongoDB server. Error:', err);
         	} else {
-        	    console.log("Connected to mongoDB server");
+        	    console.log("[Server/INFO] Connected to mongoDB server");
 		
             	    // Select database
         	    const db = client.db('Data');
@@ -30,7 +30,7 @@ function modDBHuffle(amount) {
         	if (err) {
         	    console.log('Unable to connect to the mongoDB server. Error:', err);
         	} else {
-        	    console.log("Connected to mongoDB server");
+        	    console.log("[Server/INFO] Connected to mongoDB server");
 		
             	    // Select database
         	    const db = client.db('Data');
@@ -49,7 +49,7 @@ function modDBSlyther(amount) {
         	if (err) {
         	    console.log('Unable to connect to the mongoDB server. Error:', err);
         	} else {
-        	    console.log("Connected to mongoDB server");
+        	    console.log("[Server/INFO] Connected to mongoDB server");
 		
             	    // Select database
         	    const db = client.db('Data');
@@ -68,7 +68,7 @@ function modDBGryffin(amount) {
         	if (err) {
         	    console.log('Unable to connect to the mongoDB server. Error:', err);
         	} else {
-        	    console.log("Connected to mongoDB server");
+        	    console.log("[Server/INFO] Connected to mongoDB server");
 		
             	    // Select database
         	    const db = client.db('Data');
