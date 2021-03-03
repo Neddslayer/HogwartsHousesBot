@@ -24,7 +24,7 @@ var values = new Promise(function(resolve, reject) {
             //Lets iterate on the result
             cursor.each(function(err, doc) {
                 if (err) {
-                    console.log("[Bot/SEVERE] Error resolving BSON document! \nError: err);
+                    console.log("[Bot/SEVERE] Error resolving BSON document! \nError: err");
                 } else {
                     resolve(doc);
                 }
