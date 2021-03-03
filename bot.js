@@ -379,6 +379,9 @@ function checkMessageForCommand(msg, isEdit) {
 }
 
 bot.on("message", (msg) => {
+	if(msg.content.startsWith("p!announce"); {
+	   msg.delete(1000)
+	}
 	if(!checkMessageForCommand(msg, false)){
 		for(msgListener of hooks.onMessage){
 			msgListener(msg);
