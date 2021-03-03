@@ -170,7 +170,7 @@ commands = {	// all commands list below
 					color: 51400,
 				    }
 				});
-				msg.channel.send(emoji("816657085919002635");
+				msg.channel.send(emoji("816657085919002635"));
 				msg.react("816657085919002635");
 			} else {
 				msg.channel.send("House does not exist!");
