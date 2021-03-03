@@ -238,8 +238,8 @@ commands = {	// all commands list below
 			var ultraspooky = emoji("816657085919002635");
 		 	msg.channel.send({embed: {
 		 		color: 16439060,
-				title: "emoji test lol " + omg,
-				description: thevibe + " " + ultraspooky
+				title: "IT'S FINALLY HERE! " + omg,
+				description: "5 months ago, there was an idea to make a house points system. \nA month later, the idea was reinstated. I had the idea of making a bot to do it. \nSo, me being the developer I am, I started to make the bot."
 	 	}});
 	    }
     }
@@ -254,15 +254,14 @@ bot.on("ready", () => {
 	console.log("Type "+Config.commandPrefix+"help on Discord for a command list.");
 	bot.user.setPresence({
         activity: { 
-            name: 'sick beats',
-            type: 'LISTENING'
+            name: 'who to sort next',
+            type: 'WATCHING'
         },
         status: 'online'
     })
 });
 
 bot.on("disconnected", function () {
-
 	console.log(info+"Disconnected!"); // send message that bot has disconnected.
 	process.exit(1); //exit node.js with an error
 
@@ -379,9 +378,6 @@ function checkMessageForCommand(msg, isEdit) {
 }
 
 bot.on("message", (msg) => {
-	if(msg.content.startsWith("p!announce")) {
-	   msg.delete(1000);
-	}
 	if(!checkMessageForCommand(msg, false)){
 		for(msgListener of hooks.onMessage){
 			msgListener(msg);
