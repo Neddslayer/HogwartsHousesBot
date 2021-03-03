@@ -342,7 +342,7 @@ function checkMessageForCommand(msg, isEdit) {
 			return true;
         }
 		else if(cmd) {
-			if(checkPermission(msg.author.id, msg, cmdText)){
+			if(checkPermission(msg.author.id, msg, cmdTxt)){
 				try{
 					cmd.process(bot,msg,suffix,isEdit);
 				} catch(e){
