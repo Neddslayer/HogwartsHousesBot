@@ -168,11 +168,9 @@ commands = {	// all commands list below
 				msg.channel.send({embed: {
 					description: "Ravenclaw: " + ravenPoints + "\nHufflepuff: " + hufflePoints + "\nGryffindor: " + gryffinPoints + "\nSlytherin: " + slytherPoints,
 					color: 51400,
-					footer: {
-					    text: "give me professor " + emoji("816657085919002635")
-					}
 				    }
 				});
+				msg.channel.send(emoji("816657085919002635");
 				msg.react("816657085919002635");
 			} else {
 				msg.channel.send("House does not exist!");
