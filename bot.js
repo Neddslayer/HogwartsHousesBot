@@ -44,7 +44,7 @@ try{
 	Permissions.users = {};
 }
 
-function checkPermission(userid, msg) {
+function checkPermission(userid, msg, cmdText) {
 	//var usn = user.username + "#" + user.discriminator;
 	//console.log("Checking " + permission + " permission for " + usn);
 	var prefectID = "781601995777245254";
@@ -56,7 +56,10 @@ function checkPermission(userid, msg) {
 		    	return true;
 		    } else {
 		    	return false
-		    }
+		}
+		if (cmdText == "view") {
+			return true;
+		}
 	} catch(e){return false;}
 }
 
@@ -339,7 +342,7 @@ function checkMessageForCommand(msg, isEdit) {
 			return true;
         }
 		else if(cmd) {
-			if(checkPermission(msg.author.id, msg)){
+			if(checkPermission(msg.author.id, msg, cmdText)){
 				try{
 					cmd.process(bot,msg,suffix,isEdit);
 				} catch(e){
