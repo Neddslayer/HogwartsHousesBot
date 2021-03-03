@@ -2,7 +2,6 @@ const fs = require('fs');
 const mongo = require('mongodb');
 const client = mongo.MongoClient;
 var dataManip = require('./dataManipulator');
-var bot = new Discord.Client();
 var info = "[Bot/INFO] "
 var warn = "[Bot/WARN] "
 //no more hacking for you silly boi
@@ -28,6 +27,7 @@ process.on('unhandledRejection', (reason) => {
 
 try {
 	var Discord = require("discord.js");
+	var bot = new Discord.Client();
 } catch (e){
 	console.log(e.stack);
 	console.log(warn+process.version);
