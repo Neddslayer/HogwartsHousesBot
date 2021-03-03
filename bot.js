@@ -165,7 +165,7 @@ commands = {	// all commands list below
 					description: "Ravenclaw: " + ravenPoints + "\nHufflepuff: " + hufflePoints + "\nGryffindor: " + gryffinPoints + "\nSlytherin: " + slytherPoints,
 					color: 51400,
 					footer: {
-					    text: "give me professor" + ultraspooky	
+					    text: "give me professor <:ultraspooky:816502797712359475>"	
 					}
 				    }
 				});
