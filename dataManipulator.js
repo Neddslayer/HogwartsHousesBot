@@ -1,16 +1,14 @@
 const mongo = require('mongodb');
 const client = mongo.MongoClient;
-const info = "[Bot/INFO] "
-const warn = "[Bot/WARN] "
 //no more hacking for you silly boi
 const uri = process.env.DB_URI;
 
 function modDBRaven(amount) {
 	client.connect(uri, function(err, client) {
         	if (err) {
-        	    console.log('Unable to connect to the mongoDB server. Error:', err);
+        	    console.log('[Bot/WARN] Unable to connect to the mongoDB server. Error:', err);
         	} else {
-        	    console.log("[Server/INFO] Connected to mongoDB server");
+        	    console.log("[Server/INFO] Connected to mongoDB server to update value");
 		
             	    // Select database
         	    const db = client.db('Data');
@@ -19,7 +17,7 @@ function modDBRaven(amount) {
          	   var coll = db.collection('points');
 		   
 	  	   coll.updateOne({ "query" : "result" }, { $inc: { "ravenclaw": parseFloat(amount) } });
-		   console.log("Int after parsing: " + amount);
+		   console.log("[Server/INFO] Successfully updated 1 document");
         	}
         // Close connection when done
         client.close();
@@ -28,7 +26,7 @@ function modDBRaven(amount) {
 function modDBHuffle(amount) {
 	client.connect(uri, function(err, client) {
         	if (err) {
-        	    console.log('Unable to connect to the mongoDB server. Error:', err);
+        	    console.log('[Bot/WARN] Unable to connect to the mongoDB server. Error:', err);
         	} else {
         	    console.log("[Server/INFO] Connected to mongoDB server");
 		
@@ -39,6 +37,7 @@ function modDBHuffle(amount) {
          	   var coll = db.collection('points');
 		   
 	  	   coll.updateOne({ "query" : "result" }, { $inc: { "hufflepuff": parseFloat(amount) } });
+		   console.log("[Server/INFO] Successfully updated 1 document");
         	}
         // Close connection when done
         client.close();
@@ -47,7 +46,7 @@ function modDBHuffle(amount) {
 function modDBSlyther(amount) {
 	client.connect(uri, function(err, client) {
         	if (err) {
-        	    console.log('Unable to connect to the mongoDB server. Error:', err);
+        	    console.log('[Bot/WARN] Unable to connect to the mongoDB server. Error:', err);
         	} else {
         	    console.log("[Server/INFO] Connected to mongoDB server");
 		
@@ -58,6 +57,7 @@ function modDBSlyther(amount) {
          	   var coll = db.collection('points');
 		   
 	  	   coll.updateOne({ "query" : "result" }, { $inc: { "slytherin": parseFloat(amount) } });
+		   console.log("[Server/INFO] Successfully updated 1 document");
         	}
         // Close connection when done
         client.close();
@@ -66,7 +66,7 @@ function modDBSlyther(amount) {
 function modDBGryffin(amount) {
 	client.connect(uri, function(err, client) {
         	if (err) {
-        	    console.log('Unable to connect to the mongoDB server. Error:', err);
+        	    console.log('[Bot/WARN] Unable to connect to the mongoDB server. Error:', err);
         	} else {
         	    console.log("[Server/INFO] Connected to mongoDB server");
 		
@@ -77,6 +77,7 @@ function modDBGryffin(amount) {
          	   var coll = db.collection('points');
 		   
 	  	   coll.updateOne({ "query" : "result" }, { $inc: { "gryffindor": parseFloat(amount) } });
+		   console.log("[Server/INFO] Successfully updated 1 document");
         	}
         // Close connection when done
         client.close();
