@@ -173,11 +173,11 @@ commands = {	// all commands list below
 	},
      "add": {
 	     usage: "<house> <amount>",
-	     description: "Adds points to the specified house",
+	     description: "Adds points to the specified house. Only available to moderators",
 	     process: function(bot, msg, suffix) {
 		     var amount = suffix.split(" ");
 		     var house = amount.shift();
-		     amount = parseInt(amount);
+		     amount = Number(amount);
 		     	if (!house) {
 			     	msg.channel.send(Config.commandPrefix + "add " + this.usage + "\n" + this.description);
 		     	} else if (house == "ravenclaw") {
@@ -206,7 +206,7 @@ commands = {	// all commands list below
      },
      "remove": {
 	     usage: "<house> <amount>",
-	     description: "Removes points from the specified house",
+	     description: "Removes points from the specified house. Only available to moderators",
 	     process: function(bot, msg, suffix) {
 		     var amount = suffix.split(" ");
 		     var house = amount.shift();
@@ -235,7 +235,16 @@ commands = {	// all commands list below
 				msg.channel.send("House does not exist!");
 			}
 	     }
-     }
+     },
+     "announce": {
+		 usage: "no arguments",
+		 description: "Make an announcement specified in the code. Only available to moderators."
+		 process: function(bot, msg, suffix) {
+		 	bot.channels.cache.get('781912857868238918').send({embed:
+		 
+	 		})
+	     }
+	 }
 };
 
 var hooks = {
