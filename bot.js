@@ -168,7 +168,7 @@ commands = {	// all commands list below
 					}
 				    }
 				});
-				msg.react("816502797712359475");
+				msg.react("816657085919002635");
 			} else {
 				msg.channel.send("House does not exist!");
 			}
