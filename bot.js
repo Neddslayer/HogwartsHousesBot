@@ -164,7 +164,7 @@ commands = {	// all commands list below
 					description: "Ravenclaw: " + ravenPoints + "\nHufflepuff: " + hufflePoints + "\nGryffindor: " + gryffinPoints + "\nSlytherin: " + slytherPoints,
 					color: 51400,
 					footer: {
-					    text: "give me professor " + bot.emojis.cache.get("816502797712359475")
+					    text: "give me professor " + bot.emoji.get("816502797712359475")
 					}
 				    }
 				});
@@ -268,7 +268,7 @@ bot.on("disconnected", function () {
 function checkMessageForCommand(msg, isEdit) {
 	//check if message is a command
 	if(msg.author.id != bot.user.id && (msg.content.startsWith(Config.commandPrefix))){
-        console.log(info+"Treating " + msg.content + " from " + msg.author + " as a command");
+        console.log("[Bot/INFO] Treating " + msg.content + " from " + msg.author + " as a command");
 		var cmdTxt = msg.content.split(" ")[0].substring(Config.commandPrefix.length);
         var suffix = msg.content.substring(cmdTxt.length+Config.commandPrefix.length+1);//add one for the ! and one for the space
         if(msg.mentions.has(bot.user)){
