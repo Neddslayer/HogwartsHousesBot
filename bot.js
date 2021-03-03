@@ -160,11 +160,11 @@ commands = {	// all commands list below
 			} else if (name == "all") {
 				msg.channel.send({embed: {
 					title: "Here are all the house points:",
-					description: "Ravenclaw: " + ravenPoints + "\nHufflepuff: " + hufflePoints + "\nGryffindor: " + gryffinPoints + "\nSlytherin: " + slytherPoints,
+					description: "Ravenclaw: " + ravenPoints + "\nHufflepuff: " + hufflePoints + "\nGryffindor: " + gryffinPoints + "\nSlytherin: " + slytherPoints + "\n" + emoji("816657085919002635"),
 					color: 51400,
 				    }
 				});
-				msg.channel.send(emoji("816657085919002635"));
+				//msg.channel.send(emoji("816657085919002635"));
 			} else {
 				msg.channel.send("House does not exist!");
 			}
