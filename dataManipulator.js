@@ -19,6 +19,7 @@ function modDBRaven(house, amount) {
          	   var coll = db.collection('points');
 		   
 	  	   coll.updateOne({ "query" : "result" }, { $inc: { "ravenclaw": parseInt(amount) } });
+		   console.log(amount);
         	}
         // Close connection when done
         client.close();
