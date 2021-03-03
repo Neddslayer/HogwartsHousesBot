@@ -236,12 +236,13 @@ commands = {	// all commands list below
 			var thevibe = emoji("816748500707573762");
 			var omg = emoji("816748483939532831");
 			var ultraspooky = emoji("816657085919002635");
-		 	bot.channels.cache.get('803619334953500674').send({embed: {
+		 	msg.channel.send({embed: {
 		 		color: 16439060,
 				title: "emoji test lol " + omg,
-	 		}})
-	     }
-	 }
+				description: thevibe + " " + ultraspooky
+	 	}});
+	    }
+    }
 };
 
 var hooks = {
