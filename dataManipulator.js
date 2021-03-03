@@ -5,7 +5,7 @@ const warn = "[Bot/WARN] "
 //no more hacking for you silly boi
 const uri = process.env.DB_URI;
 
-function modDBRaven(house, amount) {
+function modDBRaven(amount) {
 	client.connect(uri, function(err, client) {
         	if (err) {
         	    console.log('Unable to connect to the mongoDB server. Error:', err);
@@ -18,14 +18,14 @@ function modDBRaven(house, amount) {
          	   // Get the documents collection
          	   var coll = db.collection('points');
 		   
-	  	   coll.updateOne({ "query" : "result" }, { $inc: { "ravenclaw": amount } });
+	  	   coll.updateOne({ "query" : "result" }, { $inc: { "ravenclaw": parseFloat(amount) } });
 		   console.log("Int after parsing: " + amount);
         	}
         // Close connection when done
         client.close();
      });
 }
-function modDBHuffle(house, amount) {
+function modDBHuffle(amount) {
 	client.connect(uri, function(err, client) {
         	if (err) {
         	    console.log('Unable to connect to the mongoDB server. Error:', err);
@@ -38,13 +38,13 @@ function modDBHuffle(house, amount) {
          	   // Get the documents collection
          	   var coll = db.collection('points');
 		   
-	  	   coll.updateOne({ "query" : "result" }, { $inc: { "hufflepuff": amount } });
+	  	   coll.updateOne({ "query" : "result" }, { $inc: { "hufflepuff": parseFloat(amount) } });
         	}
         // Close connection when done
         client.close();
      });
 }
-function modDBSlyther(house, amount) {
+function modDBSlyther(amount) {
 	client.connect(uri, function(err, client) {
         	if (err) {
         	    console.log('Unable to connect to the mongoDB server. Error:', err);
@@ -57,13 +57,13 @@ function modDBSlyther(house, amount) {
          	   // Get the documents collection
          	   var coll = db.collection('points');
 		   
-	  	   coll.updateOne({ "query" : "result" }, { $inc: { "slytherin": amount } });
+	  	   coll.updateOne({ "query" : "result" }, { $inc: { "slytherin": parseFloat(amount) } });
         	}
         // Close connection when done
         client.close();
      });
 }
-function modDBGryffin(house, amount) {
+function modDBGryffin(amount) {
 	client.connect(uri, function(err, client) {
         	if (err) {
         	    console.log('Unable to connect to the mongoDB server. Error:', err);
@@ -76,7 +76,7 @@ function modDBGryffin(house, amount) {
          	   // Get the documents collection
          	   var coll = db.collection('points');
 		   
-	  	   coll.updateOne({ "query" : "result" }, { $inc: { "gryffindor": amount } });
+	  	   coll.updateOne({ "query" : "result" }, { $inc: { "gryffindor": parseFloat(amount) } });
         	}
         // Close connection when done
         client.close();
