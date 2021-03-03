@@ -102,7 +102,7 @@ try{
 }
 
 function emoji(id) {
-	return bot.emojis.get(id).toString();
+	return bot.emojis.cache.get(id).toString();
 }
 
 commands = {	// all commands list below
