@@ -161,7 +161,6 @@ commands = {	// all commands list below
 				msg.channel.send(slytherPoints);
 			} else if (name == "all") {
 				msg.channel.send({embed: {
-					bot.emojis.cache.get("816502797712359475");
 					description: "Ravenclaw: " + ravenPoints + "\nHufflepuff: " + hufflePoints + "\nGryffindor: " + gryffinPoints + "\nSlytherin: " + slytherPoints,
 					color: 51400,
 					footer: {
