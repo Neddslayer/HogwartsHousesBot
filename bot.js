@@ -34,7 +34,7 @@ try {
 	console.log(warn+"Please run npm install and ensure it passes with no errors!"); // if there is an error, tell to install dependencies.
 	process.exit();
 }
-console.log(info+"Starting DiscordBot\nNode version: " + process.version + "\nDiscord.js version: " + Discord.version); // send message notifying bot boot-up
+console.log(info+"Starting DiscordBot\n" + info + "Node version: " + process.version + "\n" + info + "Discord.js version: " + Discord.version); // send message notifying bot boot-up
 
 var Permissions = {};
 try{
@@ -166,12 +166,12 @@ commands = {	// all commands list below
 				msg.channel.send(slytherPoints);
 			} else if (name == "all") {
 				msg.channel.send({embed: {
+					title: "Here are all the house points:"
 					description: "Ravenclaw: " + ravenPoints + "\nHufflepuff: " + hufflePoints + "\nGryffindor: " + gryffinPoints + "\nSlytherin: " + slytherPoints,
 					color: 51400,
 				    }
 				});
 				msg.channel.send(emoji("816657085919002635"));
-				msg.react("816657085919002635");
 			} else {
 				msg.channel.send("House does not exist!");
 			}
