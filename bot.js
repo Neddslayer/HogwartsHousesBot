@@ -147,6 +147,7 @@ commands = {	// all commands list below
 			var args = suffix.split(" ");
 			var name = args.shift();
 			var house = args.toString();
+			const chars = {"0" : emoji("816731862386999306"), "1" : emoji("816731921350262884"), "2" : emoji("816731947979636776"), "3" : emoji("816731970217181194"), "4" : emoji("816731995409350696"), "5" : emoji("816732020092567593"), "6" : emoji("816732044398821406"), "7" : emoji("816732063532449792"), "8" : emoji("816732088450678814"), "9" : emoji("816732113536548864")};
 			if(!name) {
 				msg.channel.send(Config.commandPrefix + "view " + this.usage + "\n" + this.description);
 			} else if (name == "ravenclaw") {
@@ -159,8 +160,8 @@ commands = {	// all commands list below
 				msg.channel.send(slytherPoints);
 			} else if (name == "all") {
 				msg.channel.send({embed: {
-					title: "Here are all the house points:",
-					description: "Ravenclaw: " + ravenPoints + "\nHufflepuff: " + hufflePoints + "\nGryffindor: " + gryffinPoints + "\nSlytherin: " + slytherPoints + "\n" + emoji("816657085919002635"),
+					title: "Here are all the house points",
+					description: "Ravenclaw: " + ravenPoints.toString().replace(/[123456789]/g,m => chars[m]) + "\nHufflepuff: " + hufflePoints.toString().replace(/[123456789]/g,m => chars[m]) + "\nGryffindor: " + gryffinPoints.toString().replace(/[123456789]/g,m => chars[m]) + "\nSlytherin: " + slytherPoints.toString().replace(/[123456789]/g,m => chars[m]) + "\n" + emoji("816657085919002635"),
 					color: 51400,
 				    }
 				});
