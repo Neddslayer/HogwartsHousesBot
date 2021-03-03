@@ -168,7 +168,7 @@ commands = {	// all commands list below
 					description: "Ravenclaw: " + ravenPoints + "\nHufflepuff: " + hufflePoints + "\nGryffindor: " + gryffinPoints + "\nSlytherin: " + slytherPoints,
 					color: 51400,
 					footer: {
-					    text: "give me professor " + emoji("816657085919002635");
+					    text: "give me professor " + emoji("816657085919002635")
 					}
 				    }
 				});
