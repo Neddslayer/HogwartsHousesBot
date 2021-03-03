@@ -44,27 +44,20 @@ try{
 	Permissions.users = {};
 }
 
-Permissions.checkPermission = function (userid,permission){
+function checkPermission(userid, msg) {
 	//var usn = user.username + "#" + user.discriminator;
 	//console.log("Checking " + permission + " permission for " + usn);
+	var prefectID = "781601995777245254";
+	var headStudentID = "786333933636812801";
+	var professorID = "798748679401373716";
+	var headmasterID = "781543720180383766";
 	try {
-		var allowed = true;
-		try{
-			if(Permissions.global.hasOwnProperty(permission)){
-				allowed = Permissions.global[permission] === true;
-			}
-		} catch(e){}
-		try{
-			if(Permissions.users[userid].hasOwnProperty("*")){
-				allowed = Permissions.users[userid]["*"] === true;
-			}
-			if(Permissions.users[userid].hasOwnProperty(permission)){
-				allowed = Permissions.users[userid][permission] === true;
-			}
-		} catch(e){}
-		return allowed;
-	} catch(e){}
-	return false;
+		if (msg.member.roles.cache.has(prefectID) || msg.member.roles.cache.has(headStudentID) || msg.member.roles.cache.has(professorID) || msg.member.roles.cache.has(headmasterID) {
+		    	return true;
+		    } else {
+		    	return false
+		    }
+	} catch(e){return false;}
 }
 
 fs.writeFile("./permissions.json",JSON.stringify(Permissions,null,2), (err) => {
@@ -166,7 +159,7 @@ commands = {	// all commands list below
 				msg.channel.send(slytherPoints);
 			} else if (name == "all") {
 				msg.channel.send({embed: {
-					title: "Here are all the house points:"
+					title: "Here are all the house points:",
 					description: "Ravenclaw: " + ravenPoints + "\nHufflepuff: " + hufflePoints + "\nGryffindor: " + gryffinPoints + "\nSlytherin: " + slytherPoints,
 					color: 51400,
 				    }
@@ -345,7 +338,7 @@ function checkMessageForCommand(msg, isEdit) {
 			return true;
         }
 		else if(cmd) {
-			if(Permissions.checkPermission(msg.author.id,cmdTxt)){
+			if(checkPermission(msg.author.id, msg)){
 				try{
 					cmd.process(bot,msg,suffix,isEdit);
 				} catch(e){
