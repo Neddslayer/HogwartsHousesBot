@@ -86,13 +86,6 @@ if(!Config.hasOwnProperty("commandPrefix")){
 }
 
 var messagebox;
-var aliases;
-try{
-	aliases = require("./alias.json");
-} catch(e) {
-	//No aliases defined
-	aliases = {};
-}
 
 function emoji(id) {
 	return bot.emojis.cache.get(id).toString();
@@ -238,10 +231,14 @@ commands = {	// all commands list below
      },
      "announce": {
 		 usage: "no arguments",
-		 description: "Make an announcement specified in the code. Only available to moderators."
+		 description: "Make an announcement specified in the code. Only available to moderators.",
 		 process: function(bot, msg, suffix) {
-		 	bot.channels.cache.get('781912857868238918').send({embed:
-		 
+			var thevibe = emoji("816748500707573762");
+			var omg = emoji("816748483939532831");
+			var ultraspooky = emoji("816657085919002635");
+		 	bot.channels.cache.get('803619334953500674').send({embed:
+		 		color: 16439060,
+				title: "emoji test lol " + omg,
 	 		})
 	     }
 	 }
