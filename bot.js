@@ -283,12 +283,6 @@ function checkMessageForCommand(msg, isEdit) {
 				return false;
 			}
         }
-		alias = aliases[cmdTxt];
-		if(alias){
-			console.log(cmdTxt + " is an alias, constructed command is " + alias.join(" ") + " " + suffix);
-			cmdTxt = alias[0];
-			suffix = alias[1] + " " + suffix;
-		}
 		var cmd = commands[cmdTxt];
         if(cmdTxt === "help"){
             //help is special since it iterates over the other commands
