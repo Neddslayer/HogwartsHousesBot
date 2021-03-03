@@ -164,10 +164,11 @@ commands = {	// all commands list below
 					description: "Ravenclaw: " + ravenPoints + "\nHufflepuff: " + hufflePoints + "\nGryffindor: " + gryffinPoints + "\nSlytherin: " + slytherPoints,
 					color: 51400,
 					footer: {
-					    text: "give me professor " + bot.emoji.get("816502797712359475")
+					    text: "give me professor"
 					}
 				    }
 				});
+				msg.react("816502797712359475");
 			} else {
 				msg.channel.send("House does not exist!");
 			}
