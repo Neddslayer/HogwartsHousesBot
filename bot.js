@@ -160,7 +160,6 @@ commands = {	// all commands list below
 			} else if (name == "slytherin") {
 				msg.channel.send(slytherPoints);
 			} else if (name == "all") {
-				const ultraspooky = bot.emojis.get("816502797712359475");
 				msg.channel.send({embed: {
 					description: "Ravenclaw: " + ravenPoints + "\nHufflepuff: " + hufflePoints + "\nGryffindor: " + gryffinPoints + "\nSlytherin: " + slytherPoints,
 					color: 51400,
