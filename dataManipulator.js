@@ -18,7 +18,7 @@ function modDBRaven(house, amount) {
          	   // Get the documents collection
          	   var coll = db.collection('points');
 		   
-	  	   coll.updateOne({ "query" : "result" }, { $inc: { "ravenclaw": parseInt(amount) } });
+	  	   coll.updateOne({ "query" : "result" }, { $inc: { "ravenclaw": amount } });
 		   console.log("Int after parsing: " + amount);
         	}
         // Close connection when done
@@ -38,7 +38,7 @@ function modDBHuffle(house, amount) {
          	   // Get the documents collection
          	   var coll = db.collection('points');
 		   
-	  	   coll.updateOne({ "query" : "result" }, { $inc: { "hufflepuff": parseInt(amount) } });
+	  	   coll.updateOne({ "query" : "result" }, { $inc: { "hufflepuff": amount } });
         	}
         // Close connection when done
         client.close();
@@ -57,7 +57,7 @@ function modDBSlyther(house, amount) {
          	   // Get the documents collection
          	   var coll = db.collection('points');
 		   
-	  	   coll.updateOne({ "query" : "result" }, { $inc: { "slytherin": parseInt(amount) } });
+	  	   coll.updateOne({ "query" : "result" }, { $inc: { "slytherin": amount } });
         	}
         // Close connection when done
         client.close();
@@ -76,7 +76,7 @@ function modDBGryffin(house, amount) {
          	   // Get the documents collection
          	   var coll = db.collection('points');
 		   
-	  	   coll.updateOne({ "query" : "result" }, { $inc: { "gryffindor": parseInt(amount) } });
+	  	   coll.updateOne({ "query" : "result" }, { $inc: { "gryffindor": amount } });
         	}
         // Close connection when done
         client.close();
