@@ -173,12 +173,13 @@ commands = {	// all commands list below
 	     process: function(bot, msg, suffix) {
 		     var amount = suffix.split(" ");
 		     var house = amount.shift();
-		     amount = Number(amount);
+		     amount = parseInt(amount);
 		     	if (!house) {
 			     	msg.channel.send(Config.commandPrefix + "add " + this.usage + "\n" + this.description);
 		     	} else if (house == "ravenclaw") {
 			    	ravenPoints += amount;
 				msg.channel.send("Managed to add " + amount + " to " + house);
+				console.log("parsed int: " + amount);
 				dataManip.modDBRaven(amount);
 		     	} else if (house == "hufflepuff") {
 				hufflePoints += amount;
@@ -211,19 +212,19 @@ commands = {	// all commands list below
 		     	} else if (house == "ravenclaw") {
 			    	ravenPoints -= amount;
 				msg.channel.send("Managed to remove " + amount + " from " + house);
-				modDBRaven(-Number(amount));
+				dataManip.modDBRaven(-amount);
 		     	} else if (house == "hufflepuff") {
 				hufflePoints -= amount;
 				msg.channel.send("Managed to remove " + amount + " from " + house);
-				modDBHuffle(-Number(amount));
+				dataManip.modDBHuffle(-amount);
 			} else if (house == "gryffindor") {
 				gryffinPoints -= amount;
 				msg.channel.send("Managed to remove " + amount + " from " + house);
-				modDBGryffin(-Number(amount));
+				dataManip.modDBGryffin(-amount);
 			} else if (house == "slytherin") {
 				slytherPoints -= amount;
 				msg.channel.send("Managed to remove " + amount + " from " + house);
-				modDBSlyther(-Number(amount));
+				dataManip.modDBSlyther(-amount);
 			} else if (amount < 0) {
 				msg.channel.send("Amount can't be less than 0.");
 			} else {
