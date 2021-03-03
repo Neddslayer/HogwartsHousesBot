@@ -6,9 +6,9 @@ var values = new Promise(function(resolve, reject) {
     // Use connect method to connect to the server
     client.connect(uri, function(err, client) {
         if (err) {
-            console.log('Unable to connect to the mongoDB server. Error:', err);
+            console.log('[Bot/WARN] Unable to connect to the mongoDB server. Error:', err);
         } else {
-            console.log("Connected to mongoDB server");
+            console.log("[Server/INFO] Connected to mongoDB server");
 
             // Select database
             const db = client.db('Data');
@@ -24,12 +24,12 @@ var values = new Promise(function(resolve, reject) {
             //Lets iterate on the result
             cursor.each(function(err, doc) {
                 if (err) {
-                    console.log(err);
+                    console.log("[Bot/SEVERE] Error resolving BSON document! \nError: err);
                 } else {
-                    console.log('Fetched:', doc);
                     resolve(doc);
                 }
             });
+            console.log("[Bot/INFO] Resolved BSON document from server.");
         }
         // Close connection when done
         client.close();
