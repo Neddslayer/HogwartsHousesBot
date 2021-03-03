@@ -52,7 +52,7 @@ function checkPermission(userid, msg) {
 	var professorID = "798748679401373716";
 	var headmasterID = "781543720180383766";
 	try {
-		if (msg.member.roles.cache.has(prefectID) || msg.member.roles.cache.has(headStudentID) || msg.member.roles.cache.has(professorID) || msg.member.roles.cache.has(headmasterID) {
+		if (msg.member.roles.cache.has(prefectID) || msg.member.roles.cache.has(headStudentID) || msg.member.roles.cache.has(professorID) || msg.member.roles.cache.has(headmasterID)) {
 		    	return true;
 		    } else {
 		    	return false
