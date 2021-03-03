@@ -100,6 +100,10 @@ try{
 	aliases = {};
 }
 
+function emoji(id) {
+	return bot.emojis.get(id).toString();
+}
+
 commands = {	// all commands list below
     "ping": {
         description: "Responds pong; useful for checking if bot is alive.",
@@ -160,12 +164,11 @@ commands = {	// all commands list below
 			} else if (name == "slytherin") {
 				msg.channel.send(slytherPoints);
 			} else if (name == "all") {
-				const ultraspooky = client.emojis.find(emoji => emoji.name === "ultraspooky");
 				msg.channel.send({embed: {
 					description: "Ravenclaw: " + ravenPoints + "\nHufflepuff: " + hufflePoints + "\nGryffindor: " + gryffinPoints + "\nSlytherin: " + slytherPoints,
 					color: 51400,
 					footer: {
-					    text: "give me professor ${ultraspooky}"
+					    text: "give me professor " + emoji("816657085919002635");
 					}
 				    }
 				});
