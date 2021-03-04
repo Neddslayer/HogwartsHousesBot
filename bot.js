@@ -155,7 +155,7 @@ commands = {	// all commands list below
 					title: "Here are all the house points",
 					description: "Ravenclaw: " + ravenPoints.toString().replace(/[0123456789]/g,m => chars[m]) + "\nHufflepuff: " + hufflePoints.toString().replace(/[0123456789]/g,m => chars[m]) + "\nGryffindor: " + gryffinPoints.toString().replace(/[0123456789]/g,m => chars[m]) + "\nSlytherin: " + slytherPoints.toString().replace(/[0123456789]/g,m => chars[m]) + "\n" + emoji("816657085919002635"),
 					color: 51400,
-					footer: {"Developed by Neddslayer in 4 months."},
+					footer: "Developed by Neddslayer in 4 months."
 				    }
 				});
 				//msg.channel.send(emoji("816657085919002635"));
