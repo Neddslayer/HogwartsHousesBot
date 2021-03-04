@@ -96,7 +96,7 @@ commands = {	// all commands list below
         description: "Responds pong; useful for checking if bot is alive.",
         process: function(bot, msg, suffix) {
 	    var responseTime = Date.now() - msg.createdTimestamp;
-            msg.channel.send(emoji("816858739985350696") + " Respond time: " + responseTime.toString() + "ms");
+            msg.channel.send("Respond time: " + responseTime.toString() + "ms");
             if(suffix){
                 msg.channel.send( "Note that p!ping takes no arguments!");
             }
@@ -156,12 +156,9 @@ commands = {	// all commands list below
 					title: "Here are all the house points",
 					description: "Ravenclaw: " + ravenPoints.toString().replace(/[0123456789]/g,m => chars[m]) + "\nHufflepuff: " + hufflePoints.toString().replace(/[0123456789]/g,m => chars[m]) + "\nGryffindor: " + gryffinPoints.toString().replace(/[0123456789]/g,m => chars[m]) + "\nSlytherin: " + slytherPoints.toString().replace(/[0123456789]/g,m => chars[m]) + "\n" + emoji("816657085919002635"),
 					color: 51400,
-					footer: {
-						text: 'Developed by <@611346883591405589> in 4 months',
-					},
 				    }
 				});
-				//msg.channel.send(emoji("816657085919002635"));
+				msg.channel.send("Developed by <@611346883591405589> in 4 months");
 			} else {
 				msg.channel.send(emoji("816858954801872956") + " House does not exist!");
 			}
