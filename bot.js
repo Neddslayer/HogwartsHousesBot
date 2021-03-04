@@ -158,7 +158,6 @@ commands = {	// all commands list below
 					color: 51400,
 				    }
 				});
-				msg.channel.send("Developed by <@611346883591405589> in 4 months");
 			} else {
 				msg.channel.send(emoji("816858954801872956") + " House does not exist!");
 			}
