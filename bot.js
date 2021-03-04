@@ -27,6 +27,7 @@ process.on('unhandledRejection', (reason) => {
 try {
 	var Discord = require("discord.js");
 	var bot = new Discord.Client();
+	console.log(info+"Set the bot variable.");
 } catch (e){
 	console.log(e.stack);
 	console.log(warn+process.version);
@@ -155,7 +156,9 @@ commands = {	// all commands list below
 					title: "Here are all the house points",
 					description: "Ravenclaw: " + ravenPoints.toString().replace(/[0123456789]/g,m => chars[m]) + "\nHufflepuff: " + hufflePoints.toString().replace(/[0123456789]/g,m => chars[m]) + "\nGryffindor: " + gryffinPoints.toString().replace(/[0123456789]/g,m => chars[m]) + "\nSlytherin: " + slytherPoints.toString().replace(/[0123456789]/g,m => chars[m]) + "\n" + emoji("816657085919002635"),
 					color: 51400,
-					footer: "Developed by Neddslayer in 4 months."
+					footer: {
+						text: 'Developed by <@611346883591405589> in 4 months',
+					},
 				    }
 				});
 				//msg.channel.send(emoji("816657085919002635"));
