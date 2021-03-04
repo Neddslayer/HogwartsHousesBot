@@ -239,7 +239,7 @@ commands = {	// all commands list below
 		 	msg.channel.send({embed: {
 		 		color: 16439060,
 				title: "IT'S FINALLY HERE! " + omg,
-				description: "5 months ago, there was an idea to make a house points system. \nA month later, the idea was reinstated. I had the idea of making a bot to do it. \nSo, me being the developer I am, I started to make the bot."
+				description: "5 months ago, there was an idea to make a house points system. \nA month later, the idea was reinstated. I had the idea of making a bot to do it. \nSo, me being the developer I am " + ultraspooky + ", I started to make the bot. Now here we are 4 months later. A full fledged database in place, and a lot of mental breakdowns and reading documentations later, it's finally done. Help other people, and your house will earn points."
 	 	}});
 	    }
     }
@@ -254,7 +254,7 @@ bot.on("ready", () => {
 	console.log("Type "+Config.commandPrefix+"help on Discord for a command list.");
 	bot.user.setPresence({
         activity: { 
-            name: 'who to sort next',
+            name: 'your every move',
             type: 'WATCHING'
         },
         status: 'online'
