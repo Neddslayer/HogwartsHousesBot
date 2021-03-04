@@ -15,7 +15,6 @@ require('./pointsRetriever.js').then(function(values) {
 	hufflePoints = Number(values.hufflepuff);
 	slytherPoints = Number(values.slytherin);
 	gryffinPoints = Number(values.gryffindor);
-	console.log("Ravenclaw: " + ravenPoints);
 	}, function(err) {
 		console.log(err);
 	});
