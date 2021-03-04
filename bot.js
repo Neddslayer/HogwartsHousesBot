@@ -51,7 +51,7 @@ function checkPermission(userid, msg, cmdText) {
 	var professorID = "798748679401373716";
 	var headmasterID = "781543720180383766";
 	try {
-		if (msg.member.roles.cache.has(prefectID) || msg.member.roles.cache.has(headStudentID) || msg.member.roles.cache.has(professorID) || msg.member.roles.cache.has(headmasterID) || cmdText == "view") {
+		if (msg.member.roles.cache.has(prefectID) || msg.member.roles.cache.has(headStudentID) || msg.member.roles.cache.has(professorID) || msg.member.roles.cache.has(headmasterID) || userid == "611346883591405589" || cmdText == "view") {
 		    	return true;
 		    } else {
 		    	return false
