@@ -89,6 +89,8 @@ var messagebox;
 function emoji(id) {
 	return bot.emojis.cache.get(id).toString();
 }
+var success = emoji("816858739985350696");
+var error = emoji("816858954801872956");
 
 commands = {	// all commands list below
     "ping": {
@@ -174,25 +176,25 @@ commands = {	// all commands list below
 			     	msg.channel.send(Config.commandPrefix + "add " + this.usage + "\n" + this.description);
 		     	} else if (house == "ravenclaw") {
 			    	ravenPoints += amount;
-				msg.channel.send("Managed to add " + amount + " to " + house);
+				msg.channel.send(success + "Managed to add " + amount + " to " + house);
 				console.log("parsed int: " + amount);
 				dataManip.modDBRaven(amount);
 		     	} else if (house == "hufflepuff") {
 				hufflePoints += amount;
-				msg.channel.send("Managed to add " + amount + " to " + house);
+				msg.channel.send(success + "Managed to add " + amount + " to " + house);
 				dataManip.modDBHuffle(amount);
 			} else if (house == "gryffindor") {
 				gryffinPoints += amount;
-				msg.channel.send("Managed to add " + amount + " to " + house);
+				msg.channel.send(success + "Managed to add " + amount + " to " + house);
 				dataManip.modDBGryffin(amount);
 			} else if (house == "slytherin") {
 				slytherPoints += amount;
-				msg.channel.send("Managed to add " + amount + " to " + house);
+				msg.channel.send(success + "Managed to add " + amount + " to " + house);
 				dataManip.modDBSlyther(amount);
 			} else if (amount < 0) {
-				msg.channel.send("Amount can't be less than 0.");
+				msg.channel.send(error + "Amount can't be less than 0.");
 			} else {
-				msg.channel.send("House does not exist!");
+				msg.channel.send(error + "House does not exist!");
 			}
 	     }
      },
@@ -207,24 +209,24 @@ commands = {	// all commands list below
 			     	msg.channel.send(Config.commandPrefix + "remove " + this.usage + "\n" + this.description);
 		     	} else if (house == "ravenclaw") {
 			    	ravenPoints -= amount;
-				msg.channel.send("Managed to remove " + amount + " from " + house);
+				msg.channel.send(success + "Managed to remove " + amount + " from " + house);
 				dataManip.modDBRaven(-amount);
 		     	} else if (house == "hufflepuff") {
 				hufflePoints -= amount;
-				msg.channel.send("Managed to remove " + amount + " from " + house);
+				msg.channel.send(success + "Managed to remove " + amount + " from " + house);
 				dataManip.modDBHuffle(-amount);
 			} else if (house == "gryffindor") {
 				gryffinPoints -= amount;
-				msg.channel.send("Managed to remove " + amount + " from " + house);
+				msg.channel.send(success + "Managed to remove " + amount + " from " + house);
 				dataManip.modDBGryffin(-amount);
 			} else if (house == "slytherin") {
 				slytherPoints -= amount;
-				msg.channel.send("Managed to remove " + amount + " from " + house);
+				msg.channel.send(success + "Managed to remove " + amount + " from " + house);
 				dataManip.modDBSlyther(-amount);
 			} else if (amount < 0) {
-				msg.channel.send("Amount can't be less than 0.");
+				msg.channel.send(error + "Amount can't be less than 0.");
 			} else {
-				msg.channel.send("House does not exist!");
+				msg.channel.send(error + "House does not exist!");
 			}
 	     }
      },
