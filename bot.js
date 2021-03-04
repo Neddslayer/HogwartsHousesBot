@@ -15,10 +15,10 @@ require('./pointsRetriever.js').then(function(values) {
 	hufflePoints = Number(values.hufflepuff);
 	slytherPoints = Number(values.slytherin);
 	gryffinPoints = Number(values.gryffindor);
+	console.log("Ravenclaw: " + ravenPoints);
 	}, function(err) {
 		console.log(err);
 	});
-console.log(ravenPoints + ", " + hufflePoints + ", " + slytherPoints + ", " + gryffinPoints);
 	 
 process.on('unhandledRejection', (reason) => {
   console.error(reason);
