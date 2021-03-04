@@ -89,15 +89,13 @@ var messagebox;
 function emoji(id) {
 	return bot.emojis.cache.get(id).toString();
 }
-var success = emoji("816858739985350696");
-var error = emoji("816858954801872956");
 
 commands = {	// all commands list below
     "ping": {
         description: "Responds pong; useful for checking if bot is alive.",
         process: function(bot, msg, suffix) {
 	    var responseTime = Date.now() - msg.createdTimestamp;
-            msg.channel.send("Respond time: " + responseTime.toString() + "ms");
+            msg.channel.send(emoji("816858739985350696") + "Respond time: " + responseTime.toString() + "ms");
             if(suffix){
                 msg.channel.send( "Note that p!ping takes no arguments!");
             }
@@ -161,7 +159,7 @@ commands = {	// all commands list below
 				});
 				//msg.channel.send(emoji("816657085919002635"));
 			} else {
-				msg.channel.send("House does not exist!");
+				msg.channel.send(emoji("816858954801872956") + "House does not exist!");
 			}
 		}
 	},
@@ -176,25 +174,25 @@ commands = {	// all commands list below
 			     	msg.channel.send(Config.commandPrefix + "add " + this.usage + "\n" + this.description);
 		     	} else if (house == "ravenclaw") {
 			    	ravenPoints += amount;
-				msg.channel.send(success + "Managed to add " + amount + " to " + house);
+				msg.channel.send(emoji("816858739985350696") + "Managed to add " + amount + " to " + house);
 				console.log("parsed int: " + amount);
 				dataManip.modDBRaven(amount);
 		     	} else if (house == "hufflepuff") {
 				hufflePoints += amount;
-				msg.channel.send(success + "Managed to add " + amount + " to " + house);
+				msg.channel.send(emoji("816858739985350696") + "Managed to add " + amount + " to " + house);
 				dataManip.modDBHuffle(amount);
 			} else if (house == "gryffindor") {
 				gryffinPoints += amount;
-				msg.channel.send(success + "Managed to add " + amount + " to " + house);
+				msg.channel.send(emoji("816858739985350696") + "Managed to add " + amount + " to " + house);
 				dataManip.modDBGryffin(amount);
 			} else if (house == "slytherin") {
 				slytherPoints += amount;
-				msg.channel.send(success + "Managed to add " + amount + " to " + house);
+				msg.channel.send(emoji("816858739985350696") + "Managed to add " + amount + " to " + house);
 				dataManip.modDBSlyther(amount);
 			} else if (amount < 0) {
-				msg.channel.send(error + "Amount can't be less than 0.");
+				msg.channel.send(emoji("816858954801872956") + "Amount can't be less than 0.");
 			} else {
-				msg.channel.send(error + "House does not exist!");
+				msg.channel.send(emoji("816858954801872956") + "House does not exist!");
 			}
 	     }
      },
@@ -209,24 +207,24 @@ commands = {	// all commands list below
 			     	msg.channel.send(Config.commandPrefix + "remove " + this.usage + "\n" + this.description);
 		     	} else if (house == "ravenclaw") {
 			    	ravenPoints -= amount;
-				msg.channel.send(success + "Managed to remove " + amount + " from " + house);
+				msg.channel.send(emoji("816858739985350696") + "Managed to remove " + amount + " from " + house);
 				dataManip.modDBRaven(-amount);
 		     	} else if (house == "hufflepuff") {
 				hufflePoints -= amount;
-				msg.channel.send(success + "Managed to remove " + amount + " from " + house);
+				msg.channel.send(emoji("816858739985350696") + "Managed to remove " + amount + " from " + house);
 				dataManip.modDBHuffle(-amount);
 			} else if (house == "gryffindor") {
 				gryffinPoints -= amount;
-				msg.channel.send(success + "Managed to remove " + amount + " from " + house);
+				msg.channel.send(emoji("816858739985350696") + "Managed to remove " + amount + " from " + house);
 				dataManip.modDBGryffin(-amount);
 			} else if (house == "slytherin") {
 				slytherPoints -= amount;
-				msg.channel.send(success + "Managed to remove " + amount + " from " + house);
+				msg.channel.send(emoji("816858739985350696") + "Managed to remove " + amount + " from " + house);
 				dataManip.modDBSlyther(-amount);
 			} else if (amount < 0) {
-				msg.channel.send(error + "Amount can't be less than 0.");
+				msg.channel.send(emoji("816858954801872956") + "Amount can't be less than 0.");
 			} else {
-				msg.channel.send(error + "House does not exist!");
+				msg.channel.send(emoji("816858954801872956") + "House does not exist!");
 			}
 	     }
      },
