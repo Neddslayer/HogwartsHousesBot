@@ -241,6 +241,13 @@ commands = {	// all commands list below
 				description: "5 months ago, there was an idea to make a house points system. \nA month later, the idea was reinstated. I had the idea of making a bot to do it. \nSo, me being the developer I am " + ultraspooky + ", I started to make the bot. Now here we are 4 months later. A full fledged database in place, and a lot of mental breakdowns and reading documentations later, it's finally done. Help other people, and your house will earn points."
 	 	}});
 	    }
+    },
+    "count": {
+	      usage: "<number>",
+	      description: "c o u n t",
+	      process: function(bot, msg, suffix) {
+		      msg.channel.send(suffix + " " + emoji("816657085919002635"));
+	      };
     }
 };
 
