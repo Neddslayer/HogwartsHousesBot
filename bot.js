@@ -90,6 +90,9 @@ var messagebox;
 function emoji(id) {
 	return bot.emojis.cache.get(id).toString();
 }
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
 
 commands = {	// all commands list below
     "ping": {
@@ -254,26 +257,22 @@ commands = {	// all commands list below
   		      			if (!lastMessage.author.bot) {
 						    	switch(getRandomInt(2)) {
 								case 0:
-									msg.channel.send(newNumber + " " + + emoji("816657085919002635"));
+									msg.channel.send(newNumber + " " + emoji("816657085919002635"));
 									break;
 								case 1:
-									msg.channel.send(newNumber + " ");
+									msg.channel.send(newNumber + " " + emoji("816748483939532831"));
 									break;
 								case 2:
-									msg.channel.send(newNumber + " ");
+									msg.channel.send(newNumber + " " + emoji("816748500707573762"));
 									break;
 								
 							}
  		      			}
 		      		}).catch(console.error);
-		      		msg.channel.send(suffix + " " + emoji("816657085919002635"));
 			}
 	      }
     }
 };
-function getRandomInt(max) {
-  return Math.floor(Math.random() * Math.floor(max));
-}
 var hooks = {
 	onMessage: []
 }
