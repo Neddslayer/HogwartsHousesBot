@@ -247,7 +247,7 @@ commands = {	// all commands list below
 	      description: "c o u n t",
 	      process: function(bot, msg, suffix) {
 		      msg.channel.send(suffix + " " + emoji("816657085919002635"));
-	      };
+	      }
     }
 };
 
