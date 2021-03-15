@@ -246,19 +246,34 @@ commands = {	// all commands list below
 	      usage: "<number>",
 	      description: "c o u n t",
 	      process: function(bot, msg, suffix) {
-		      let channel = bot.channels.get("789540476202123274");
-		      channel.messages.fetch({ limit: 1 }).then(messages => {
-  		      let lastMessage = messages.first();
+		      	if (msg.channel.id = "789540476202123274") {
+		      		msg.channel.fetchMessages({ limit: 1 }).then(messages => {
+  		      			let lastMessage = messages.first();
+					let newNumber = Number(lastMessage) + 1;
   
-  		      if (!lastMessage.author.bot) {
-    			// The author of the last message wasn't a bot
- 		      }
-		      }).catch(console.error);
-		      msg.channel.send(suffix + " " + emoji("816657085919002635"));
+  		      			if (!lastMessage.author.bot) {
+						    	switch(getRandomInt(2)) {
+								case 0:
+									msg.channel.send(newNumber + " " + + emoji("816657085919002635"));
+									break;
+								case 1:
+									msg.channel.send(newNumber + " ");
+									break;
+								case 2:
+									msg.channel.send(newNumber + " ");
+									break;
+								
+							}
+ 		      			}
+		      		}).catch(console.error);
+		      		msg.channel.send(suffix + " " + emoji("816657085919002635"));
+			}
 	      }
     }
 };
-
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
 var hooks = {
 	onMessage: []
 }
