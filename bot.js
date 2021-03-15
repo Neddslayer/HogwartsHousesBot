@@ -253,8 +253,6 @@ commands = {	// all commands list below
 		      		msg.channel.messages.fetch({ limit: 2 }).then(messages => {
 					console.log(messages);
   		      			let lastMessage = messages.last();
-					let previousMessage = messages.first().id;
-					msg.channel.messages.fetch(lastMessage).then(msg => msg.delete());
 					let number = lastMessage.content;
 					let newNumber = Number(number) + 1;
   
