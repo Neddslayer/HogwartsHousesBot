@@ -246,6 +246,14 @@ commands = {	// all commands list below
 	      usage: "<number>",
 	      description: "c o u n t",
 	      process: function(bot, msg, suffix) {
+		      let channel = bot.channels.get("789540476202123274");
+		      channel.messages.fetch({ limit: 1 }).then(messages => {
+  		      let lastMessage = messages.first();
+  
+  		      if (!lastMessage.author.bot) {
+    			// The author of the last message wasn't a bot
+ 		      }
+		      }).catch(console.error);
 		      msg.channel.send(suffix + " " + emoji("816657085919002635"));
 	      }
     }
