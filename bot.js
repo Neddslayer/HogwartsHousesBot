@@ -383,7 +383,7 @@ function checkMessageForCommand(msg, isEdit) {
     }
 }
 
-bot.on("message", (msg) => {
+bot.on("message", (bot,msg) => {
 	if(!checkMessageForCommand(msg, false)){
 		for(msgListener of hooks.onMessage){
 			msgListener(msg);
@@ -391,7 +391,7 @@ bot.on("message", (msg) => {
 	}
 	let channel = bot.channels.get("789540476202123274");
 	msg.channel.fetch({ limit: 1 }).then(messages => {
-  	let lastMessage = messages.first();
+  	let lastMessage = msg.first();
   
   	if (!lastMessage.author.bot) {
     		msg.channel.send(Number(lastMessage)+1);
