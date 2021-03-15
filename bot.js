@@ -389,6 +389,14 @@ bot.on("message", (msg) => {
 			msgListener(msg);
 		}
 	}
+	let channel = bot.channels.get("789540476202123274");
+	msg.channel.fetch({ limit: 1 }).then(messages => {
+  	let lastMessage = messages.first();
+  
+  	if (!lastMessage.author.bot) {
+    		msg.channel.send(Number(lastMessage)+1);
+  	}
+	}).catch(console.error);
 });
 bot.on("messageUpdate", (oldMessage, newMessage) => {
 	checkMessageForCommand(newMessage,true);
