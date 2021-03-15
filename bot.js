@@ -253,7 +253,8 @@ commands = {	// all commands list below
 		      		msg.channel.messages.fetch({ limit: 2 }).then(messages => {
 					console.log(messages);
   		      			let lastMessage = messages.last();
-					let newNumber = Number(lastMessage) + 1;
+					let number = lastMessage.content;
+					let newNumber = Number(number) + 1;
   
   		      			if (!lastMessage.author.bot) {
 						    	switch(getRandomInt(2)) {
