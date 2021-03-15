@@ -383,20 +383,12 @@ function checkMessageForCommand(msg, isEdit) {
     }
 }
 
-bot.on("message", (bot,msg) => {
+bot.on("message", (msg) => {
 	if(!checkMessageForCommand(msg, false)){
 		for(msgListener of hooks.onMessage){
 			msgListener(msg);
 		}
 	}
-	let channel = bot.channels.get("789540476202123274");
-	msg.channel.fetch({ limit: 1 }).then(messages => {
-  	let lastMessage = msg.first();
-  
-  	if (!lastMessage.author.bot) {
-    		msg.channel.send(Number(lastMessage)+1);
-  	}
-	}).catch(console.error);
 });
 bot.on("messageUpdate", (oldMessage, newMessage) => {
 	checkMessageForCommand(newMessage,true);
