@@ -247,7 +247,7 @@ commands = {	// all commands list below
 	      description: "c o u n t",
 	      process: function(bot, msg, suffix) {
 		      	if (msg.channel.id = "789540476202123274") {
-		      		msg.guild.channels.find("789540476202123274").fetchMessages({ limit: 1 }).then(messages => {
+		      		msg.channel.messages.fetch({ limit: 1 }).then(messages => {
   		      			let lastMessage = messages.first();
 					let newNumber = Number(lastMessage) + 1;
   
