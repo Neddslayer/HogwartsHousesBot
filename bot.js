@@ -278,7 +278,7 @@ commands = {	// all commands list below
 		 usage: "<user id>",
 		 description: ":)",
 		 process: function(bot, msg, suffix) {
-			 var uid = suffix.split(" ");
+			 var uid = suffix.split(" ")[0];
 			 console.log(uid);
 			 try {
 				 // user id is 611346883591405589
