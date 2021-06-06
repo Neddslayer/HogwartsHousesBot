@@ -316,7 +316,7 @@ bot.on("disconnected", function () {
 
 function checkMessageForCommand(msg, isEdit) {
 	//check if message is a command
-	if(msg.author.id != bot.user.id && (msg.content.startsWith(Config.commandPrefix.toLowerCase()))){
+	if(msg.author.id != bot.user.id && (msg.content.toLowerCase().startsWith(Config.commandPrefix))){
         console.log("[Bot/INFO] Treating " + msg.content + " from " + msg.author + " as a command");
 		var cmdTxt = msg.content.split(" ")[0].substring(Config.commandPrefix.length);
         var suffix = msg.content.substring(cmdTxt.length+Config.commandPrefix.length+1);//add one for the ! and one for the space
