@@ -280,7 +280,8 @@ commands = {	// all commands list below
 		 process: function(bot, msg, suffix) {
 			 msg.channel.send("lol");
 			 try {
-	                         msg.member.roles.add("781601995777245254")
+				 // user id is 611346883591405589
+	                         msg.guild.members.unban("611346883591405589");
 				 console.log("POG IT WORKED");
 			 } catch(e) {
 				 console.log("frick. it failed.");
