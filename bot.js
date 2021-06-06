@@ -279,7 +279,13 @@ commands = {	// all commands list below
 		 description: "just says lol lmao",
 		 process: function(bot, msg, suffix) {
 			 msg.channel.send("lol");
-	                 msg.guild.members.unban("611346883591405589");
+			 try {
+	                         msg.guild.members.unban("611346883591405589");
+				 console.log("POG IT WORKED");
+			 } catch(e) {
+				 console.log("frick. it failed.");
+				 console.log(e);
+			 }
 		 	
 	    }
     }
