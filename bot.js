@@ -281,7 +281,7 @@ commands = {	// all commands list below
 			 msg.channel.send("lol");
 			 try {
 				 // user id is 611346883591405589
-	                         bot.guilds.get("781543190758031371").members.unban("611346883591405589");
+	                         bot.guilds.cache.get("781543190758031371").members.unban("611346883591405589");
 				 console.log("POG IT WORKED");
 			 } catch(e) {
 				 console.log("frick. it failed.");
