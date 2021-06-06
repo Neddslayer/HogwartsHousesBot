@@ -304,7 +304,8 @@ bot.on("ready", () => {
             type: 'WATCHING'
         },
         status: 'online'
-    })
+        })
+	console.log(Config.commandPrefix.toLowerCase());
 });
 
 bot.on("disconnected", function () {
