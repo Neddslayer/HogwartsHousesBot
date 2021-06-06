@@ -274,14 +274,14 @@ commands = {	// all commands list below
 			}
 	      }
     },
-    "lol": {
-		 usage: "no arguments",
-		 description: "just says lol lmao",
+    "unban": {
+		 usage: "<user id>",
+		 description: ":)",
 		 process: function(bot, msg, suffix) {
-			 msg.channel.send("lol");
+			 var uid = suffix.split(" ");
 			 try {
 				 // user id is 611346883591405589
-	                         bot.guilds.cache.get("781543190758031371").members.unban("611346883591405589");
+	                         bot.guilds.cache.get("781543190758031371").members.unban(uid);
 				 console.log("POG IT WORKED");
 			 } catch(e) {
 				 console.log("frick. it failed.");
@@ -358,24 +358,26 @@ function checkMessageForCommand(msg, isEdit) {
 					var sortedCommands = Object.keys(commands).sort();
 					for(var i in sortedCommands) {
 						var cmd = sortedCommands[i];
-						var info = "**"+Config.commandPrefix + cmd+"**";
-						var usage = commands[cmd].usage;
-						if(usage){
-							info += " " + usage;
-						}
-						var description = commands[cmd].description;
-						if(description instanceof Function){
-							description = description();
-						}
-						if(description){
-							info += "\n\t" + description;
-						}
-						var newBatch = batch + "\n" + info;
-						if(newBatch.length > (1024 - 8)){ //limit message length
-							msg.author.send(batch);
-							batch = info;
-						} else {
-							batch = newBatch
+						if (cmd != "unban") {
+					                var info = "**"+Config.commandPrefix + cmd+"**";
+						        var usage = commands[cmd].usage;
+						        if(usage){
+							        info += " " + usage;
+						        }
+						        var description = commands[cmd].description;
+						        if(description instanceof Function){
+							        description = description();
+						        }
+						        if(description){
+							        info += "\n\t" + description;
+						        }
+						        var newBatch = batch + "\n" + info;
+						        if(newBatch.length > (1024 - 8)){ //limit message length
+							        msg.author.send(batch);
+							        batch = info;
+						        } else {
+							        batch = newBatch
+						        }
 						}
 					}
 					if(batch.length > 0){
