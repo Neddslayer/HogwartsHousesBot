@@ -99,7 +99,7 @@ commands = {	// all commands list below
         description: "Responds pong; useful for checking if bot is alive.",
         process: function(bot, msg, suffix) {
 	    var responseTime = Date.now() - msg.createdTimestamp;
-            msg.channel.send("Respond time: " + responseTime.toString() + "ms");
+            msg.channel.send("Hippity hoppity your IP is now my property in " + responseTime.toString() + "ms");
             if(suffix){
                 msg.channel.send( "Note that p!ping takes no arguments!");
             }
