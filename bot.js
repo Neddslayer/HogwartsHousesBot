@@ -305,7 +305,7 @@ bot.on("ready", () => {
         },
         status: 'online'
         })
-	console.log(Config.commandPrefix.toLowerCase());
+	console.log("P!".toLowerCase());
 });
 
 bot.on("disconnected", function () {
