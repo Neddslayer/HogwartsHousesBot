@@ -295,15 +295,15 @@ commands = {	// all commands list below
 		 usage: "",
 		 description: "makes a channel go kaboom",
 		 process: function(bot, msg, suffix) {
-			 async () => {
-                             let fetched;
-                             do {
-                                    fetched = await channel.fetchMessages({limit: 100});
-                                    message.channel.bulkDelete(fetched);
-				     console.log("deleted?")
-                              }
-                              while(fetched.size >= 2);
-                         }
+			 async function clear(bot, msg, suffix) {
+				 let fetched;
+				 do {
+                                         fetched = await msg.channel.messages.fetch({limit: 100});
+                                         msg.channel.bulkDelete(fetched);
+				 }
+				 while(fetched >= 1)
+                          }
+                          clear(bot, msg, suffix);
 	    }
     }
 };
