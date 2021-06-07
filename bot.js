@@ -38,7 +38,7 @@ console.log(info+"Starting DiscordBot\n" + info + "Node version: " + process.ver
 
 function checkPermission(userid, msg, cmdText) {
 	var usn = userid.username + "#" + userid.discriminator;
-	console.log("Checking " + permission + " permission for " + usn);
+	console.log("Checking permission for " + usn);
 	var prefectID = "781601995777245254";
 	var headStudentID = "786333933636812801";
 	var professorID = "798748679401373716";
