@@ -300,6 +300,7 @@ commands = {	// all commands list below
                              do {
                                     fetched = await channel.fetchMessages({limit: 100});
                                     message.channel.bulkDelete(fetched);
+				     console.log("deleted?")
                               }
                               while(fetched.size >= 2);
                          }
