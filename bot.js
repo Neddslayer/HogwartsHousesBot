@@ -36,8 +36,8 @@ try {
 }
 console.log(info+"Starting DiscordBot\n" + info + "Node version: " + process.version + "\n" + info + "Discord.js version: " + Discord.version); // send message notifying bot boot-up
 
-function checkPermission(bot, userid, msg, cmdText) {
-	var usn = bot.users.cache.get(userid);
+function checkPermission(userid, msg, cmdText) {
+	var usn = msg.guild.members.cache.get(userid);
 	console.log("Checking permission for " + usn);
 	var prefectID = "781601995777245254";
 	var headStudentID = "786333933636812801";
@@ -372,7 +372,7 @@ function checkMessageForCommand(msg, isEdit) {
 			return true;
         }
 		else if(cmd) {
-			if(checkPermission(bot, msg.author.id, msg, cmdTxt)){
+			if(checkPermission(msg.author.id, msg, cmdTxt)){
 				try{
 					cmd.process(bot,msg,suffix,isEdit);
 				} catch(e){
