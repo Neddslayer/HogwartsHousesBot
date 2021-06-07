@@ -37,7 +37,7 @@ try {
 console.log(info+"Starting DiscordBot\n" + info + "Node version: " + process.version + "\n" + info + "Discord.js version: " + Discord.version); // send message notifying bot boot-up
 
 function checkPermission(userid, msg, cmdText) {
-	var usn = userid.username + "#" + userid.discriminator;
+	var usn = bot.users.cache.get(userid);
 	console.log("Checking permission for " + usn);
 	var prefectID = "781601995777245254";
 	var headStudentID = "786333933636812801";
