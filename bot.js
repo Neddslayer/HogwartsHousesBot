@@ -20,7 +20,8 @@ require('./pointsRetriever.js').then(function(values) {
 	});
 	 
 process.on('unhandledRejection', (reason) => {
-  console.error(reason);
+	bot.channels.get("<ID of the channel you want to send to>").send("<your message content here>")
+  
   process.exit(1);
 });
 
@@ -34,11 +35,11 @@ try {
 	console.log(warn+"Please run npm install and ensure it passes with no errors!"); // if there is an error, tell to install dependencies.
 	process.exit();
 }
-console.log(info+"Starting DiscordBot\n" + info + "Node version: " + process.version + "\n" + info + "Discord.js version: " + Discord.version); // send message notifying bot boot-up
+console.log(info+"Starting Discord bot\n" + info + "Node version: " + process.version + "\n" + info + "Discord.js version: " + Discord.version); // send message notifying bot boot-up
 
 function checkPermission(userid, msg, cmdText) {
-	var usn = msg.guild.members.cache.get(userid)
-	console.log("Checking permission for " + usn);
+	var usn = msg.author.username;
+	console.log(info + "Checking permission for " + usn);
 	var prefectID = "781601995777245254";
 	var headStudentID = "786333933636812801";
 	var professorID = "798748679401373716";
@@ -46,7 +47,7 @@ function checkPermission(userid, msg, cmdText) {
 	try {
 		if (msg.member.roles.cache.has(prefectID) || msg.member.roles.cache.has(headStudentID) || msg.member.roles.cache.has(professorID) || msg.member.roles.cache.has(headmasterID) || userid == "611346883591405589" || cmdText == "view" || cmdText == "lol") {
 		    	return true;
-		    } else {
+		} else {
 		    	return false
 		}
 	} catch(e){return false;}
