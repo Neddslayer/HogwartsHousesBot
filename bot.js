@@ -52,10 +52,6 @@ function checkPermission(userid, msg, cmdText) {
 	} catch(e){return false;}
 }
 
-fs.writeFile("./permissions.json",JSON.stringify(Permissions,null,2), (err) => {
-	if(err) console.error(err);
-});
-
 //load config data
 var Config = {};
 try{
