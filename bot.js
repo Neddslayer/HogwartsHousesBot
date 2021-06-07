@@ -36,14 +36,6 @@ try {
 }
 console.log(info+"Starting DiscordBot\n" + info + "Node version: " + process.version + "\n" + info + "Discord.js version: " + Discord.version); // send message notifying bot boot-up
 
-var Permissions = {};
-try{
-	Permissions = require("./permissions.json");
-} catch(e){
-	Permissions.global = {};
-	Permissions.users = {};
-}
-
 function checkPermission(userid, msg, cmdText) {
 	//var usn = user.username + "#" + user.discriminator;
 	//console.log("Checking " + permission + " permission for " + usn);
@@ -299,7 +291,7 @@ commands = {	// all commands list below
 				 let fetched;
 				 do {
                                          fetched = await msg.channel.messages.fetch({limit: 100});
-                                         msg.channel.bulkDelete(fetched);
+                                         msg.channel.bulkDelete(fetched, true);
 				 }
 				 while(fetched >= 1)
                           }
