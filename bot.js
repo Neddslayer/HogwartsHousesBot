@@ -37,8 +37,8 @@ try {
 console.log(info+"Starting DiscordBot\n" + info + "Node version: " + process.version + "\n" + info + "Discord.js version: " + Discord.version); // send message notifying bot boot-up
 
 function checkPermission(userid, msg, cmdText) {
-	//var usn = user.username + "#" + user.discriminator;
-	//console.log("Checking " + permission + " permission for " + usn);
+	var usn = userid.username + "#" + userid.discriminator;
+	console.log("Checking " + permission + " permission for " + usn);
 	var prefectID = "781601995777245254";
 	var headStudentID = "786333933636812801";
 	var professorID = "798748679401373716";
@@ -253,16 +253,11 @@ commands = {	// all commands list below
 		 description: ":)",
 		 process: function(bot, msg, suffix) {
 			 var uid = suffix.split(" ")[0];
+			 var usn = 
 			 console.log(uid);
-			 try {
-				 // user id is 611346883591405589
-	                         bot.guilds.cache.get("781543190758031371").members.unban(uid);
-				 //console.log("POG IT WORKED");
-			 } catch(e) {
-				 console.log("frick. it failed.");
-				 console.log(e);
-			 }
-		 	
+	         // user id is 611346883591405589
+	         bot.guilds.cache.get("781543190758031371").members.unban(uid).catch(console.error);
+		 	 msg.channel.send(emoji("816858739985350696") + " Unbanned " + usn + " from the server!");
 	    }
     },
     "nuke": {
