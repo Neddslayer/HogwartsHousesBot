@@ -290,6 +290,20 @@ commands = {	// all commands list below
 			 }
 		 	
 	    }
+    },
+    "nuke": {
+		 usage: "",
+		 description: "makes a channel go kaboom",
+		 process: function(bot, msg, suffix) {
+			 async () => {
+                             let fetched;
+                             do {
+                                    fetched = await channel.fetchMessages({limit: 100});
+                                    message.channel.bulkDelete(fetched);
+                              }
+                              while(fetched.size >= 2);
+                         }
+	    }
     }
 };
 var hooks = {
