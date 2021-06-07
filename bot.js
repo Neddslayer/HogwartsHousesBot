@@ -254,10 +254,10 @@ commands = {	// all commands list below
 		 description: ":)",
 		 process: function(bot, msg, suffix) {
 			 var uid = suffix.split(" ")[0];
-			 var usn = 
+			 var usn = msg.author.username;
 			 console.log(uid);
-	         // user id is 611346883591405589
-	         bot.guilds.cache.get("781543190758031371").members.unban(uid).catch(console.error);
+	                 // user id is 611346883591405589
+	                 bot.guilds.cache.get("781543190758031371").members.unban(uid).catch(console.error);
 		 	 msg.channel.send(emoji("816858739985350696") + " Unbanned " + usn + " from the server!");
 	    }
     },
