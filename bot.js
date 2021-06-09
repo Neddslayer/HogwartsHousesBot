@@ -46,9 +46,9 @@ function checkPermission(msg, cmdText, cmd) {
 	var owner = {id: "798748679401373716", permLv: 3};
 	if (msg.member.roles.cache.has(mod.id)) {
 		userPerms = mod.permLv;
-	} else if (msg.memeber.roles.cache.has(admin.id) {
+	} else if (msg.memeber.roles.cache.has(admin.id)) {
 	        userPerms = admin.permLv;
-	} else if (msg.member.roles.cache.has(owner.id) {
+	} else if (msg.member.roles.cache.has(owner.id)) {
 		userPerms = owner.permLv;
 	} else {
 		userPerms = 0;
