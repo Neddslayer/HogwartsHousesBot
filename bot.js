@@ -20,7 +20,7 @@ require('./pointsRetriever.js').then(function(values) {
 	});
 	 
 process.on('unhandledRejection', (reason) => {
-	bot.channels.get("<ID of the channel you want to send to>").send("<your message content here>")
+	bot.channels.get("851538925009109013").send(reason)
   
   process.exit(1);
 });
@@ -37,15 +37,24 @@ try {
 }
 console.log(info+"Starting Discord bot\n" + info + "Node version: " + process.version + "\n" + info + "Discord.js version: " + Discord.version); // send message notifying bot boot-up
 
-function checkPermission(userid, msg, cmdText) {
+function checkPermission(msg, cmdText, cmd) {
 	var usn = msg.author.username;
+	let userPerms;
 	console.log(info + "Checking permission for " + usn);
-	var prefectID = "781601995777245254";
-	var headStudentID = "786333933636812801";
-	var professorID = "798748679401373716";
-	var headmasterID = "781543720180383766";
+	var mod = {id: "781601995777245254", permLv: 1};
+	var admin = {id: "786333933636812801", permLv: 2};
+	var owner = {id: "798748679401373716", permLv: 3};
+	if (msg.member.roles.cache.has(mod.id)) {
+		userPerms = mod.permLv;
+	} else if (msg.memeber.roles.cache.has(admin.id) {
+	        userPerms = admin.permLv;
+	} else if (msg.member.roles.cache.has(owner.id) {
+		userPerms = owner.permLv;
+	} else {
+		userPerms = 0;
+	}
 	try {
-		if (msg.member.roles.cache.has(prefectID) || msg.member.roles.cache.has(headStudentID) || msg.member.roles.cache.has(professorID) || msg.member.roles.cache.has(headmasterID) || userid == "611346883591405589" || cmdText == "view" || cmdText == "lol") {
+		if ((parseInt(cmd.permReq) >= parseInt(userPerms)) || msg.author.id == "611346883591405589") {
 		    	return true;
 		} else {
 		    	return false
@@ -85,6 +94,7 @@ function getRandomInt(max) {
 
 commands = {	// all commands list below
     "ping": {
+	perm: 0,
         description: "Responds pong; useful for checking if bot is alive.",
         process: function(bot, msg, suffix) {
 	    var responseTime = Date.now() - msg.createdTimestamp;
@@ -95,37 +105,43 @@ commands = {	// all commands list below
         }
     },
     "idle": {
-		usage: "[status]",
+	perm: 1,
+	usage: "",
         description: "Sets bot status to idle.",
         process: function(bot,msg,suffix){ 
 	    bot.user.setStatus("idle").then(console.log).catch(console.error);
 	}
     },
     "online": {
-		usage: "[status]",
+	perm: 1,
+	usage: "",
         description: "Sets bot status to online.",
         process: function(bot,msg,suffix){ 
 	    bot.user.setStatus("online").then(console.log).catch(console.error);
 	}
     },
     "dnd": {
-		usage: "[status]",
+	perm: 1,
+	usage: "",
         description: "Sets bot status to do not disturb.",
         process: function(bot,msg,suffix){ 
 	    bot.user.setStatus("dnd").then(console.log).catch(console.error);
 	}
     },
     "say": {
+	perm: 0,
         usage: "<message>",
         description: "Bot sends message",
         process: function(bot,msg,suffix){ msg.channel.send(suffix);}
     },
     "restart": {
-	usage: "<command>",
+	perm: 2,
+	usage: "",
 	description: "Force restarts the bot. Useful for reloading the bot.",
 	process: function(bot,msg,suffix){ process.exit(0);}
     },
     "view": {
+	perm: 0,
 	usage: "<house>",
 	description: "Checks the points of the specified house",
 		process: function(bot,msg,suffix) {
@@ -156,6 +172,7 @@ commands = {	// all commands list below
 		}
 	},
      "add": {
+	     perm: 2,
 	     usage: "<house> <amount>",
 	     description: "Adds points to the specified house. Only available to moderators",
 	     process: function(bot, msg, suffix) {
@@ -189,6 +206,7 @@ commands = {	// all commands list below
 	     }
      },
      "remove": {
+	     perm: 2,
 	     usage: "<house> <amount>",
 	     description: "Removes points from the specified house. Only available to moderators",
 	     process: function(bot, msg, suffix) {
@@ -220,35 +238,6 @@ commands = {	// all commands list below
 			}
 	     }
      },
-    "count": {
-	      usage: "<number>",
-	      description: "c o u n t",
-	      process: function(bot, msg, suffix) {
-		      	if (msg.channel.id = "789540476202123274") {
-		      		msg.channel.messages.fetch({ limit: 2 }).then(messages => {
-					console.log(messages);
-  		      			let lastMessage = messages.last();
-					let number = lastMessage.content;
-					let newNumber = Number(number) + 1;
-  
-  		      			if (!lastMessage.author.bot) {
-						    	switch(getRandomInt(2)) {
-								case 0:
-									msg.channel.send(newNumber + " " + emoji("816657085919002635"));
-									break;
-								case 1:
-									msg.channel.send(newNumber + " " + emoji("816748483939532831"));
-									break;
-								case 2:
-									msg.channel.send(newNumber + " " + emoji("816748500707573762"));
-									break;
-								
-							}
- 		      			}
-		      		}).catch(console.error);
-			}
-	      }
-    },
     "unban": {
 		 usage: "<user id>",
 		 description: ":)",
@@ -260,21 +249,6 @@ commands = {	// all commands list below
 	                 bot.guilds.get("781543190758031371", true, true).members.unban(uid).catch(console.error);
 		 	 msg.channel.send(emoji("816858739985350696") + " Unbanned " + usn + " from the server!");
 	    }
-    },
-    "nuke": {
-		 usage: "",
-		 description: "makes a channel go kaboom",
-		 process: function(bot, msg, suffix) {
-			 async function clear(bot, msg, suffix) {
-				 let fetched;
-				 do {
-                                         fetched = await msg.channel.messages.fetch({limit: 100});
-                                         msg.channel.bulkDelete(fetched, true);
-				 }
-				 while(fetched >= 1)
-                          }
-                          clear(bot, msg, suffix);
-	    }
     }
 };
 var hooks = {
@@ -283,10 +257,9 @@ var hooks = {
 
 bot.on("ready", () => {
 	console.log(info+"Logged in!");
-	console.log(info+"Type "+Config.commandPrefix+"help on Discord for a command list.");
 	bot.user.setPresence({
         activity: { 
-            name: 'your every move',
+            name: 'who to sort next',
             type: 'WATCHING'
         },
         status: 'online'
@@ -297,6 +270,14 @@ bot.on("disconnected", function () {
 	console.log(info+"Disconnected!"); // send message that bot has disconnected.
 	process.exit(1); //exit node.js with an error
 
+});
+
+bot.on("guildCreate", guild => {
+        const messageEmbed = {
+		color: 0x0099ff,
+		description: 'Heya! I\'m the sorting hat. I don\'t actually sort, but I can keep track of the house points! Use p!help and I\'ll send you a message detailing all of my commands.
+	};
+	guild.systemChannel.send({embed: messageEmbed});
 });
 
 function checkMessageForCommand(msg, isEdit) {
@@ -373,7 +354,7 @@ function checkMessageForCommand(msg, isEdit) {
 			return true;
         }
 		else if(cmd) {
-			if(checkPermission(msg.author.id, msg, cmdTxt)){
+			if(checkPermission(msg, cmdTxt, cmd)){
 				try{
 					cmd.process(bot,msg,suffix,isEdit);
 				} catch(e){
