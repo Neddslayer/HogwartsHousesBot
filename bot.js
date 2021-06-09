@@ -41,9 +41,9 @@ function checkPermission(msg, cmdText, cmd) {
 	var usn = msg.author.username;
 	let userPerms;
 	console.log(info + "Checking permission for " + usn);
-	var mod = {id: "781601995777245254", permLv: 1};
-	var admin = {id: "786333933636812801", permLv: 2};
-	var owner = {id: "838472270761820210", permLv: 3}; //updated for new server
+	var mod = {id: "838475281106599946", permLv: 1};
+	var admin = {id: "838472731648983081", permLv: 2};
+	var owner = {id: "838472270761820210", permLv: 3};
 	if (msg.member.roles.cache.has(mod.id)) {
 		userPerms = mod.permLv;
 	} else if (msg.memeber.roles.cache.has(admin.id)) {
