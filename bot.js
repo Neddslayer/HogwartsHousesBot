@@ -275,7 +275,7 @@ bot.on("disconnected", function () {
 bot.on("guildCreate", guild => {
         const messageEmbed = {
 		color: 0x0099ff,
-		description: 'Heya! I\'m the sorting hat. I don\'t actually sort, but I can keep track of the house points! Use p!help and I\'ll send you a message detailing all of my commands.
+		description: 'Heya! I\'m the sorting hat. I don\'t actually sort, but I can keep track of the house points! Use p!help and I\'ll send you a message detailing all of my commands.'
 	};
 	guild.systemChannel.send({embed: messageEmbed});
 });
