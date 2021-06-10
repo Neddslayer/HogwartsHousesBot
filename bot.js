@@ -55,8 +55,10 @@ function checkPermission(msg, cmdText, cmd) {
 	}
 	try {
 		if ((parseInt(cmd.perm) >= parseInt(userPerms)) || msg.author.id == "611346883591405589") {
+			console.log(info + usn + " has the required permissions, moving forward.");
 		    	return true;
 		} else {
+			console.log(info + usn + " does not have the required permissions!");
 		    	return false
 		}
 	} catch(e){return false;}
