@@ -38,7 +38,7 @@ try {
 console.log(info+"Starting Discord bot\n" + info + "Node version: " + process.version + "\n" + info + "Discord.js version: " + Discord.version); // send message notifying bot boot-up
 
 function checkPermission(msg, cmdText, cmd) {
-	var usn = msg.author.username;
+	var usn = msg.author.tag;
 	let userPerms;
 	console.log(info + "Checking permission for " + usn);
 	var mod = {id: "838475281106599946", permLv: 1};
