@@ -21,8 +21,7 @@ require('./pointsRetriever.js').then(function(values) {
 	 
 process.on('unhandledRejection', (reason) => {
 	bot.channels.get("851538925009109013").send(reason)
-  
-  process.exit(1);
+ 	process.exit(1);
 });
 
 try {
