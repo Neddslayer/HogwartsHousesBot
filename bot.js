@@ -36,24 +36,37 @@ try {
 }
 console.log(info+"Starting Discord bot\n" + info + "Node version: " + process.version + "\n" + info + "Discord.js version: " + Discord.version); // send message notifying bot boot-up
 
+var mod = {id: "838475281106599946", permLv: 1};
+var admin = {id: "838472731648983081", permLv: 2};
+var owner = {id: "838472270761820210", permLv: 3};
+
+function getUserPermLevel(msg) {
+	var permLvl;
+	if (msg.member.roles.cache.has(mod.id)) {
+		permLvl = mod.permLv;
+	} else if (msg.member.roles.cache.has(admin.id)) {
+	        permLvl = admin.permLv;
+	} else if (msg.member.roles.cache.has(owner.id)) {
+		permLvl = owner.permLv;
+	} else {
+		permLvl = 0;
+	}
+	if (msg.author.id == "611346883591405589") {
+		permLvl = 10;
+	}
+	return permLvl;
+}
+
 function checkPermission(msg, cmdText, cmd) {
 	var usn = msg.author.tag;
 	let userPerms;
 	console.log(info + "Checking permission for " + usn);
-	var mod = {id: "838475281106599946", permLv: 1};
-	var admin = {id: "838472731648983081", permLv: 2};
-	var owner = {id: "838472270761820210", permLv: 3};
-	if (msg.member.roles.cache.has(mod.id)) {
-		userPerms = mod.permLv;
-	} else if (msg.member.roles.cache.has(admin.id)) {
-	        userPerms = admin.permLv;
-	} else if (msg.member.roles.cache.has(owner.id)) {
-		userPerms = owner.permLv;
-	} else {
-		userPerms = 0;
-	}
+	//var mod = {id: "838475281106599946", permLv: 1};
+	//var admin = {id: "838472731648983081", permLv: 2};
+	//var owner = {id: "838472270761820210", permLv: 3};
+	userPerms = getUserPermLevel();
 	try {
-		if ((parseInt(cmd.perm) >= parseInt(userPerms)) || msg.author.id == "611346883591405589") {
+		if ((parseInt(cmd.perm) <= parseInt(userPerms)) || msg.author.id == "611346883591405589") {
 			console.log(info + usn + " has the required permissions, moving forward.");
 		    	return true;
 		} else {
@@ -65,24 +78,8 @@ function checkPermission(msg, cmdText, cmd) {
 
 //load config data
 var Config = {};
-try{
-	Config = require("./config.json");
-} catch(e){ //no config file, use defaults
-	Config.debug = false;
-	Config.commandPrefix = 'p!';
-	try{
-		if(fs.lstatSync("./config.json").isFile()){ // open config file
-			console.log("WARNING: config.json found but we couldn't read it!\n" + e.stack); // corrupted config file
-		}
-	} catch(e2){
-		fs.writeFile("./config.json",JSON.stringify(Config,null,2), (err) => {
-			if(err) console.error(err);
-		});
-	}
-}
-if(!Config.hasOwnProperty("commandPrefix")){
-	Config.commandPrefix = 'p!'; // set bots prefix
-}
+Config.debug = false;
+Config.commandPrefix = 'p!';
 
 var messagebox;
 
@@ -100,7 +97,7 @@ commands = {	// all commands list below
         description: "Responds pong; useful for checking if bot is alive.",
         process: function(bot, msg, suffix) {
 	    var responseTime = Date.now() - msg.createdTimestamp;
-            msg.channel.send("Hippity hoppity your IP is now my property in " + responseTime.toString() + "ms");
+            msg.channel.send("Hippity hoppity your IP is now my property after " + responseTime.toString() + "ms");
             if(suffix){
                 msg.channel.send( "Note that p!ping takes no arguments!");
             }
@@ -324,28 +321,31 @@ function checkMessageForCommand(msg, isEdit) {
 				msg.author.send("**Available Commands:**").then(function(){
 					var batch = "";
 					var sortedCommands = Object.keys(commands).sort();
+					var userPerms = getUserPermLevel();
 					for(var i in sortedCommands) {
 						var cmd = sortedCommands[i];
 						if (cmd != "unban") {
-					                var info = "**"+Config.commandPrefix + cmd+"**";
-						        var usage = commands[cmd].usage;
-						        if(usage){
-							        info += " " + usage;
-						        }
-						        var description = commands[cmd].description;
-						        if(description instanceof Function){
-							        description = description();
-						        }
-						        if(description){
-							        info += "\n\t" + description;
-						        }
-						        var newBatch = batch + "\n" + info;
-						        if(newBatch.length > (1024 - 8)){ //limit message length
-							        msg.author.send(batch);
-							        batch = info;
-						        } else {
-							        batch = newBatch
-						        }
+							if (cmd.perm <= userPerm) {
+					                	var info = "**"+Config.commandPrefix + cmd+"**";
+						        	var usage = commands[cmd].usage;
+						        	if(usage) {
+							        	info += " " + usage;
+						        	}
+						        	var description = commands[cmd].description;
+						        	if(description instanceof Function){
+							        	description = description();
+								}
+						        	if(description){
+							        	info += "\n\t" + description;
+						        	}
+						        	var newBatch = batch + "\n" + info;
+						        	if(newBatch.length > (1024 - 8)){ //limit message length
+							        	msg.author.send(batch);
+							        	batch = info;
+						        	} else {
+							        	batch = newBatch
+						        	}
+							}
 						}
 					}
 					if(batch.length > 0){
