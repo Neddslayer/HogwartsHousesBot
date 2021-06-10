@@ -46,7 +46,7 @@ function checkPermission(msg, cmdText, cmd) {
 	var owner = {id: "838472270761820210", permLv: 3};
 	if (msg.member.roles.cache.has(mod.id)) {
 		userPerms = mod.permLv;
-	} else if (msg.memeber.roles.cache.has(admin.id)) {
+	} else if (msg.member.roles.cache.has(admin.id)) {
 	        userPerms = admin.permLv;
 	} else if (msg.member.roles.cache.has(owner.id)) {
 		userPerms = owner.permLv;
@@ -54,7 +54,7 @@ function checkPermission(msg, cmdText, cmd) {
 		userPerms = 0;
 	}
 	try {
-		if ((parseInt(cmd.permReq) >= parseInt(userPerms)) || msg.author.id == "611346883591405589") {
+		if ((parseInt(cmd.perm) >= parseInt(userPerms)) || msg.author.id == "611346883591405589") {
 		    	return true;
 		} else {
 		    	return false
@@ -95,6 +95,7 @@ function getRandomInt(max) {
 commands = {	// all commands list below
     "ping": {
 	perm: 0,
+	usage: "",
         description: "Responds pong; useful for checking if bot is alive.",
         process: function(bot, msg, suffix) {
 	    var responseTime = Date.now() - msg.createdTimestamp;
@@ -129,7 +130,7 @@ commands = {	// all commands list below
 	}
     },
     "say": {
-	perm: 0,
+	perm: 1,
         usage: "<message>",
         description: "Bot sends message",
         process: function(bot,msg,suffix){ msg.channel.send(suffix);}
