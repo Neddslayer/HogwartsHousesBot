@@ -65,7 +65,7 @@ function checkPermission(msg, cmdText, cmd) {
 	//var mod = {id: "838475281106599946", permLv: 1};
 	//var admin = {id: "838472731648983081", permLv: 2};
 	//var owner = {id: "838472270761820210", permLv: 3};
-	userPerms = getUserPermLevel();
+	userPerms = getUserPermLevel(msg);
 	try {
 		if ((parseInt(cmd.perm) <= parseInt(userPerms)) || msg.author.id == "611346883591405589") {
 			console.log(info + usn + " has the required permissions, moving forward.");
