@@ -356,6 +356,7 @@ function checkMessageForCommand(msg, isEdit) {
 			return true;
         }
 		else if(cmd) {
+			console.log("[DEBUG] msg is " + msg)
 			if(checkPermission(msg, cmdTxt, cmd)){
 				try{
 					cmd.process(bot,msg,suffix,isEdit);
