@@ -42,6 +42,7 @@ var owner = {id: "838472270761820210", permLv: 3};
 
 function getUserPermLevel(msg) {
 	var permLvl;
+	console.log("[DEBUG] user perm msg is " + msg);
 	if (msg.member.roles.cache.has(mod.id)) {
 		permLvl = mod.permLv;
 	} else if (msg.member.roles.cache.has(admin.id)) {
