@@ -22,24 +22,24 @@ function addPoints(house, amount) {
 		});
 		var newAmount;
 		try {
-		switch(house) {
-			case 'ravenclaw':
-			    newAmount = parseInt(houses.ravenclaw) + parseInt(amount);
-			    break;
-			case 'hufflepuff':
-			    newAmount = parseInt(houses.hufflepuff) + parseInt(amount);
-			    break;
-			case 'slytherin':
-			    newAmount = parseInt(houses.slytherin) + parseInt(amount);
-			    break;
-			case 'gryffindor':
-			    newAmount = parseInt(houses.gryffindor) + parseInt(amount);
-			    break;
-			default:
-			    //no way to pass messages to the bot in this script, so sets it to default
-			    newAmount = parseInt(houses.ravenclaw) + parseInt(amount);
-			    break;
-		}
+			switch(house) {
+				case 'ravenclaw':
+				    newAmount = parseInt(houseArray.ravenclaw) + parseInt(amount);
+				    break;
+				case 'hufflepuff':
+				    newAmount = parseInt(houseArray.hufflepuff) + parseInt(amount);
+				    break;
+				case 'slytherin':
+				    newAmount = parseInt(houseArray.slytherin) + parseInt(amount);
+				    break;
+				case 'gryffindor':
+				    newAmount = parseInt(houseArray.gryffindor) + parseInt(amount);
+				    break;
+				default:
+				    //no way to pass messages to the bot in this script, so sets it to default
+				    newAmount = parseInt(houseArray.ravenclaw) + parseInt(amount);
+				    break;
+			}
 		} catch(e) {
 			console.log('sus went wrong shit')
 		}
