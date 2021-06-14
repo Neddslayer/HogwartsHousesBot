@@ -23,6 +23,7 @@ function modRaven(amount) {
         	}
         // Close connection when done
         client.close();
+	console.log("[Server/INFO] Disconnected from server.");
      });
 }
 function modHuffle(amount) {
