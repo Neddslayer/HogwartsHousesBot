@@ -35,7 +35,7 @@ function addPoints(house, amount) {
 			case 'gryffindor':
 			    newAmount = parseInt(houses[3]) + parseInt(amount);
 			    break;
-			case default:
+			default:
 			    //no way to pass messages to the bot in this script, so sets it to default
 			    newAmount = parseInt(houses[0]) + parseInt(amount);
 			    break;
