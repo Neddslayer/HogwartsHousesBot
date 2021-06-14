@@ -184,7 +184,7 @@ commands = {	// all commands list below
 		     	} else if (house == "ravenclaw") {
 			    	ravenPoints += amount;
 					msg.channel.send(emoji("816858739985350696") + " Managed to add " + amount + " to " + house);
-					dataManip.modRaven(amount);
+					dataManip.newPoints(house, amount);
 		     	} else if (house == "hufflepuff") {
 					hufflePoints += amount;
 					msg.channel.send(emoji("816858739985350696") + " Managed to add " + amount + " to " + house);
