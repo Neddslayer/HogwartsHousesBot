@@ -41,7 +41,7 @@ function addPoints(house, amount) {
 				    break;
 			}
 		} catch(e) {
-			console.log('sus went wrong shit')
+			console.log(e)
 		}
 		
 		updateVal[house] = newAmount
