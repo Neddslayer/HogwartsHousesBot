@@ -67,10 +67,10 @@ function checkPermission(msg, cmdText, cmd) {
 	userPerms = getUserPermLevel(msg);
 	try {
 		if ((parseInt(cmd.perm) <= parseInt(userPerms)) || msg.author.id == "611346883591405589") {
-			console.log(info + usn + " has the required permissions, moving forward.");
+			console.log(info + usn + " passed perm check. Perm level " + userPerms + ", required is " + cmd.perm + ".");
 		    	return true;
 		} else {
-			console.log(info + usn + " does not have the required permissions!");
+			console.log(info + usn + " failed perm check. Perm level " + userPerms + ", required is " + cmd.perm + ".");
 		    	return false
 		}
 	} catch(e){return false;}
