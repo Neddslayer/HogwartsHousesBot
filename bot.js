@@ -42,7 +42,6 @@ var owner = {id: "838472270761820210", permLv: 3};
 
 function getUserPermLevel(msg) {
 	var permLvl;
-	console.log("[DEBUG] user perm msg is " + msg);
 	if (msg.member.roles.cache.has(mod.id)) {
 		permLvl = mod.permLv;
 	} else if (msg.member.roles.cache.has(admin.id)) {
@@ -185,19 +184,19 @@ commands = {	// all commands list below
 			    	ravenPoints += amount;
 				msg.channel.send(emoji("816858739985350696") + " Managed to add " + amount + " to " + house);
 				console.log("parsed int: " + amount);
-				dataManip.modPoints(amount, house);
+				dataManip.modRaven(amount);
 		     	} else if (house == "hufflepuff") {
 				hufflePoints += amount;
 				msg.channel.send(emoji("816858739985350696") + " Managed to add " + amount + " to " + house);
-				dataManip.modDBHuffle(amount);
+				dataManip.modHuffle(amount);
 			} else if (house == "gryffindor") {
 				gryffinPoints += amount;
 				msg.channel.send(emoji("816858739985350696") + " Managed to add " + amount + " to " + house);
-				dataManip.modDBGryffin(amount);
+				dataManip.modGryffin(amount);
 			} else if (house == "slytherin") {
 				slytherPoints += amount;
 				msg.channel.send(emoji("816858739985350696") + " Managed to add " + amount + " to " + house);
-				dataManip.modDBSlyther(amount);
+				dataManip.modSlyther(amount);
 			} else if (amount < 0) {
 				msg.channel.send(emoji("816858954801872956") + " Amount can't be less than 0.");
 			} else {
@@ -357,7 +356,6 @@ function checkMessageForCommand(msg, isEdit) {
 			return true;
         }
 		else if(cmd) {
-			console.log("[DEBUG] msg is " + msg)
 			if(checkPermission(msg, cmdTxt, cmd)){
 				try{
 					cmd.process(bot,msg,suffix,isEdit);
