@@ -21,12 +21,19 @@ function addPoints(house, amount) {
     			});
 		});
 		
+		function getFields(input, field) {
+    			var output = [];
+   			for (var i=0; i < input.length ; ++i)
+       				output.push(input[i][field]);
+  			return output;
+		}
+		
 		var newAmount;
 		try {
-			newAmount = parseInt(houseArray.pluck(house)) + parseInt(amount);
+			newAmount = parseInt(getFields(houseArray, house)) + parseInt(amount);
 			
 		} catch(e) {
-			newAmount = parseInt(houseArray.pluck('ravenclaw')) + parseInt(amount);
+			newAmount = parseInt(getFields(houseArray, 'ravenclaw')) + parseInt(amount);
 		}
 		
 		updateVal[house] = newAmount
