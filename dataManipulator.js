@@ -22,6 +22,7 @@ function addPoints(house, amount) {
     			});
 		});
 		var newAmount;
+		try {
 		switch(house) {
 			case 'ravenclaw':
 			    newAmount = parseInt(houses[0]) + parseInt(amount);
@@ -39,6 +40,9 @@ function addPoints(house, amount) {
 			    //no way to pass messages to the bot in this script, so sets it to default
 			    newAmount = parseInt(houses[0]) + parseInt(amount);
 			    break;
+		}
+		} catch(e) {
+			console.log('sus went wrong shit')
 		}
 		
 		updateVal[house] = newAmount
