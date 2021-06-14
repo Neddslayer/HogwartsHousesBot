@@ -12,7 +12,14 @@ function addPoints(house, amount) {
         	console.log("[Server/INFO] Connected to mongoDB server to update value");
 		
 		db = client.db('Data');
+		var path;
 		collection = db.collection('points');
+		db.collection('points', function(err, collection) {
+    			collection.find({}).toArray(function(err, results) {
+        			path = results;
+        			console.log(results);
+    			});
+		});
 		
 		var cursor = collection.find({ "query" : "result" });
 		console.log(cursor);
