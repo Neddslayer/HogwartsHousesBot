@@ -83,4 +83,4 @@ function modGryffin(amount) {
         client.close();
      });
 }
-module.exports = { modDBRaven, modDBHuffle, modDBSlyther, modDBGryffin };
+module.exports = { modRaven, modHuffle, modSlyther, modGryffin };
