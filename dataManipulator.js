@@ -3,7 +3,7 @@ const client = mongo.MongoClient;
 //no more hacking for you silly boi
 const uri = process.env.DB_URI;
 
-function modDBRaven(amount) {
+function modRaven(amount) {
 	client.connect(uri, function(err, client) {
         	if (err) {
         	    console.log('[Bot/WARN] Unable to connect to the mongoDB server. Error:', err);
@@ -23,7 +23,7 @@ function modDBRaven(amount) {
         client.close();
      });
 }
-function modDBHuffle(amount) {
+function modHuffle(amount) {
 	client.connect(uri, function(err, client) {
         	if (err) {
         	    console.log('[Bot/WARN] Unable to connect to the mongoDB server. Error:', err);
@@ -43,7 +43,7 @@ function modDBHuffle(amount) {
         client.close();
      });
 }
-function modDBSlyther(amount) {
+function modSlyther(amount) {
 	client.connect(uri, function(err, client) {
         	if (err) {
         	    console.log('[Bot/WARN] Unable to connect to the mongoDB server. Error:', err);
@@ -63,7 +63,7 @@ function modDBSlyther(amount) {
         client.close();
      });
 }
-function modDBGryffin(amount) {
+function modGryffin(amount) {
 	client.connect(uri, function(err, client) {
         	if (err) {
         	    console.log('[Bot/WARN] Unable to connect to the mongoDB server. Error:', err);
