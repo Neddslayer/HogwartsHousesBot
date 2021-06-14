@@ -17,7 +17,7 @@ function modPoints(amount, house) {
          	   	var coll = db.collection('points');
 		   
 			var updateVal = {};
-			updateVal[type] = house;	
+			updateVal[house] = house;	
 		
 	  	   	coll.updateOne({ "query" : "result" }, { $inc: { updateVal: parseFloat(amount) } });
 		   	console.log("[Server/INFO] Successfully updated 1 document");
