@@ -59,7 +59,7 @@ function getUserPermLevel(msg) {
 
 function checkPermission(msg, cmdText, cmd) {
 	var usn = msg.author.tag;
-	let userPerms;
+	var userPerms;
 	console.log(info + "Checking permission for " + usn);
 	//var mod = {id: "838475281106599946", permLv: 1};
 	//var admin = {id: "838472731648983081", permLv: 2};
@@ -216,19 +216,19 @@ commands = {	// all commands list below
 		     	} else if (house == "ravenclaw") {
 			    	ravenPoints -= amount;
 				msg.channel.send(emoji("816858739985350696") + " Managed to remove " + amount + " from " + house);
-				dataManip.modDBRaven(-amount);
+				dataManip.modRaven(-amount);
 		     	} else if (house == "hufflepuff") {
 				hufflePoints -= amount;
 				msg.channel.send(emoji("816858739985350696") + " Managed to remove " + amount + " from " + house);
-				dataManip.modDBHuffle(-amount);
+				dataManip.modHuffle(-amount);
 			} else if (house == "gryffindor") {
 				gryffinPoints -= amount;
 				msg.channel.send(emoji("816858739985350696") + " Managed to remove " + amount + " from " + house);
-				dataManip.modDBGryffin(-amount);
+				dataManip.modGryffin(-amount);
 			} else if (house == "slytherin") {
 				slytherPoints -= amount;
 				msg.channel.send(emoji("816858739985350696") + " Managed to remove " + amount + " from " + house);
-				dataManip.modDBSlyther(-amount);
+				dataManip.modSlyther(-amount);
 			} else if (amount < 0) {
 				msg.channel.send(emoji("816858954801872956") + " Amount can't be less than 0.");
 			} else {
