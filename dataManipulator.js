@@ -1,8 +1,10 @@
 const mongo = require('mongodb');
 const client = mongo.MongoClient;
 const uri = process.env.DB_URI;
-var db = client.db('Data');
-var collection = db.collection('points');
+var db;
+var collection;
+db = client.db('Data');
+collection = db.collection('points');
 var updateVal = {};
 
 function newPoints(house, amount) {
