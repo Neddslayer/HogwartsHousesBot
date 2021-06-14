@@ -27,18 +27,22 @@ function addPoints(house, amount) {
         			console.log(houseArray);
     			});
 		});
+		async function newAmountAsync(house){
+			var array = await houseArray
+			var result;
+			try {
+				result = parseInt(getFields(array, house)) + parseInt(amount);
+			} catch(e) {
+				result = parseInt(getFields(array, 'ravenclaw')) + parseInt(amount);
+			}
+			updateVal[house] = newAmount;
+		}
 		
-		//try {
-		//	newAmount = parseInt(getFields(houseArray, house)) + parseInt(amount);
-		//} catch(e) {
-		//	newAmount = parseInt(getFields(houseArray, 'ravenclaw')) + parseInt(amount);
-		//}
-		
-		updateVal[house] = newAmount
+		newAmountAsync(house);
 		
  		console.log(updateVal);
 			
-	  	//collection.updateOne({ "query" : "result" }, { $set: updateVal});
+	  	collection.updateOne({ "query" : "result" }, { $set: updateVal});
 		console.log("[Server/INFO] Successfully updated 1 document");
         	
 	})
