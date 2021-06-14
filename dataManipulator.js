@@ -18,6 +18,7 @@ function addPoints(house, amount) {
     			collection.find({}).toArray(function(err, results) {
         			houseArray = results;
         			console.log(results);
+				console.log(houseArray);
     			});
 		});
 		var newAmount;
