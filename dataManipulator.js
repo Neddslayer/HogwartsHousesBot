@@ -12,21 +12,36 @@ function addPoints(house, amount) {
         	console.log("[Server/INFO] Connected to mongoDB server to update value");
 		
 		db = client.db('Data');
-		var path;
+		var houses;
 		collection = db.collection('points');
 		db.collection('points', function(err, collection) {
     			collection.find({}).toArray(function(err, results) {
-        			path = results;
-        			console.log(results);
+        			houses = results;
+        			console.log("Results: " + results);
+				console.log("Houses: " + houses);
     			});
 		});
+		var newAmount;
+		switch(house) {
+			case 'ravenclaw':
+			    newAmount = parseInt(houses[0]) + parseInt(amount);
+			    break;
+			case 'hufflepuff':
+			    newAmount = parseInt(houses[1]) + parseInt(amount);
+			    break;
+			case 'slytherin':
+			    newAmount = parseInt(houses[2]) + parseInt(amount);
+			    break;
+			case 'gryffindor':
+			    newAmount = parseInt(houses[3]) + parseInt(amount);
+			    break;
+			case default:
+			    //no way to pass messages to the bot in this script, so sets it to default
+			    newAmount = parseInt(houses[0]) + parseInt(amount);
+			    break;
+		}
 		
-		var cursor = collection.find({ "query" : "result" });
-		console.log(cursor);
-		
-		var newAmount = {};
-		
-		updateVal[house] = amount
+		updateVal[house] = newAmount
 		
  		console.log(updateVal);
 			
