@@ -29,12 +29,11 @@ function addPoints(house, amount) {
 		}
 		
 		var newAmount;
-		try {
-			newAmount = parseInt(getFields(houseArray, house)) + parseInt(amount);
-			
-		} catch(e) {
-			newAmount = parseInt(getFields(houseArray, 'ravenclaw')) + parseInt(amount);
-		}
+		//try {
+		//	newAmount = parseInt(getFields(houseArray, house)) + parseInt(amount);
+		//} catch(e) {
+		//	newAmount = parseInt(getFields(houseArray, 'ravenclaw')) + parseInt(amount);
+		//}
 		
 		updateVal[house] = newAmount
 		
