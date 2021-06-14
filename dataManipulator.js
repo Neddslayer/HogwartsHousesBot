@@ -1,7 +1,25 @@
 const mongo = require('mongodb');
 const client = mongo.MongoClient;
-//no more hacking for you silly boi
 const uri = process.env.DB_URI;
+var db = client.db('Data');
+var collection = db.collection('points');
+var updateVal = {};
+
+function newPoints(house, amount) {
+	client.connect(uri, function(err, client) {
+		if(err){console.log('[Bot/WARN] Unable to connect to the mongoDB server. Error:', err);}
+        	
+        	console.log("[Server/INFO] Connected to mongoDB server to update value");
+		
+		updateVal[house] = amount
+		
+ 		console.log(updateVal);
+			
+	  	collection.updateOne({ "query" : "result" }, { $set: updateVal});
+		console.log("[Server/INFO] Successfully updated 1 document");
+        	
+	})
+}
 
 function modRaven(amount) {
 	client.connect(uri, function(err, client) {
