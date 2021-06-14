@@ -18,31 +18,15 @@ function addPoints(house, amount) {
     			collection.find({}).toArray(function(err, results) {
         			houseArray = results;
         			console.log(results);
-				console.log(houseArray);
     			});
 		});
+		
 		var newAmount;
 		try {
-			switch(house) {
-				case 'ravenclaw':
-				    newAmount = parseInt(houseArray.ravenclaw) + parseInt(amount);
-				    break;
-				case 'hufflepuff':
-				    newAmount = parseInt(houseArray.hufflepuff) + parseInt(amount);
-				    break;
-				case 'slytherin':
-				    newAmount = parseInt(houseArray.slytherin) + parseInt(amount);
-				    break;
-				case 'gryffindor':
-				    newAmount = parseInt(houseArray.gryffindor) + parseInt(amount);
-				    break;
-				default:
-				    //no way to pass messages to the bot in this script, so sets it to default
-				    newAmount = parseInt(houseArray.ravenclaw) + parseInt(amount);
-				    break;
-			}
+			newAmount = parseInt(houseArray.pluck(house)) + parseInt(amount);
+			
 		} catch(e) {
-			console.log(e)
+			newAmount = parseInt(houseArray.pluck('ravenclaw')) + parseInt(amount);
 		}
 		
 		updateVal[house] = newAmount
