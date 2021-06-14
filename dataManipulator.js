@@ -3,8 +3,6 @@ const client = mongo.MongoClient;
 const uri = process.env.DB_URI;
 var db;
 var collection;
-db = client.db('Data');
-collection = db.collection('points');
 var updateVal = {};
 
 function newPoints(house, amount) {
@@ -12,6 +10,9 @@ function newPoints(house, amount) {
 		if(err){console.log('[Bot/WARN] Unable to connect to the mongoDB server. Error:', err);}
         	
         	console.log("[Server/INFO] Connected to mongoDB server to update value");
+		
+		db = client.db('Data');
+		collection = db.collection('points');
 		
 		updateVal[house] = amount
 		
