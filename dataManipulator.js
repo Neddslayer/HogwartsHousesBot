@@ -13,22 +13,21 @@ function addPoints(house, amount) {
 		
 		db = client.db('Data');
 		var houseArray;
+		var newAmount;
 		collection = db.collection('points');
-		db.collection('points', function(err, collection) {
-    			collection.find({}).toArray(function(err, results) {
-        			houseArray = results;
-        			console.log(results);
-    			});
-		});
-		
 		function getFields(input, field) {
     			var output = [];
    			for (var i=0; i < input.length ; ++i)
        				output.push(input[i][field]);
   			return output;
 		}
+		db.collection('points', function(err, collection) {
+    			collection.find({}).toArray(function(err, results) {
+        			houseArray = results;
+        			console.log(houseArray);
+    			});
+		});
 		
-		var newAmount;
 		//try {
 		//	newAmount = parseInt(getFields(houseArray, house)) + parseInt(amount);
 		//} catch(e) {
