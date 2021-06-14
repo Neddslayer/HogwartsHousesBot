@@ -12,11 +12,11 @@ function addPoints(house, amount) {
         	console.log("[Server/INFO] Connected to mongoDB server to update value");
 		
 		db = client.db('Data');
-		var path;
+		var houseArray;
 		collection = db.collection('points');
 		db.collection('points', function(err, collection) {
     			collection.find({}).toArray(function(err, results) {
-        			path = results;
+        			houseArray = results;
         			console.log(results);
     			});
 		});
@@ -24,20 +24,20 @@ function addPoints(house, amount) {
 		try {
 		switch(house) {
 			case 'ravenclaw':
-			    newAmount = parseInt(houses[0]) + parseInt(amount);
+			    newAmount = parseInt(houses.ravenclaw) + parseInt(amount);
 			    break;
 			case 'hufflepuff':
-			    newAmount = parseInt(houses[1]) + parseInt(amount);
+			    newAmount = parseInt(houses.hufflepuff) + parseInt(amount);
 			    break;
 			case 'slytherin':
-			    newAmount = parseInt(houses[2]) + parseInt(amount);
+			    newAmount = parseInt(houses.slytherin) + parseInt(amount);
 			    break;
 			case 'gryffindor':
-			    newAmount = parseInt(houses[3]) + parseInt(amount);
+			    newAmount = parseInt(houses.gryffindor) + parseInt(amount);
 			    break;
 			default:
 			    //no way to pass messages to the bot in this script, so sets it to default
-			    newAmount = parseInt(houses[0]) + parseInt(amount);
+			    newAmount = parseInt(houses.ravenclaw) + parseInt(amount);
 			    break;
 		}
 		} catch(e) {
