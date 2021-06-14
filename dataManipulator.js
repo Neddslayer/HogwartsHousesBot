@@ -9,7 +9,7 @@ function modPoints(amount, house) {
         	    	console.log('[Bot/WARN] Unable to connect to the mongoDB server. Error:', err);
         	} else {
         	   	console.log("[Server/INFO] Connected to mongoDB server to update value");
-		
+			
             	    	// Select database
         	   	const db = client.db('Data');
 
