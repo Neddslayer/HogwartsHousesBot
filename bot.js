@@ -178,30 +178,34 @@ commands = {	// all commands list below
 		     var amount = suffix.split(" ");
 		     var house = amount.shift();
 		     amount = Number(amount);
+		     try {
 		     	if (!house) {
 			     	msg.channel.send(Config.commandPrefix + "add " + this.usage + "\n" + this.description);
 		     	} else if (house == "ravenclaw") {
 			    	ravenPoints += amount;
-				msg.channel.send(emoji("816858739985350696") + " Managed to add " + amount + " to " + house);
-				dataManip.modRaven(amount);
+					msg.channel.send(emoji("816858739985350696") + " Managed to add " + amount + " to " + house);
+					dataManip.modRaven(amount);
 		     	} else if (house == "hufflepuff") {
-				hufflePoints += amount;
-				msg.channel.send(emoji("816858739985350696") + " Managed to add " + amount + " to " + house);
-				dataManip.modHuffle(amount);
-			} else if (house == "gryffindor") {
-				gryffinPoints += amount;
-				msg.channel.send(emoji("816858739985350696") + " Managed to add " + amount + " to " + house);
-				dataManip.modGryffin(amount);
-			} else if (house == "slytherin") {
-				slytherPoints += amount;
-				msg.channel.send(emoji("816858739985350696") + " Managed to add " + amount + " to " + house);
-				dataManip.modSlyther(amount);
-			} else if (amount < 0) {
-				msg.channel.send(emoji("816858954801872956") + " Amount can't be less than 0.");
-			} else {
-				msg.channel.send(emoji("816858954801872956") + " House does not exist!");
+					hufflePoints += amount;
+					msg.channel.send(emoji("816858739985350696") + " Managed to add " + amount + " to " + house);
+					dataManip.modHuffle(amount);
+				} else if (house == "gryffindor") {
+					gryffinPoints += amount;
+					msg.channel.send(emoji("816858739985350696") + " Managed to add " + amount + " to " + house);
+					dataManip.modGryffin(amount);
+				} else if (house == "slytherin") {
+					slytherPoints += amount;
+					msg.channel.send(emoji("816858739985350696") + " Managed to add " + amount + " to " + house);
+					dataManip.modSlyther(amount);
+				} else if (amount < 0) {
+					msg.channel.send(emoji("816858954801872956") + " Amount can't be less than 0.");
+				} else {
+					msg.channel.send(emoji("816858954801872956") + " House does not exist!");
+				}
+	     	} catch(e) {
+				msg.channel.send(emoji("816858954801872956") + " There was an error while trying to process this command. Please contact the developer.");
 			}
-	     }
+		}
      },
      "remove": {
 	     perm: 2,
