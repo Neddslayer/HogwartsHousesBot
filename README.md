@@ -1,4 +1,5 @@
 # The Hogwarts Points bot
+| Archived as the bot was never used on the server, and I never bothered to update it.
 The points system for the Hogwarts Discord Server
 
 https://discord.gg/P54EgWjbqM
